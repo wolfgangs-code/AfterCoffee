@@ -1,0 +1,11 @@
+{
+	"siteName": "AfterCoffee",
+	"author": "Wolfgang de Groot",
+	"themeColor": "#774411",
+	"copyright": "MIT License",
+	"styles": ["main.css"],
+	"scripts": [""],
+	"errorPath": {
+		"404": "/assets/error/404.html"
+	}
+}

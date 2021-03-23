@@ -1,0 +1,107 @@
+@import url('https://rsms.me/inter/inter.css');
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: 'Inter var', sans-serif;
+  }
+}
+
+:root {
+  --maroon: #5D1725;
+  --ramoon: #603941;
+  --text: #454545;
+  --black: #000;
+  --light: #DDD;
+  --bg: #FFF;
+}
+
+body, code {
+  color: var(--text);
+  font-size: 16px;
+  margin: 2em auto;
+  max-width: 800px;
+  padding: 1em;
+  padding-top: 0;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+span.date {
+  margin-right: 1em
+}
+
+span.bad {
+  color: var(--ramoon)
+}
+
+code {
+  background-color: var(--light);
+  padding: 0.25em;
+  border-radius: 0.125em;
+}
+
+ul li img {
+  height: 1em
+}
+
+h1 {
+  color: var(--black);
+  font-weight: 720;
+  letter-spacing: -.05em;
+  word-break: break-word;
+}
+
+a {
+  color: #07a
+}
+
+a:visited {
+  color: #941352
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  text-align: left;
+}
+
+h2 {
+  text-shadow: 0 0 0.125em var(--light);
+}
+
+.banner {
+  padding: 0.25em;
+  color: var(--bg);
+  background-color: var(--maroon);
+}
+
+.left {
+  background: linear-gradient(to left, var(--maroon), var(--bg))
+}
+
+.right {
+  background: linear-gradient(to right, var(--maroon), var(--bg))
+}
+
+h4 {
+  text-align: center;
+}
+
+img.art {
+  float: right;
+  width: 350px;
+  border: 5px solid var(--light);
+  margin: 0.5em;
+}
+
+mark, span.mark {
+  margin: 0 -0.4em;
+  padding: 0.1em 0.4em;
+  border-radius: 0.8em 0.3em;
+  background: transparent;
+  background-image: linear-gradient( to right, rgba(255, 225, 0, 0.1), rgba(255, 225, 0, 0.7) 4%, rgba(255, 225, 0, 0.3));
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}

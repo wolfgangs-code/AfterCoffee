@@ -1,0 +1,3 @@
+# No custom pages
+pages/*
+!pages/index.md
