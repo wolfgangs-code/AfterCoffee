@@ -12,7 +12,7 @@ class customMarkdown {
 	function changeText($html) {
 		# Allows highlighting text by surrounding it with double-equals,
 		# e.g. ==I'm highlighted==
-		$html = preg_replace("/(==)(.*?)(==)/", "<span class=mark>.$2.</mark>", $html);
+		$html = preg_replace("/(==)(.*?)(==)/", "<span class=mark>$2</mark>", $html);
 		return $html;
 	}
 }
