@@ -1,3 +1,6 @@
 # No custom pages
 pages/*
 !pages/index.md
+# No custom plugins
+plugins/*
+!plugins/customMarkdown.php
