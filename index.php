@@ -94,7 +94,7 @@ if (file_exists($apath)) {
 	foreach (AC_PLUGINS as $class) {
     	$plugin = new $class;
     	if (method_exists($plugin, "addHead")) {
-        	$html = $plugin->addHead($html);
+        	$plugin->addHead($html);
     	}
 	}
 	?>
