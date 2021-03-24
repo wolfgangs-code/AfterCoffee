@@ -104,5 +104,14 @@ if (file_exists($apath)) {
 	<p class="info"><span class="date">Last Updated: <?php echo $date . "</span>"; ?></p>
 	<?=$html?>
 	<h4 class="banner left">&copy; <?=date("Y") . " " . USERSET["copyright"]?></h4>
+		<?php
+	# TODO: Make firing plugin functions cleaner
+	foreach (AC_PLUGINS as $class) {
+    	$plugin = new $class;
+    	if (method_exists($plugin, "addFooter")) {
+        	$plugin->addHead($html);
+    	}
+	}
+	?>
 </body>
 </html>
