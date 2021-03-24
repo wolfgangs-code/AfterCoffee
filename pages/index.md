@@ -1,4 +1,4 @@
-![Welcome to AfterCoffee](resource/img/aftercoffee.png)
+[card]![Welcome to AfterCoffee](resource/img/aftercoffee.png)[/card]
 
 # Header 1 (The Title)
 ## Header 2 (The Description)
