@@ -100,7 +100,7 @@ if (file_exists($apath)) {
 	?>
 </head>
 <body>
-	<h3 class="banner right"><?=USERSET["siteName"]?></h3>
+	<h3 class="banner right"><a href="<?="/".basename(__DIR__)?>"><?=USERSET["siteName"]?></a></h3>
 	<p class="info"><span class="date">Last Updated: <?php echo $date . "</span>"; ?></p>
 	<?=$html?>
 	<h4 class="banner left">&copy; <?=date("Y") . " " . USERSET["copyright"]?></h4>
