@@ -5,6 +5,9 @@
 	"copyright": "MIT License",
 	"styles": ["main.css"],
 	"scripts": [""],
+	"pluginSetting": {
+		"example": "example"
+	},
 	"errorPath": {
 		"404": "/assets/error/404.html"
 	}
