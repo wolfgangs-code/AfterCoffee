@@ -16,3 +16,9 @@
 - Probably buggy and definitely hacky
   - You being able to read the code is embarrasing
 - Named after [a song](https://open.spotify.com/track/7EaL8Zt8UAabmP6sQydgx9 "a song") I was listening to at the time
+
+#### Themes
+To for colors in the default CSS, a Windows Terminal-like structure is used.
+To quickly turn Windows Terminal theme JSON into valid CSS, use this Regex Replace-with:
+
+Replace `"  "([a-z]*)": "(#\w*)",?"` with `"--$1: $2;"`
