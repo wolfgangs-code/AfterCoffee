@@ -9,17 +9,34 @@ html {
   }
 }
 
+/* Uses Windows Terminal-like theme naming */
 :root {
-  --maroon: #5D1725;
-  --ramoon: #603941;
-  --text: #454545;
-  --black: #000;
-  --light: #DDD;
-  --bg: #FFF;
+--black: #fbf1c7;
+--red: #9d0006;
+--green: #79740e;
+--yellow: #b57614;
+--blue: #076678;
+--purple: #8f3f71;
+--cyan: #427b58;
+--white: #3c3836;
+--brightBlack: #9d8374;
+--brightRed: #cc241d;
+--brightGreen: #98971a;
+--brightYellow: #d79921;
+--brightBlue: #458588;
+--brightPurple: #b16186;
+--brightCyan: #689d69;
+--brightWhite: #7c6f64;
+--background: #fbf1c7;
+--foreground: #282828;
+--selectionBackground: #d5c4a1;
+--cursorColor: #282828;
 }
+/* Default theme based on Gruvbox Light by morhetz/reynn */
 
 body, code {
-  color: var(--text);
+  color: var(--foreground);
+  background-color: var(--background);
   font-size: 16px;
   margin: 2em auto;
   max-width: 800px;
@@ -34,11 +51,11 @@ span.date {
 }
 
 span.bad {
-  color: var(--ramoon)
+  color: var(--red)
 }
 
 code {
-  background-color: var(--light);
+  background-color: var(--brightBlack);
   padding: 0.25em;
   border-radius: 0.125em;
 }
@@ -55,11 +72,11 @@ h1 {
 }
 
 a {
-  color: #07a
+  color: var(--brightBlue)
 }
 
 a:visited {
-  color: #941352
+  color: var(--blue)
 }
 
 h1, h2, h3 {
@@ -68,21 +85,21 @@ h1, h2, h3 {
 }
 
 h2 {
-  text-shadow: 0 0 0.125em var(--light);
+  text-shadow: 0 0 0.125em var(--brightBlack);
 }
 
 .banner {
   padding: 0.25em;
   color: var(--bg);
-  background-color: var(--maroon);
+  background-color: var(--cursorColor);
 }
 
 .left {
-  background: linear-gradient(to left, var(--maroon), var(--bg))
+  background: linear-gradient(to left, var(--brightBlack), var(--background))
 }
 
 .right {
-  background: linear-gradient(to right, var(--maroon), var(--bg))
+  background: linear-gradient(to right, var(--brightBlack), var(--background))
 }
 
 h4 {
@@ -92,7 +109,7 @@ h4 {
 img.art {
   float: right;
   width: 350px;
-  border: 5px solid var(--light);
+  border: 5px solid var(--selectionBackground);
   margin: 0.5em;
 }
 
