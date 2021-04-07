@@ -62,6 +62,12 @@ code {
   border-radius: 0.125em;
 }
 
+table, th, td {
+  border: 1px solid var(--foreground);
+  border-collapse: collapse;
+  padding: 0.25em;
+}
+
 ul li img {
   height: 1em
 }
