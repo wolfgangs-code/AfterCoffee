@@ -10,28 +10,30 @@ html {
 }
 
 /* Uses Windows Terminal-like theme naming */
+
 :root {
---black: #fbf1c7;
---red: #9d0006;
---green: #79740e;
---yellow: #b57614;
---blue: #076678;
---purple: #8f3f71;
---cyan: #427b58;
---white: #3c3836;
---brightBlack: #9d8374;
---brightRed: #cc241d;
---brightGreen: #98971a;
---brightYellow: #d79921;
---brightBlue: #458588;
---brightPurple: #b16186;
---brightCyan: #689d69;
---brightWhite: #7c6f64;
---background: #fbf1c7;
---foreground: #282828;
---selectionBackground: #d5c4a1;
---cursorColor: #282828;
+  --black: #fbf1c7;
+  --red: #9d0006;
+  --green: #79740e;
+  --yellow: #b57614;
+  --blue: #076678;
+  --purple: #8f3f71;
+  --cyan: #427b58;
+  --white: #3c3836;
+  --brightBlack: #9d8374;
+  --brightRed: #cc241d;
+  --brightGreen: #98971a;
+  --brightYellow: #d79921;
+  --brightBlue: #458588;
+  --brightPurple: #b16186;
+  --brightCyan: #689d69;
+  --brightWhite: #7c6f64;
+  --background: #fbf1c7;
+  --foreground: #282828;
+  --selectionBackground: #d5c4a1;
+  --cursorColor: #282828;
 }
+
 /* Default theme based on Gruvbox Light by morhetz/reynn */
 
 body, code {
@@ -65,7 +67,7 @@ ul li img {
 }
 
 h1 {
-  color: var(--black);
+  color: var(--foreground);
   font-weight: 720;
   letter-spacing: -.05em;
   word-break: break-word;
