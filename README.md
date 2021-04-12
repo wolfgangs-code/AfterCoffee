@@ -16,6 +16,6 @@
 
 #### Themes
 To for colors in the default CSS, a Windows Terminal-like structure is used.
-To quickly turn Windows Terminal theme JSON into valid CSS, use this Regex Replace-with:
+To quickly turn [Windows Terminal theme](https://windowsterminalthemes.dev) JSON into valid CSS, use this Regex Replace-with:
 
 Replace `"  "([a-z]*)": "(#\w*)",?"` with `"--$1: $2;"`
