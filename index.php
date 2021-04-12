@@ -101,7 +101,18 @@ if (file_exists($apath)) {
 </head>
 <body>
 	<h3 class="banner right"><a href="<?="/".basename(__DIR__)?>" style="text-decoration:none;color:var(--black)"><?=USERSET["siteName"]?></a></h3>
-	<p class="info"><span class="date">Last Updated: <?php echo $date . "</span>"; ?></p>
+	<p class="info">
+		<span class="date">Last Updated: <?php echo $date . "</span>"; ?>
+		<?php
+			# TODO: Make firing plugin functions cleaner
+			foreach (AC_PLUGINS as $class) {
+    			$plugin = new $class;
+    			if (method_exists($plugin, "addInfo")) {
+        		$plugin->addInfo($html);
+    			}
+			}
+		?>
+	</p>
 	<div id="body">
 		<?=$html?>
 	</div>
