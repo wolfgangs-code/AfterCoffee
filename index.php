@@ -80,6 +80,7 @@ if (file_exists($apath)) {
 	<meta property="og:site_name"   content="<?=USERSET["siteName"]?>" />
 	<meta name="theme-color"        content="<?=USERSET["themeColor"]?>">
 	<meta name="author"             content="<?=USERSET["author"]?>">
+	<meta name="generator" 			content="AfterCoffee">
 	<meta property="og:title"       content="<?=$title?>" />
 	<meta name="description"        content="<?=$description?>">
 	<meta property="og:description" content="<?=$description?>" />
