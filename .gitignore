@@ -4,3 +4,4 @@ pages/*
 # No custom plugins
 plugins/*
 !plugins/customMarkdown.php
+!plugins/directoryList.php
