@@ -48,6 +48,14 @@ body, code {
   text-align: justify;
 }
 
+select {
+  color: var(--foreground);
+  background-color: var(--selectionBackground);
+  /* appearance: none; */
+  border: none;
+  padding: 0.25em;
+}
+
 span.date {
   margin-right: 1em
 }
