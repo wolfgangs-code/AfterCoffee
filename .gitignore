@@ -1,6 +1,8 @@
 # No custom pages
 pages/*
 !pages/index.md
+# No auth keys
+editor/auth.php
 # No custom plugins
 plugins/*
 !plugins/customMarkdown.php
