@@ -8,6 +8,12 @@ foreach (glob("../plugins/*.php") as $plugin) {
 }
 define("AC_PLUGINS", $pluginClasses);
 
+$editPage = $_GET["page"];
+$apath = "../pages/" . $editPage . ".md";
+if (file_exists($apath)) {
+    $md = file_get_contents($apath);
+}
+
 /* The AfterCoffee Editor */
 
 $title = "Page Editor";
@@ -31,9 +37,9 @@ $description = "AfterCoffee Page Editor";
 	<h3 class="banner right" style="text-decoration:none;color:var(--black)"><?=USERSET["siteName"] ." - ". $title?></h3>
 	<div id="body">
         <form method="POST" action="publish.php">
-            <textarea id="textbox" name="textbox" rows="8" cols="80"></textarea><br>
+            <textarea id="textbox" name="textbox" rows="8" cols="80"><?=$md?></textarea><br>
             <span class="date">Page Title:</span>
-            <input type="text" name="pageName"></input>
+            <input type="text" name="pageName" value="<?=$editPage?>"></input>
             <input type="submit" name="submit" value="Publish"></input>
         </form>
 	</div>
