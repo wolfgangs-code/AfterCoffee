@@ -1,7 +1,9 @@
 <?php
 session_start();
 
+define("USERSET", json_decode(file_get_contents("../meta.json"), true));
 $pw = $_POST['pass'];
+$title = "Authentication Required";
 
 if (!include ('auth_code.php')) { // If there is no password file (sorry),
     if (isset($pw)) { // ... But a new password is set!
@@ -32,13 +34,32 @@ if (isset($pw) && password_verify($pw, $auth)) { // Password is correct.
     exit;
 } else { //Password is INCORRECT or UNSET
     unset($_SESSION['authorized']); // Revoke session and post login form
-    echo $msg;
-    {?>
-		<form method="POST" action="">
-    	Password <input type="password" name="pass"></input><br/>
-    	<input type="submit" name="submit" value="Go"></input>
-    	</form>
-    <?php }
+{?>
 
-}
-?>
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta property="og:type"        content="website">
+	<title><?=$title?></title>
+	<meta property="og:site_name"   content="<?=USERSET["siteName"]?>" />
+	<meta name="theme-color"        content="<?=USERSET["themeColor"]?>">
+	<meta name="generator" 			content="AfterCoffee">
+	<meta property="og:title"       content="<?=$title?>" />
+	<?php foreach (USERSET["styles"] as $style) {print("<link rel=\"stylesheet\" href=\"../resource/css/" . $style . "\">\n\t");}?>
+	<meta name="viewport" 			content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<h3 style="text-decoration:none;color:var(--black)" class="banner right"><?=USERSET["siteName"] ." - ". $title?></h3>
+	<div id="body">
+        <h3><?=$msg?></h3>
+	    <form method="POST" action="">
+            Password <input type="password" name="pass"></input>
+            <input type="submit" name="submit" value="Go"></input>
+        </form>
+	</div>
+	<h4 class="banner left">&copy; <?=date("Y") . " " . USERSET["copyright"]?></h4>
+</body>
+</html>
+
+<?php }}?>
