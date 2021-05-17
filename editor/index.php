@@ -14,6 +14,14 @@ if (file_exists($apath)) {
     $md = file_get_contents($apath);
 }
 
+function modNameBox($editPage) {
+	if (isset($editPage)) {
+		return " value=\"{$editPage}\" disabled";
+	} else {
+		return null;
+	}
+}
+
 /* The AfterCoffee Editor */
 
 $title = "Page Editor";
@@ -39,7 +47,7 @@ $description = "AfterCoffee Page Editor";
         <form method="POST" action="publish.php">
             <textarea id="textbox" name="textbox" rows="8" cols="80"><?=$md?></textarea><br>
             <span class="date">Page Title:</span>
-            <input type="text" name="pageName" value="<?=$editPage?>"></input>
+            <input type="text" name="pageName"<?php echo modNameBox($editPage); ?>></input>
             <input type="submit" name="submit" value="Publish"></input>
         </form>
 	</div>
