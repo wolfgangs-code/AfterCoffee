@@ -2,6 +2,12 @@
 require_once 'auth_check.php';
 define("USERSET", json_decode(file_get_contents("../meta.json"), true));
 
+foreach (glob("../plugins/*.php") as $plugin) {
+    include $plugin;
+    $pluginClasses[] = basename($plugin, ".php");
+}
+define("AC_PLUGINS", $pluginClasses);
+
 /* The AfterCoffee Editor */
 
 $title = "Page Editor";
