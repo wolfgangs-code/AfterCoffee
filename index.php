@@ -1,4 +1,5 @@
 <?php
+session_start();
 require './lib/Parsedown.php';
 require './lib/ParsedownExtra.php';
 $Parsedown = new Parsedown();
