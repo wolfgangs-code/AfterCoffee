@@ -1,1 +1,0 @@
-<?php $auth="test"; ?>
