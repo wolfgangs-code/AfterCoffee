@@ -1,15 +1,23 @@
 <?php
 session_start();
 
+$pw = $_POST['pass'];
+
 if (!include ('auth_code.php')) { // If there is no password file (sorry),
-    if (isset($_POST['pass'])) { // ... But a new password is set!
-        $txt = "<?php \$auth=\"{$_POST['pass']}\"; ?>"; // Compose auth_code.php
+    if (isset($pw)) { // ... But a new password is set!
+        $crypt = password_hash($pw, PASSWORD_DEFAULT);
+        $crypt = str_replace("$", "\\$", $crypt);
+        $txt = "<?php \$auth=\"{$crypt}\"; ?>"; // Compose auth_code.php
         $newPass = fopen("auth_code.php", "w");
         fwrite($newPass, $txt);
         fclose($newPass);
         header('Location: ./');
     }
-    echo "NO PASSWORD SET. Set your password below.";
+    $msg = "NO PASSWORD SET. Set your password below.";
+} elseif (!isset($pw)) {
+    $msg = "Please enter in your password.";
+} else {
+    $msg = "Incorrect password.";
 }
 
 if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
@@ -18,15 +26,16 @@ if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
     exit;
 }
 
-if (isset($_POST['pass']) && $_POST['pass'] == $auth) { // Password is correct.
+if (isset($pw) && password_verify($pw, $auth)) { // Password is correct.
     $_SESSION['authorized'] = 1;
     header('Location: ./'); // Go to the editor
     exit;
-} else { //Password is INCORRECT
+} else { //Password is INCORRECT or UNSET
     unset($_SESSION['authorized']); // Revoke session and post login form
+    echo $msg;
     {?>
 		<form method="POST" action="">
-    	Pass <input type="password" name="pass"></input><br/>
+    	Password <input type="password" name="pass"></input><br/>
     	<input type="submit" name="submit" value="Go"></input>
     	</form>
     <?php }
