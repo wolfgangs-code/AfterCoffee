@@ -13,8 +13,9 @@ $apath = "../pages/" . $editPage . ".md";
 if (file_exists($apath)) {
     $md = file_get_contents($apath);
 }
-$lineCount = isset($editPage) ? substr_count( $md, "\n" ) + 1 : 8;
 
+// If there is a page, set rows to the page's contents plus one. If not, 8.
+$lineCount = isset($editPage) ? substr_count( $md, "\n" ) + 1 : 8;
 
 function modNameBox($editPage) {
 	if (isset($editPage)) {
