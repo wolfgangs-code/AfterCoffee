@@ -46,7 +46,7 @@ $description = "AfterCoffee Page Editor";
 </head>
 <body>
 	<h3 class="banner right" style="text-decoration:none;color:var(--black)">
-		<a href="./"><?=USERSET["siteName"]?></a> - <?=$title?>
+		<a href="../"><?=USERSET["siteName"]?></a> - <?=$title?>
 	</h3>
 	<div id="body">
         <form method="POST" action="publish.php">
