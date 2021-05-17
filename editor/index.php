@@ -28,7 +28,7 @@ $description = "AfterCoffee Page Editor";
 	<meta name="viewport" 			content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<h3 class="banner right"><a href="<?="/".basename(__DIR__)?>" style="text-decoration:none;color:var(--black)"><?=USERSET["siteName"] ." - ". $title?></a></h3>
+	<h3 class="banner right" style="text-decoration:none;color:var(--black)"><?=USERSET["siteName"] ." - ". $title?></h3>
 	<div id="body">
         <form method="POST" action="publish.php">
             <textarea id="textbox" name="textbox" rows="8" cols="80"></textarea><br>
