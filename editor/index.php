@@ -13,6 +13,8 @@ $apath = "../pages/" . $editPage . ".md";
 if (file_exists($apath)) {
     $md = file_get_contents($apath);
 }
+$lineCount = isset($editPage) ? substr_count( $md, "\n" ) + 1 : 8;
+
 
 function modNameBox($editPage) {
 	if (isset($editPage)) {
@@ -45,7 +47,7 @@ $description = "AfterCoffee Page Editor";
 	<h3 class="banner right" style="text-decoration:none;color:var(--black)"><?=USERSET["siteName"] ." - ". $title?></h3>
 	<div id="body">
         <form method="POST" action="publish.php">
-            <textarea id="textbox" name="textbox" rows="8" cols="80"><?=$md?></textarea><br>
+            <textarea id="textbox" name="textbox" rows="<?=$lineCount?>" cols="80"><?=$md?></textarea><br>
             <span class="date">Page Title:</span>
             <input type="text" name="pageName"<?php echo modNameBox($editPage); ?>></input>
             <input type="submit" name="submit" value="Publish"></input>
