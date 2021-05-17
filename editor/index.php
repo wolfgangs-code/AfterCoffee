@@ -20,15 +20,6 @@ $description = "AfterCoffee Page Editor";
 	<meta property="og:title"       content="<?=$title?>" />
 	<?php foreach (USERSET["styles"] as $style) {print("<link rel=\"stylesheet\" href=\"../resource/css/" . $style . "\">\n\t");}?>
 	<meta name="viewport" 			content="width=device-width, initial-scale=1">
-	<?php
-	# TODO: Make firing plugin functions cleaner
-	foreach (AC_PLUGINS as $class) {
-    	$plugin = new $class;
-    	if (method_exists($plugin, "addHead")) {
-        	$plugin->addHead($html);
-    	}
-	}
-	?>
 </head>
 <body>
 	<h3 class="banner right"><a href="<?="/".basename(__DIR__)?>" style="text-decoration:none;color:var(--black)"><?=USERSET["siteName"] ." - ". $title?></a></h3>
@@ -41,14 +32,5 @@ $description = "AfterCoffee Page Editor";
         </form>
 	</div>
 	<h4 class="banner left">&copy; <?=date("Y") . " " . USERSET["copyright"]?></h4>
-	<?php
-	# TODO: Make firing plugin functions cleaner
-	foreach (AC_PLUGINS as $class) {
-    	$plugin = new $class;
-    	if (method_exists($plugin, "addFooter")) {
-        	$plugin->addFooter($html);
-    	}
-	}
-	?>
 </body>
 </html>
