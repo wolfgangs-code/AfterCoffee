@@ -72,11 +72,11 @@ if (file_exists($apath)) {
     exit;
 }
 
-function editButton()
+function editButton($page)
 {
     if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
         // Only show edit button if logged into the Editor.
-        return "[Edit] ";
+        return "<a href=\"./editor/?page={$page}\">[Edit]</a> ";
     } else {
         return null;
     }
@@ -116,7 +116,7 @@ function editButton()
 <body>
 	<h3 class="banner right"><a href="<?="/".basename(__DIR__)?>" style="text-decoration:none;color:var(--black)"><?=USERSET["siteName"]?></a></h3>
 	<p class="info">
-		<span class="date"><?php echo editButton() . "Last Updated: " . $date . "</span>"; ?>
+		<span class="date"><?php echo editButton($page) . "Last Updated: " . $date . "</span>"; ?>
 		<?php
 			# TODO: Make firing plugin functions cleaner
 			foreach (AC_PLUGINS as $class) {
