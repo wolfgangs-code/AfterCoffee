@@ -55,15 +55,17 @@ $description = "AfterCoffee Page Editor";
 				<a href="https://www.markdownguide.org/extended-syntax" target="_blank">Extended</a>
 			</h3>
 			<h3>Custom Markdown from Plugins:</h3>
+			<ul>
 			<?php
 				# TODO: Make firing plugin functions cleaner
 				foreach (AC_PLUGINS as $class) {
     				$plugin = new $class;
     				if (method_exists($plugin, "editorGuide")) {
-        				$plugin->editorGuide();
+        				echo "<li>{$plugin->editorGuide()}</li>";
     				}
 				}
 			?>
+			</ul>
 		</div>
         <form method="POST" action="publish.php">
             <textarea id="textbox" name="textbox" rows="<?=$lineCount?>" cols="80"><?=$md?></textarea><br>
