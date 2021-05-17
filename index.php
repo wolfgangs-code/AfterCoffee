@@ -29,7 +29,7 @@ foreach (glob("./plugins/*.php") as $plugin) {
 }
 define("AC_PLUGINS", $pluginClasses);
 
-$apath = getcwd() . "/pages/" . $page . ".md";
+$apath = "./pages/" . $page . ".md";
 
 # Gets content inside tags to get metadata directly from Markdown
 function insideTag($string, $tagname)
