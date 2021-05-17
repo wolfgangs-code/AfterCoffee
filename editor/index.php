@@ -49,6 +49,12 @@ $description = "AfterCoffee Page Editor";
 		<a href="../"><?=USERSET["siteName"]?></a> - <?=$title?>
 	</h3>
 	<div id="body">
+		<div id="guide">
+			<h3>Markdown Guide:
+				<a href="https://www.markdownguide.org/basic-syntax" target="_blank">Basic</a>
+				<a href="https://www.markdownguide.org/extended-syntax" target="_blank">Extended</a>
+			</h3>
+		</div>
         <form method="POST" action="publish.php">
             <textarea id="textbox" name="textbox" rows="<?=$lineCount?>" cols="80"><?=$md?></textarea><br>
             <span class="date">Page Title:</span>
