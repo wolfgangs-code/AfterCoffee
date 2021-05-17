@@ -1,4 +1,5 @@
 <?php
+session_name("AfterCoffeeID");
 session_start();
 
 define("USERSET", json_decode(file_get_contents("../meta.json"), true));
