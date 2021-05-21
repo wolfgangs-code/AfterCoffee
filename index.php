@@ -1,4 +1,6 @@
 <?php
+session_name("AfterCoffeeID");
+session_start();
 require './lib/Parsedown.php';
 require './lib/ParsedownExtra.php';
 $Parsedown = new Parsedown();
@@ -69,6 +71,17 @@ if (file_exists($apath)) {
     include USERSET["errorPath"]["404"];
     exit;
 }
+
+function editButton($page)
+{
+    if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
+        // Only show edit button if logged into the Editor.
+        return "<a href=\"./editor/?page={$page}\">[Edit]</a> ";
+    } else {
+        return null;
+    }
+}
+
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -103,7 +116,7 @@ if (file_exists($apath)) {
 <body>
 	<h3 class="banner right"><a href="<?="/".basename(__DIR__)?>" style="text-decoration:none;color:var(--black)"><?=USERSET["siteName"]?></a></h3>
 	<p class="info">
-		<span class="date">Last Updated: <?php echo $date . "</span>"; ?>
+		<span class="date"><?php echo editButton($page) . "Last Updated: " . $date . "</span>"; ?>
 		<?php
 			# TODO: Make firing plugin functions cleaner
 			foreach (AC_PLUGINS as $class) {
