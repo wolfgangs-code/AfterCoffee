@@ -7,6 +7,10 @@
 - Drag-and-drop installation
   - Comes with all two dependencies
   - Uses relative everything, letting you place it anywhere in your website
+- Web Editor
+  - Edit and create new pages from the browser
+  - Displays markdown guides
+  - Plugins can document and demonstrate their custom markdown in the editor
 - Simple plugin system
   - Also drag-and-drop, with no installation needed
   - Comes with the customMarkdown plugin
