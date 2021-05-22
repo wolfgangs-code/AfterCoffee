@@ -8,8 +8,7 @@ $title = "Authentication Required";
 
 if (!include ('auth_code.php')) { // If there is no password file (sorry),
     if (isset($pw)) { // ... But a new password is set!
-        $crypt = password_hash($pw, PASSWORD_DEFAULT);
-        $crypt = str_replace("$", "\\$", $crypt);
+        $crypt = str_replace("$", "\\$", password_hash($pw, PASSWORD_DEFAULT));
         $txt = "<?php \$auth=\"{$crypt}\"; ?>"; // Compose auth_code.php
         $newPass = fopen("auth_code.php", "w");
         fwrite($newPass, $txt);
