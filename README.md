@@ -23,3 +23,7 @@ To for colors in the default CSS, a Windows Terminal-like structure is used.
 To quickly turn [Windows Terminal theme](https://windowsterminalthemes.dev) JSON into valid CSS, use this Regex Replace-with:
 
 Replace `"  "([a-z]*)": "(#\w*)",?"` with `"--$1: $2;"`
+
+#### Common Problems
+If your installation only outputs a blank page, check if `mb_strlen()` is enabled.
+If not, Parsedown cannot run, and AfterCoffee cannot run at all. Enable it.
