@@ -19,7 +19,7 @@ $lineCount = isset($editPage) ? substr_count( $md, "\n" ) + 1 : 8;
 
 function modNameBox($editPage) {
 	if (isset($editPage)) {
-		return " value=\"{$editPage}\" disabled";
+		return " value=\"{$editPage}\" readonly";
 	} else {
 		return null;
 	}
