@@ -6,4 +6,5 @@ editor/auth_code.php
 # No custom plugins
 plugins/*
 !plugins/customMarkdown.php
+!plugins/dateFormat.php
 !plugins/directoryList.php
