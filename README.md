@@ -11,11 +11,17 @@
   - Edit and create new pages from the browser
   - Displays markdown guides
   - Plugins can document and demonstrate their custom markdown in the editor
-- Simple plugin system
-  - Also drag-and-drop, with no installation needed
-  - Comes with the customMarkdown plugin
+- Simple drag-and-drop plugin system
+  - **Default Plugins**
+  - customMarkdown
     - Enables ==highlighting==
     - A starting point to make your own custom Markdown rules
+  - dateFormat
+    - Formats YYYY-MM-DD dates to human-readable formats
+    - Formatted based on the `dateFormat` setting
+  - directoryList
+    - Adds a dropdown menu of all posts
+
 - Named after [a song](https://open.spotify.com/track/7EaL8Zt8UAabmP6sQydgx9 "a song") I was listening to at the time
 
 #### Themes
