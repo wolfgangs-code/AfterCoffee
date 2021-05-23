@@ -3,6 +3,7 @@
 	"author": "Wolfgang de Groot",
 	"themeColor": "#774411",
 	"copyright": "MIT License",
+	"dateFormat": "F j, Y",
 	"styles": ["main.css"],
 	"scripts": [""],
 	"pluginSetting": {
