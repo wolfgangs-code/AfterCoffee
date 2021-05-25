@@ -2,7 +2,7 @@
 class directoryList
 {
     const version = '2.0';
-    private function getFiles($dir)
+    private function getFiles($dir = "pages")
     {
         $folder = $dir . "/*.md";
         foreach (glob($folder) as $filePath) {
@@ -26,7 +26,7 @@ class directoryList
     {
         $n = "\n\t\t";
         $txt = "{$n}<select onchange=\"location = this.options[this.selectedIndex].value;\">{$n}";
-        $txt .= $this->getFiles("pages");
+        $txt .= $this->getFiles();
         foreach (glob("pages/*", GLOB_ONLYDIR) as $dir) {
             $txt .= "\t<optgroup label=\"" . basename($dir) . "\">{$n}";
             $txt .= $this->getFiles($dir);
