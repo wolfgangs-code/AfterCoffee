@@ -10,7 +10,7 @@ $Extra = new ParsedownExtra();
 define("USERSET", json_decode(file_get_contents("./meta.json"), true));
 
 # If no page is specified, show index.md
-$page = isset($_GET["page"]) ? $_GET["page"] : "index";
+$page = $_GET["page"] ?? "index";
 
 function getURL($page)
 {
