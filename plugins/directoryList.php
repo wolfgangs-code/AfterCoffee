@@ -17,7 +17,7 @@ class directoryList
             if ($fileName == $GLOBALS["page"]) {
                 $option .= "selected ";
             }
-            $option .= "value=\"?page=" . $fileName . "\">" . $title . "</option>";
+            $option .= "value=\"?page={$fileName}\">{$title}</option>";
         }
         return $option;
     }
