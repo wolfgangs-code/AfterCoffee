@@ -16,8 +16,7 @@ function getURL($page)
 {
 	$url = "http";
     $url .= isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "s" : "";
-    $url .= "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
-    $url .= "?page={$page}";
+    $url .= "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}?page={$page}";
     return $url;
 }
 
