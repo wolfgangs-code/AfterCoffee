@@ -14,12 +14,9 @@ $page = isset($_GET["page"]) ? $_GET["page"] : "index";
 
 function getURL($page)
 {
-    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
-        $url = "https://";
-    } else {
-        $url = "http://";
-    }
-    $url .= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$url = "htt";
+    $url .= isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "s" : "";
+    $url .= "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
     $url .= "?page={$page}";
     return $url;
 }
