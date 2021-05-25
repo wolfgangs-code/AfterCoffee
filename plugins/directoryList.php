@@ -13,11 +13,7 @@ class directoryList
             }
             preg_match('/# (.*?)\n/', $md, $h1);
             $option .= "\t<option ";
-            if (!isset($h1[1])) {
-                $title = $fileName;
-            } else {
-                $title = $h1[1];
-            }
+            $title = $h1[1] ?? $fileName;
             if ($fileName == $GLOBALS["page"]) {
                 $option .= "selected ";
             }
