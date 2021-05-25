@@ -7,11 +7,7 @@ class dateFormat
     const version = '1.0';
     public function changeText($html)
     {
-        if (!isset(USERSET["dateFormat"])) {
-            $form = "F jS, Y";
-        } else {
-            $form = USERSET["dateFormat"];
-        }
+        $form = USERSET["dateFormat"] ?? "F jS, Y";
         $html = preg_replace_callback(
             "(\d{4}(-\d{2}){2})",
             function ($m) use ($form) {
