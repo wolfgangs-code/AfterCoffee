@@ -12,25 +12,26 @@ class directoryList
                 continue;
             }
             preg_match('/# (.*?)\n/', $md, $h1);
-            $option .= "\t<option ";
-            $title = $h1[1] ?? $fileName;
+            $option .= $dir === "pages" ? "\t" : "\t\t";
+            $option .= "<option ";
+            $title = trim($h1[1] ?? $fileName);
             if ($fileName == $GLOBALS["page"]) {
                 $option .= "selected ";
             }
-            $option .= "value=\"?page={$fileName}\">{$title}</option>";
+            $option .= "value=\"?page={$fileName}\">{$title}</option>\n\t\t";
         }
         return $option;
     }
     public function addInfo()
     {
-        $txt .= "<select onchange=\"location = this.options[this.selectedIndex].value;\">";
+        $txt = "\n\t\t<select onchange=\"location = this.options[this.selectedIndex].value;\">\n\t\t";
         $txt .= $this->getFiles("pages");
         foreach (glob("pages/*", GLOB_ONLYDIR) as $dir) {
-            $txt .= "<optgroup label=\"" . basename($dir) . "\">";
+            $txt .= "\t<optgroup label=\"" . basename($dir) . "\">\n\t\t";
             $txt .= $this->getFiles($dir);
-            $txt .= "</optgroup>";
+            $txt .= "\t</optgroup>\n\t\t";
         }
-        $txt .= "</select>";
+        $txt .= "</select>\n";
         print($txt);
     }
 }
