@@ -24,12 +24,13 @@ class directoryList
     }
     public function addInfo()
     {
-        $txt = "\n\t\t<select onchange=\"location = this.options[this.selectedIndex].value;\">\n\t\t";
+        $n = "\n\t\t";
+        $txt = "{$n}<select onchange=\"location = this.options[this.selectedIndex].value;\">{$n}";
         $txt .= $this->getFiles("pages");
         foreach (glob("pages/*", GLOB_ONLYDIR) as $dir) {
-            $txt .= "\t<optgroup label=\"" . basename($dir) . "\">\n\t\t";
+            $txt .= "\t<optgroup label=\"" . basename($dir) . "\">{$n}";
             $txt .= $this->getFiles($dir);
-            $txt .= "\t</optgroup>\n\t\t";
+            $txt .= "\t</optgroup>{$n}";
         }
         $txt .= "</select>\n";
         print($txt);
