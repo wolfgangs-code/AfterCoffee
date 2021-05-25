@@ -86,7 +86,7 @@ function editButton($page)
 	<meta charset="utf-8">
 	<meta property="og:type"        content="website">
 	<meta property="og:url"         content="<?=getURL($page)?>">
-	<title><?="{$title} - {USERSET["siteName"]}"?></title>
+	<title><?="{$title} - " . USERSET["siteName"]?></title>
 	<meta property="og:site_name"   content="<?=USERSET["siteName"]?>" />
 	<meta name="theme-color"        content="<?=USERSET["themeColor"]?>">
 	<meta name="author"             content="<?=USERSET["author"]?>">
