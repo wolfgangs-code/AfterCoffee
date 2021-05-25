@@ -20,7 +20,7 @@ function getURL($page)
         $url = "http://";
     }
     $url .= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-    $url .= "?page=" . $page;
+    $url .= "?page={$page}";
     return $url;
 }
 
@@ -31,7 +31,7 @@ foreach (glob("./plugins/*.php") as $plugin) {
 }
 define("AC_PLUGINS", $pluginClasses);
 
-$apath = "./pages/" . $page . ".md";
+$apath = "./pages/{$page}.md";
 
 # Gets content inside tags to get metadata directly from Markdown
 function insideTag($string, $tagname)
@@ -67,7 +67,7 @@ if (file_exists($apath)) {
 	# If there is no Markdown file for the request,
 	# Return a 404 Error
     http_response_code(404);
-    echo $page . " Not Found";
+    echo "{$page} Not Found";
     include USERSET["errorPath"]["404"];
     exit;
 }
@@ -89,7 +89,7 @@ function editButton($page)
 	<meta charset="utf-8">
 	<meta property="og:type"        content="website">
 	<meta property="og:url"         content="<?=getURL($page)?>">
-	<title><?=$title . " - " . USERSET["siteName"]?></title>
+	<title><?="{$title} - {USERSET["siteName"]}"?></title>
 	<meta property="og:site_name"   content="<?=USERSET["siteName"]?>" />
 	<meta name="theme-color"        content="<?=USERSET["themeColor"]?>">
 	<meta name="author"             content="<?=USERSET["author"]?>">
@@ -98,10 +98,10 @@ function editButton($page)
 	<meta name="description"        content="<?=$description?>">
 	<meta property="og:description" content="<?=$description?>" />
 	<meta name="twitter:card" 		content="summary_large_image" />
-	<?php if (defined('metaImg')) {echo "<meta property=\"og:image\" content=\"" . $image . "\">";}?>
+	<?php if (defined('metaImg')) {echo "<meta property=\"og:image\" content=\"{$image}\">";}?>
 	<meta property="article:author" content="<?=USERSET["author"]?>" />
 	<meta property="article:published_time" content="<?=$date?>">
-	<?php foreach (USERSET["styles"] as $style) {print("<link rel=\"stylesheet\" href=\"./resource/css/" . $style . "\">\n\t");}?>
+	<?php foreach (USERSET["styles"] as $style) {print("<link rel=\"stylesheet\" href=\"./resource/css/{$style}\">\n\t");}?>
 	<meta name="viewport" 			content="width=device-width, initial-scale=1">
 	<?php
 	# TODO: Make firing plugin functions cleaner
@@ -116,7 +116,7 @@ function editButton($page)
 <body>
 	<h3 class="banner right"><a href="<?="/".basename(__DIR__)?>" style="text-decoration:none;color:var(--black)"><?=USERSET["siteName"]?></a></h3>
 	<p class="info">
-		<span class="date"><?php echo editButton($page) . "Last Updated: " . $date . "</span>"; ?>
+		<span class="date"><?php echo editButton($page) . "Last Updated: {$date}</span>"; ?>
 		<?php
 			# TODO: Make firing plugin functions cleaner
 			foreach (AC_PLUGINS as $class) {
