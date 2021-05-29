@@ -14,7 +14,7 @@ class customMarkdown {
 		return $html;
 	}
 	function editorGuide() {
-		$guide = "<b>Custom Markdown:</b> ==highlighted text==";
+		$guide = "<b>AfterCoffee Custom Markdown:</b> ==highlighted text==";
 		return $guide;
 	}
 }
