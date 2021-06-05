@@ -4,6 +4,7 @@ session_start();
 
 define("USERSET", json_decode(file_get_contents("../meta.json"), true));
 $pw = $_POST['pass'];
+$rt = $_GET['r'];
 $title = "Authentication Required";
 
 if (!include ('auth_code.php')) { // If there is no password file (sorry),
@@ -13,7 +14,7 @@ if (!include ('auth_code.php')) { // If there is no password file (sorry),
         $newPass = fopen("auth_code.php", "w");
         fwrite($newPass, $txt);
         fclose($newPass);
-        header('Location: ./');
+        header("Location: ".$rt);
     }
     $msg = "NO PASSWORD SET. Set your password below.";
 } elseif (!isset($pw)) {
@@ -24,13 +25,13 @@ if (!include ('auth_code.php')) { // If there is no password file (sorry),
 
 if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
     // Already authorized.
-    header('Location: ./'); // Return to the editor
+    header("Location: ".$rt); // Return to the editor
     exit;
 }
 
 if (isset($pw) && password_verify($pw, $auth)) { // Password is correct.
     $_SESSION['authorized'] = 1;
-    header('Location: ./'); // Go to the editor
+    header("Location: ".$rt); // Go to the editor
     exit;
 } else { //Password is INCORRECT or UNSET
     unset($_SESSION['authorized']); // Revoke session and post login form
