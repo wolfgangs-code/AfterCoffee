@@ -1,5 +1,5 @@
 <?php
-require_once 'auth_check.php';
+require_once '../auth/auth_check.php';
 
 function publishPage($text, $title) {
 	$newPage = fopen("../pages/".$title.".md", "w");

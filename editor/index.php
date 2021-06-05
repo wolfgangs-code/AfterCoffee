@@ -1,5 +1,5 @@
 <?php
-require_once 'auth_check.php';
+require_once '../auth/auth_check.php';
 define("USERSET", json_decode(file_get_contents("../meta.json"), true));
 
 foreach (glob("../plugins/*.php") as $plugin) {
