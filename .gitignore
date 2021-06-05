@@ -2,7 +2,7 @@
 pages/*
 !pages/index.md
 # No auth keys
-editor/auth_code.php
+auth/auth_code.php
 # No custom plugins
 plugins/*
 !plugins/customMarkdown.php
