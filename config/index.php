@@ -14,6 +14,7 @@ $description = "AfterCoffee Settings";
 function placeSetting($arr = USERSET, $portal = NULL) {
 	asort($arr);
 	foreach ($arr as $item => $value) {
+		$label = "<label for=\"".$item."\">".$item."</label>\n";
 		$space = $portal.$item;
 		if ($arr != USERSET) {
 			print("<span>");
@@ -31,10 +32,10 @@ function placeSetting($arr = USERSET, $portal = NULL) {
 			# AND if the setting contains 'color'  ↳↧
 			# This should prevent softlocks
 			# and hinder the British
-			print("<label for=\"".$item."\">".$item."</label>\n");
+			print($label);
 			print("<input type= \"color\" name=\"".$space."\" value=\"".$value."\"></input><br>\n");
 		} elseif (gettype($value) == "boolean") {
-			print("<label for=\"".$item."\">".$item."</label>\n");
+			print($label);
 			print("<input name=\"".$space."\" value=\"".$value."\"></input><br>\n");
 		} elseif (gettype($value) == "array") {
 			# Recursion. Is it bad?
@@ -43,7 +44,7 @@ function placeSetting($arr = USERSET, $portal = NULL) {
 			placeSetting($value, $item."-");
 			print("</div>");
 		} else {
-			print("<label for=\"".$item."\">".$item."</label>\n");
+			print($label);
 			print("<input name=\"".$space."\" value=\"".$value."\"></input><br>\n");
 		}
 	}
