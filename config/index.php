@@ -12,11 +12,6 @@ $title = "Settings";
 $description = "AfterCoffee Settings";
 
 function placeSetting($arr = USERSET, $portal = NULL) {
-	$typeConv = [
-		"number"   => "integer",
-		"number"   => "double",
-		"text"     => "string"
-	];
 	asort($arr);
 	foreach ($arr as $item => $value) {
 		$space = $portal.$item;
