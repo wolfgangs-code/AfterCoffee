@@ -11,7 +11,7 @@ define("AC_PLUGINS", $pluginClasses);
 $title = "Settings";
 $description = "AfterCoffee Settings";
 
-function placeSetting($arr = USERSET) {
+function placeSetting($arr = USERSET, $portal = NULL) {
 	$typeConv = [
 		"number"   => "integer",
 		"number"   => "double",
@@ -19,6 +19,7 @@ function placeSetting($arr = USERSET) {
 	];
 	asort($arr);
 	foreach ($arr as $item => $value) {
+		$space = $portal.$item;
 		if ($arr != USERSET) {
 			if ($item === array_key_last($arr)){
         		print("↳");
@@ -33,20 +34,20 @@ function placeSetting($arr = USERSET) {
 			# This should prevent softlocks
 			# and hinder the British
 			print("<label for=\"".$value."\">".$item."</label>\n");
-			print("<input type= \"color\" name=\"".$item."\" value=\"".$value."\"></input><br>\n");
+			print("<input type= \"color\" name=\"".$space."\" value=\"".$value."\"></input><br>\n");
 		} elseif (gettype($value) == "boolean") {
 			print("<label for=\"".$value."\">".$item."</label>\n");
-			print("<input name=\"".$item."\" value=\"".$value."\"></input><br>\n");
+			print("<input name=\"".$space."\" value=\"".$value."\"></input><br>\n");
 		} elseif (gettype($value) == "array") {
 			# Recursion. Is it bad?
 			print("<hr>");
 			print("<div class=\"bubble\">");
 			print("<label>".$item."</label><br>");
-			placeSetting($value);
+			placeSetting($value, $item."-");
 			print("</div>");
 		} else {
 			print("<label for=\"".$value."\">".$item."</label>\n");
-			print("<input name=\"".$item."\" value=\"".$value."\"></input><br>\n");
+			print("<input name=\"".$space."\" value=\"".$value."\"></input><br>\n");
 		}
 	}
 }
