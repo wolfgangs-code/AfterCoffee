@@ -68,6 +68,7 @@ function placeSetting($arr = USERSET, $portal = NULL) {
 	<div id="body">
         <form method="POST" action="save.php">
             <?=placeSetting()?>
+			<hr>
             <input type="submit" name="submit" value="Save"></input>
         </form>
 	</div>
