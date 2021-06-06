@@ -20,7 +20,13 @@ function placeSetting($arr = USERSET, $portal = NULL) {
 			($item === array_key_last($arr)) ? print("↳") : print("↦");
 			print("</span>");
 		}
-		if (preg_match("/#\d{6,8}/", $value) && stripos($item, "color")) {
+		if (gettype($value) == "array") {
+			# Recursion. Is it bad?
+			print("<div class=\"bubble\">");
+			print("<hr><label class='inline'><b>".$item."</b></label><br>");
+			placeSetting($value, $item."-");
+			print("</div>");
+		} elseif (preg_match("/#\d{6,8}/", $value) && stripos($item, "color")) {
 			# Checks if the value is a hex color
 			# AND if the setting contains 'color'  ↳↧
 			# This should prevent softlocks
