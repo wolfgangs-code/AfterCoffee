@@ -80,6 +80,11 @@ ul li img {
   height: 1em
 }
 
+form.config label {
+	display: inline-block;
+	width: 8em;
+}
+
 label.inline hr{
 	width:100%;
 	margin-bottom: -0.5em;
