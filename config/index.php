@@ -15,14 +15,7 @@ function placeSetting($arr = USERSET, $portal = NULL) {
 	asort($arr);
 	foreach ($arr as $item => $value) {
 		$space = $portal.$item;
-		if ($arr != USERSET) {
-			if ($item === array_key_last($arr)){
-        		print("↳");
-			}
-			else {
-				print("↦");
-			}
-		}
+		if ($arr != USERSET) {($item === array_key_last($arr)) ? print("↳") : print("↦");}
 		if (preg_match("/#\d{6,8}/", $value) && stripos($item, "color")) {
 			# Checks if the value is a hex color
 			# AND if the setting contains 'color'  ↳↧
