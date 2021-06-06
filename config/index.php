@@ -37,7 +37,7 @@ function placeSetting($arr = USERSET, $portal = NULL) {
 			# Recursion. Is it bad?
 			print("<hr>");
 			print("<div class=\"bubble\">");
-			print("<label>".$item."</label><br>");
+			print("<label><b>".$item."</b></label><br>");
 			placeSetting($value, $item."-");
 			print("</div>");
 		} else {
@@ -66,6 +66,7 @@ function placeSetting($arr = USERSET, $portal = NULL) {
 		<a href="../"><?=USERSET["siteName"]?></a> - <?=$title?>
 	</h3>
 	<div id="body">
+	<h3><?=$title?></h3>
         <form method="POST" action="save.php">
             <?=placeSetting()?>
 			<hr>
