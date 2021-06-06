@@ -15,7 +15,11 @@ function placeSetting($arr = USERSET, $portal = NULL) {
 	asort($arr);
 	foreach ($arr as $item => $value) {
 		$space = $portal.$item;
-		if ($arr != USERSET) {($item === array_key_last($arr)) ? print("↳") : print("↦");}
+		if ($arr != USERSET) {
+			print("<span>");
+			($item === array_key_last($arr)) ? print("↳") : print("↦");
+			print("</span>");
+		}
 		if (preg_match("/#\d{6,8}/", $value) && stripos($item, "color")) {
 			# Checks if the value is a hex color
 			# AND if the setting contains 'color'  ↳↧
@@ -29,7 +33,7 @@ function placeSetting($arr = USERSET, $portal = NULL) {
 		} elseif (gettype($value) == "array") {
 			# Recursion. Is it bad?
 			print("<div class=\"bubble\">");
-			print("<label class='inline'><hr><b>".$item."</b></label><br>");
+			print("<hr><label class='inline'><b>".$item."</b></label><br>");
 			placeSetting($value, $item."-");
 			print("</div>");
 		} else {

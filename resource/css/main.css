@@ -85,14 +85,9 @@ form.config label {
 	width: 8em;
 }
 
-label.inline hr{
-	width:100%;
-	margin-bottom: -0.5em;
-}
-label.inline b {
-	padding-top: -100px;
-	background-color: var(--black);
-	padding-right: 0.5em
+.bubble span {
+	display: inline-block;
+	width: 1em;
 }
 
 h1 {
