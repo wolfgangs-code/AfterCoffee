@@ -32,11 +32,9 @@ function placeSetting($arr = USERSET, $portal = NULL) {
 			# AND if the setting contains 'color'  ↳↧
 			# This should prevent softlocks
 			# and hinder the British
-			print($label);
-			print("<input type= \"color\" name=\"".$space."\" value=\"".$value."\"></input><br>\n");
+			print($label."<input type= \"color\" name=\"".$space."\" value=\"".$value."\"></input><br>\n");
 		} elseif (gettype($value) == "boolean") {
-			print($label);
-			print("<input name=\"".$space."\" value=\"".$value."\"></input><br>\n");
+			print($label."<input name=\"".$space."\" value=\"".$value."\"></input><br>\n");
 		} elseif (gettype($value) == "array") {
 			# Recursion. Is it bad?
 			print("<div class=\"bubble\">");
@@ -44,8 +42,7 @@ function placeSetting($arr = USERSET, $portal = NULL) {
 			placeSetting($value, $item."-");
 			print("</div>");
 		} else {
-			print($label);
-			print("<input name=\"".$space."\" value=\"".$value."\"></input><br>\n");
+			print($label."<input name=\"".$space."\" value=\"".$value."\"></input><br>\n");
 		}
 	}
 }
