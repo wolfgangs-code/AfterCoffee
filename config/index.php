@@ -35,9 +35,8 @@ function placeSetting($arr = USERSET, $portal = NULL) {
 			print("<input name=\"".$space."\" value=\"".$value."\"></input><br>\n");
 		} elseif (gettype($value) == "array") {
 			# Recursion. Is it bad?
-			print("<hr>");
 			print("<div class=\"bubble\">");
-			print("<label><b>".$item."</b></label><br>");
+			print("<label class='inline'><hr><b>".$item."</b></label><br>");
 			placeSetting($value, $item."-");
 			print("</div>");
 		} else {
