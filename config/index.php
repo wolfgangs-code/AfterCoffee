@@ -17,9 +17,7 @@ function placeSetting($arr = USERSET, $portal = NULL) {
 		$label = "<label for=\"".$item."\">".$item."</label>\n";
 		$space = $portal.$item;
 		if ($arr != USERSET) {
-			print("<span>");
-			($item === array_key_last($arr)) ? print("↳") : print("↦");
-			print("</span>");
+			print("<span>".(($item === array_key_last($arr)) ? "↳" : "↦")."</span>");
 		}
 		if (gettype($value) == "array") {
 			# Recursion. Is it bad?
