@@ -20,7 +20,7 @@ print("<pre>");
 print_r(bob($_POST));
 print("</pre>");
 
-$file = fopen("test.json", "w");
+$file = fopen("../meta.json", "w");
 fwrite($file, json_encode(bob($_POST), JSON_PRETTY_PRINT));
 fclose($file);
 
