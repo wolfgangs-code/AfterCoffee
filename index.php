@@ -9,8 +9,8 @@ $Extra = new ParsedownExtra();
 # Defines the settings declared in meta.json
 require_once './config/userset.php';
 
-# If no page is specified, show index.md
-$page = $_GET["page"] ?? "index";
+# If no page is specified, show the set index page
+$page = $_GET["page"] ?? USERSET["indexPage"];
 
 function getURL($page)
 {

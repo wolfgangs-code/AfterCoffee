@@ -4,6 +4,7 @@
     "dateFormat": "F jS, Y",
     "copyright": "Copyright",
     "author": "Author Name",
+	"indexPage": "index",
     "errorPath": {
         "404": "\/assets\/error\/404.html"
     },
