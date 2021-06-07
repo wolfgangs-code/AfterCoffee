@@ -20,12 +20,15 @@ function bob($arr)
     }
     return $data;
 }
+
+$old = json_decode(file_get_contents("../meta.json"), true);
+$final = array_merge($old, bob($_POST));
 print("<pre>");
-print_r(bob($_POST));
+print_r($final);
 print("</pre>");
 
 $file = fopen("../meta.json", "w");
-fwrite($file, json_encode(bob($_POST), JSON_PRETTY_PRINT));
+fwrite($file, json_encode($final, JSON_PRETTY_PRINT));
 fclose($file);
 
 print("Saved.");
