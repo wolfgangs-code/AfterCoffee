@@ -4,6 +4,7 @@ class directoryList
     const version = '2.0';
     private function getFiles($dir = "pages")
     {
+		$option = "";
         foreach (glob($dir . "/*.md") as $filePath) {
             $fileName = substr($filePath, strpos($filePath, "/") + 1, -3);
             $md = file_get_contents($filePath);
