@@ -7,7 +7,7 @@ $Parsedown = new Parsedown();
 $Extra = new ParsedownExtra();
 
 # Defines the settings declared in meta.json
-define("USERSET", json_decode(file_get_contents("./meta.json"), true));
+require_once './config/userset.php';
 
 # If no page is specified, show index.md
 $page = $_GET["page"] ?? "index";
