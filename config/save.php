@@ -1,6 +1,11 @@
 <?php
 require_once '../auth/auth_check.php';
 
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+	header("Location: ./");
+	die();
+}
+
 function bob($arr)
 {
     $data = [];
