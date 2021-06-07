@@ -8,15 +8,28 @@ foreach (glob("../plugins/*.php") as $plugin) {
 }
 define("AC_PLUGINS", $pluginClasses);
 
+$pluginSettings = [];
+foreach (AC_PLUGINS as $class) {
+	$plugin = new $class;
+	if (method_exists($plugin, "addSetting")) {
+		foreach($plugin->addSetting() as $s) {
+			$pluginSettings[get_class($plugin)][$s] = "";
+		}
+	}
+}
+
+$configSniper = array_merge($pluginSettings, USERSET);
+define("POTSET", $configSniper);
+
 $title = "Settings";
 $description = "AfterCoffee Settings";
 
-function placeSetting($arr = USERSET, $portal = NULL) {
+function placeSetting($arr = POTSET, $portal = NULL) {
 	asort($arr);
 	foreach ($arr as $item => $value) {
 		$label = "<label for=\"".$item."\">".$item."</label>\n";
 		$space = $portal.$item;
-		if ($arr != USERSET) {
+		if ($arr != POTSET) {
 			print("<span>".(($item === array_key_last($arr)) ? "↳" : "↦")."</span>");
 		}
 		if (gettype($value) == "array") {
