@@ -1,6 +1,5 @@
 <?php
-session_name("AfterCoffeeID");
-session_start();
+require_once '../auth/auth_check.php';
 
 function bob($arr)
 {

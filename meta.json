@@ -1,16 +1,20 @@
 {
-	"siteName": "AfterCoffee",
-	"author": "Wolfgang de Groot",
-	"themeColor": "#774411",
-	"copyright": "MIT License",
-	"dateFormat": "F jS, Y",
-	"styles": ["main.css"],
-	"scripts": [""],
-	"pluginSetting": {
-		"example": "example",
-		"example3": "example"
-	},
-	"errorPath": {
-		"404": "/assets/error/404.html"
-	}
+    "themeColor": "#774411",
+    "siteName": "AfterCoffeee",
+    "dateFormat": "F jS, Y",
+    "copyright": "MIT License",
+    "author": "Wolfgang de Groot",
+    "errorPath": {
+        "404": "\/assets\/error\/404.html"
+    },
+    "scripts": [
+        ""
+    ],
+    "styles": [
+        "main.css"
+    ],
+    "pluginSetting": {
+        "example": "example",
+        "example3": "example"
+    }
 }
