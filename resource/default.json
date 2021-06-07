@@ -1,9 +1,9 @@
 {
     "themeColor": "#774411",
-    "siteName": "AfterCoffeee",
+    "siteName": "AfterCoffee",
     "dateFormat": "F jS, Y",
-    "copyright": "MIT License",
-    "author": "Wolfgang de Groot",
+    "copyright": "Copyright",
+    "author": "Author Name",
     "errorPath": {
         "404": "\/assets\/error\/404.html"
     },
@@ -12,9 +12,5 @@
     ],
     "styles": [
         "main.css"
-    ],
-    "pluginSetting": {
-        "example": "example",
-        "example3": "example"
-    }
+    ]
 }
