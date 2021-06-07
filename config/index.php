@@ -68,7 +68,7 @@ function placeSetting($arr = USERSET, $portal = NULL) {
         <form method="POST" class="config" action="save.php">
             <?=placeSetting()?>
 			<hr>
-            <input type="submit" name="submit" value="Save"></input>
+            <input type="submit" value="Save"></input>
         </form>
 	</div>
 	<h4 class="banner left">&copy; <?=date("Y") . " " . USERSET["copyright"]?></h4>
