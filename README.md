@@ -33,3 +33,6 @@ Replace `"  "([a-z]*)": "(#\w*)",?"` with `"--$1: $2;"`
 #### Common Problems
 If your installation only outputs a blank page, check if `mb_strlen()` is enabled.
 If not, Parsedown cannot run, and AfterCoffee cannot run at all. Enable it.
+
+#### Credits
+*Coffee Bag model by Zdenko Roman*
