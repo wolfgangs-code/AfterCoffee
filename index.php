@@ -128,7 +128,15 @@ function editButton($page)
 	<div id="body">
 		<?=$html?>
 	</div>
-	<h4 class="banner left">&copy; <?=date("Y") . " " . USERSET["copyright"]?></h4>
+	<h4 class="banner left">
+		&copy;
+		<?php
+			print(date("Y") . " " . USERSET["copyright"]);
+			if (USERSET['devCredits'] === True) {
+				print(" - Made with <a href=\"https://github.com/wolfgang-degroot/AfterCoffee\">AfterCoffee</a>");
+			}
+		?>
+	</h4>
 	<?php
 	# TODO: Make firing plugin functions cleaner
 	foreach (AC_PLUGINS as $class) {
