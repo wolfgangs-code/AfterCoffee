@@ -4,7 +4,7 @@ session_start();
 
 require_once '../config/userset.php';
 $pw = $_POST['pass'];
-$rt = $_GET['r'];
+$rt = $_GET['r'] ?? "../";
 $title = "Authentication Required";
 
 define("AUTH", true);
