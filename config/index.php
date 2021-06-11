@@ -44,8 +44,10 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 			# This should prevent softlocks
 			# and hinder the British
 			print($label."<input type= \"color\" name=\"".$space."\" value=\"".$value."\"></input><br>\n");
-		} elseif (gettype($value) == "boolean") {
-			print($label."<input name=\"".$space."\" value=\"".$value."\"></input><br>\n");
+		} elseif (gettype($value) == "boolean" || in_array($value, ["True", "False"])) {
+			$c = $value == "True" ? " checked" : "";
+			print("<input type=\"hidden\" name=\"{$space}\" value=\"False\">\n"); # hidden input so unchedked POSTs
+			print($label."<input type=\"checkbox\" name=\"".$space."\"{$c}></input><br>\n");
 		} elseif (gettype($value) == "array") {
 			# Recursion. Is it bad?
 			print("<div class=\"bubble\">");

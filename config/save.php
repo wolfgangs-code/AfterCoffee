@@ -10,6 +10,11 @@ function bob($arr)
 {
     $data = [];
     foreach ($arr as $item => $value) {
+		if ($value == "on") {
+			$value = "True";
+		} elseif ($value == "false") {
+			$value == "False";
+		}
         if ($pos = strpos($item, "-")) {
             $n = explode("-", $item);
             $data[$n[0]][$n[1]] = $value;
