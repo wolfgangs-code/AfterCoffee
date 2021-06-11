@@ -1,23 +1,21 @@
 <?php
 class directoryList
 {
-    const version = '2.0';
+    const version = '4.0';
     private function getFiles($dir = "pages")
     {
 		$option = "";
         foreach (glob($dir . "/*.md") as $filePath) {
             $fileName = substr($filePath, strpos($filePath, "/") + 1, -3);
             $md = file_get_contents($filePath);
-            if (preg_match("/<!--(.* NOINDEX .*)-->/", $md)) {
-                continue;
-            }
+			$tags = preg_match("/<!--(.* NOINDEX .*)-->/", $md);
+            if ($tags && $fileName != $GLOBALS["page"]) continue;
             preg_match('/# (.*?)\n/', $md, $h1);
             $option .= $dir === "pages" ? "\t" : "\t\t";
             $option .= "<option ";
             $title = trim($h1[1] ?? $fileName);
-            if ($fileName == $GLOBALS["page"]) {
-                $option .= "selected ";
-            }
+			if ($tags) $title .= " [Hidden]";
+            if ($fileName == $GLOBALS["page"]) $option .= "selected ";
             $option .= "value=\"?page={$fileName}\">{$title}</option>\n\t\t";
         }
         return $option;
