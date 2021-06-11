@@ -97,7 +97,7 @@ function editButton($page)
 	<?php if (defined('metaImg')) {echo "<meta property=\"og:image\" content=\"{$image}\">";}?>
 	<meta property="article:author" content="<?=USERSET["author"]?>" />
 	<meta property="article:published_time" content="<?=$date?>">
-<?php foreach (USERSET["styles"] as $style) {print("\t<link rel=\"stylesheet\" href=\"./resource/css/{$style}\">\n");}?>
+	<link rel="stylesheet" href="../resource/css/<?=USERSET["stylesheet"]?>">
 	<meta name="viewport" 			content="width=device-width, initial-scale=1">
 	<?php
 	# TODO: Make firing plugin functions cleaner
