@@ -68,6 +68,18 @@ if (file_exists($apath)) {
     exit;
 }
 
+function loadPlugin($act)
+{
+	global $html; # bad practice
+	foreach (AC_PLUGINS as $class) {
+    	$plugin = new $class;
+    	if (method_exists($plugin, $act)) {
+        	call_user_func([$plugin, $act], $html);
+    	}
+	}
+}
+
+
 function editButton($page)
 {
     if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {

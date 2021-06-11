@@ -19,15 +19,7 @@
 	<meta property="article:published_time" content="<?=$date?>">
 	<link rel="stylesheet" href="./resource/css/<?=USERSET["stylesheet"]?>">
 	<meta name="viewport" 			content="width=device-width, initial-scale=1">
-	<?php
-	# TODO: Make firing plugin functions cleaner
-	foreach (AC_PLUGINS as $class) {
-    	$plugin = new $class;
-    	if (method_exists($plugin, "addHead")) {
-        	$plugin->addHead($html);
-    	}
-	}
-	?>
+	<?php loadPlugin("addHead"); ?>
 </head>
 <body>
 	<h3 class="banner right">
@@ -35,15 +27,7 @@
 	</h3>
 	<p class="info">
 		<span class="date"><?php echo editButton($page) . "Last Updated: {$date}</span>"; ?>
-		<?php
-			# TODO: Make firing plugin functions cleaner
-			foreach (AC_PLUGINS as $class) {
-    			$plugin = new $class;
-    			if (method_exists($plugin, "addInfo")) {
-        		$plugin->addInfo($html);
-    			}
-			}
-		?>
+		<?php loadPlugin("addInfo"); ?>
 	</p>
 	<div id="body">
 		<?=$html?>
@@ -57,14 +41,6 @@
 			}
 		?>
 	</h4>
-	<?php
-	# TODO: Make firing plugin functions cleaner
-	foreach (AC_PLUGINS as $class) {
-    	$plugin = new $class;
-    	if (method_exists($plugin, "addFooter")) {
-        	$plugin->addFooter($html);
-    	}
-	}
-	?>
+	<?php loadPlugin("addFooter"); ?>
 </body>
 </html>
