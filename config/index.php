@@ -47,12 +47,6 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 			$c = $value == "True" ? " checked" : "";
 			print("<input type=\"hidden\" name=\"{$space}\" value=\"False\">\n"); # hidden input so unchedked POSTs
 			print("{$label}<input type=\"checkbox\" name=\"{$space}\"{$c}></input><br>\n");
-		} elseif (gettype($value) == "array") {
-			# Recursion. Is it bad?
-			print("<div class=\"bubble\">");
-			print("<hr><label class='inline'><b>{$item}</b></label><br>");
-			placeSetting($value, $item."-");
-			print("</div>");
 		} else {
 			# If none else, treat the option as text
 			print("{$label}<input name=\"{$space}\" value=\"{$value}\"></input><br>\n");
