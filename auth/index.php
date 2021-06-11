@@ -7,10 +7,12 @@ $pw = $_POST['pass'];
 $rt = $_GET['r'];
 $title = "Authentication Required";
 
+define("AUTH", true);
+
 if (!include ('auth_code.php')) { // If there is no password file (sorry),
     if (isset($pw)) { // ... But a new password is set!
         $crypt = str_replace("$", "\\$", password_hash($pw, PASSWORD_DEFAULT));
-        $txt = "<?php \$auth=\"{$crypt}\"; ?>"; // Compose auth_code.php
+        $txt = "<?php require 'hidepage.php';\n\$auth=\"{$crypt}\"; ?>"; // Compose auth_code.php
         $newPass = fopen("auth_code.php", "w");
         fwrite($newPass, $txt);
         fclose($newPass);
