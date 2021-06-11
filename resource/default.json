@@ -3,7 +3,7 @@
     "siteName": "AfterCoffee",
     "dateFormat": "F jS, Y",
     "copyright": "Copyright",
-	"devCredits": true,
+	"devCredits": "True",
     "author": "Author Name",
 	"indexPage": "index",
     "errorPath": {
