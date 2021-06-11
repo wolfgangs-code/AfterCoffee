@@ -30,6 +30,7 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 		$space = $portal.$item;
 		if ($arr != POTSET) print("<span>".(($item === array_key_last($arr)) ? "↳" : "↦")."</span>");
 		if (gettype($value) == "array") {
+			# Works if the option is an array of values
 			# Recursion. Is it bad?
 			print("<div class=\"bubble\">");
 			print("<hr><label class='inline'><b>".$item."</b></label><br>");
@@ -37,11 +38,12 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 			print("</div>");
 		} elseif (preg_match("/#\d{6,8}/", $value) && stripos($item, "color")) {
 			# Checks if the value is a hex color
-			# AND if the setting contains 'color'  ↳↧
+			# AND if the setting contains 'color'
 			# This should prevent softlocks
 			# and hinder the British
 			print("{$label}<input type= \"color\" name=\"{$space}\" value=\"{$value}\"></input><br>\n");
 		} elseif (gettype($value) == "boolean" || in_array($value, ["True", "False"])) {
+			# Works if the option is a boolean
 			$c = $value == "True" ? " checked" : "";
 			print("<input type=\"hidden\" name=\"{$space}\" value=\"False\">\n"); # hidden input so unchedked POSTs
 			print("{$label}<input type=\"checkbox\" name=\"{$space}\"{$c}></input><br>\n");
@@ -52,6 +54,7 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 			placeSetting($value, $item."-");
 			print("</div>");
 		} else {
+			# If none else, treat the option as text
 			print("{$label}<input name=\"{$space}\" value=\"{$value}\"></input><br>\n");
 		}
 	}
