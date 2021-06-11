@@ -5,3 +5,4 @@ if (!defined('AUTH')) {
     include USERSET["errorPath"]["404"];
     exit;
 }
+?>
