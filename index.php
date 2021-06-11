@@ -18,6 +18,7 @@
 	<meta property="article:author" content="<?=USERSET["author"]?>" />
 	<meta property="article:published_time" content="<?=$date?>">
 	<link rel="stylesheet" href="./resource/css/<?=USERSET["stylesheet"]?>">
+	<meta name="robots" 			content="<?=indexOption(PAGETAGS)?>">
 	<meta name="viewport" 			content="width=device-width, initial-scale=1">
 	<?php loadPlugin("addHead"); ?>
 </head>

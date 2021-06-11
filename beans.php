@@ -71,9 +71,14 @@ if (file_exists($apath)) {
 function pageTags($md)
 {
 	preg_match("/<!--(.*)-->/", $md, $out);
-	$tags = array_filter(preg_split("/[\s,]+/", $out[1]));
+	return array_filter(preg_split("/[\s,]+/", $out[1]));
 }
 define("PAGETAGS", pageTags($md));
+
+function indexOption($tags)
+{
+	return (in_array("NOINDEX", $tags)) ? "noindex" : "index";
+}
 
 function loadPlugin($act)
 {
