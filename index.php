@@ -37,7 +37,7 @@
 		&copy;
 		<?php
 			print(date("Y") . " " . USERSET["copyright"]);
-			if (USERSET['devCredits'] === True) {
+			if (USERSET['devCredits'] === "True") {
 				print(" - Made with <a href=\"https://github.com/wolfgang-degroot/AfterCoffee\">AfterCoffee</a>");
 			}
 		?>
