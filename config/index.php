@@ -65,7 +65,7 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 	<meta name="theme-color"        content="<?=USERSET["themeColor"]?>">
 	<meta name="generator" 			content="AfterCoffee">
 	<meta property="og:title"       content="<?=$title?>" />
-	<link rel="stylesheet" href="../resource/css/<?=USERSET["stylesheet"]?>">
+	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["stylesheet"]?>">
 	<meta name="viewport" 			content="width=device-width, initial-scale=1">
 </head>
 <body>
