@@ -2,7 +2,7 @@
 session_name("AfterCoffeeID");
 session_start();
 
-define("USERSET", json_decode(file_get_contents("../meta.json"), true));
+require_once '../config/userset.php';
 $pw = $_POST['pass'];
 $rt = $_GET['r'];
 $title = "Authentication Required";
@@ -47,7 +47,7 @@ if (isset($pw) && password_verify($pw, $auth)) { // Password is correct.
 	<meta name="theme-color"        content="<?=USERSET["themeColor"]?>">
 	<meta name="generator" 			content="AfterCoffee">
 	<meta property="og:title"       content="<?=$title?>" />
-	<link rel="stylesheet" href="./resource/css/<?=USERSET["stylesheet"]?>">
+	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["stylesheet"]?>">
 	<meta name="robots" 			content="noindex">
 	<meta name="viewport" 			content="width=device-width, initial-scale=1">
 </head>
