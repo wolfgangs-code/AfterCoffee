@@ -68,6 +68,13 @@ if (file_exists($apath)) {
     exit;
 }
 
+function pageTags($md)
+{
+	preg_match("/<!--(.*)-->/", $md, $out);
+	$tags = array_filter(preg_split("/[\s,]+/", $out[1]));
+}
+define("PAGETAGS", pageTags($md));
+
 function loadPlugin($act)
 {
 	global $html; # bad practice
