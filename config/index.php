@@ -18,8 +18,7 @@ foreach (AC_PLUGINS as $class) {
 	}
 }
 
-$configSniper = array_merge($pluginSettings, USERSET);
-define("POTSET", $configSniper);
+define("POTSET", array_merge($pluginSettings, USERSET));
 
 $title = "Settings";
 $description = "AfterCoffee Settings";
@@ -27,11 +26,9 @@ $description = "AfterCoffee Settings";
 function placeSetting($arr = POTSET, $portal = NULL) {
 	asort($arr);
 	foreach ($arr as $item => $value) {
-		$label = "<label for=\"".$item."\">".$item."</label>\n";
+		$label = "<label for=\"{$item}\">{$item}</label>\n";
 		$space = $portal.$item;
-		if ($arr != POTSET) {
-			print("<span>".(($item === array_key_last($arr)) ? "↳" : "↦")."</span>");
-		}
+		if ($arr != POTSET) print("<span>".(($item === array_key_last($arr)) ? "↳" : "↦")."</span>");
 		if (gettype($value) == "array") {
 			# Recursion. Is it bad?
 			print("<div class=\"bubble\">");
@@ -43,19 +40,19 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 			# AND if the setting contains 'color'  ↳↧
 			# This should prevent softlocks
 			# and hinder the British
-			print($label."<input type= \"color\" name=\"".$space."\" value=\"".$value."\"></input><br>\n");
+			print("{$label}<input type= \"color\" name=\"{$space}\" value=\"{$value}\"></input><br>\n");
 		} elseif (gettype($value) == "boolean" || in_array($value, ["True", "False"])) {
 			$c = $value == "True" ? " checked" : "";
 			print("<input type=\"hidden\" name=\"{$space}\" value=\"False\">\n"); # hidden input so unchedked POSTs
-			print($label."<input type=\"checkbox\" name=\"".$space."\"{$c}></input><br>\n");
+			print("{$label}<input type=\"checkbox\" name=\"{$space}\"{$c}></input><br>\n");
 		} elseif (gettype($value) == "array") {
 			# Recursion. Is it bad?
 			print("<div class=\"bubble\">");
-			print("<hr><label class='inline'><b>".$item."</b></label><br>");
+			print("<hr><label class='inline'><b>{$item}</b></label><br>");
 			placeSetting($value, $item."-");
 			print("</div>");
 		} else {
-			print($label."<input name=\"".$space."\" value=\"".$value."\"></input><br>\n");
+			print("{$label}<input name=\"{$space}\" value=\"{$value}\"></input><br>\n");
 		}
 	}
 }
