@@ -48,6 +48,7 @@ if (isset($pw) && password_verify($pw, $auth)) { // Password is correct.
 	<meta name="generator" 			content="AfterCoffee">
 	<meta property="og:title"       content="<?=$title?>" />
 	<link rel="stylesheet" href="./resource/css/<?=USERSET["stylesheet"]?>">
+	<meta name="robots" 			content="noindex">
 	<meta name="viewport" 			content="width=device-width, initial-scale=1">
 </head>
 <body>
