@@ -2,7 +2,9 @@
 require_once '../auth/auth_check.php';
 
 function publishPage($text, $title) {
-	$newPage = fopen("../pages/".$title.".md", "w");
+	$file = "../pages/".$title.".md";
+	if (!is_dir(dirname($file))) mkdir(dirname($file), 0777, true);
+	$newPage = fopen($file, "w");
 	fwrite($newPage, $text);
     fclose($newPage);
 	header('Location: ../?page='.$title);
