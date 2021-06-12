@@ -11,6 +11,9 @@
   - Edit and create new pages from the browser
   - Displays markdown guides
   - Plugins can document and demonstrate their custom markdown in the editor
+- Hidden/unlisted pages
+  - Does not show in the directory
+  - `noindex` for robots to skip
 - Simple drag-and-drop plugin system
   - **Default Plugins**
   - customMarkdown
