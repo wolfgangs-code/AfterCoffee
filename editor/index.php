@@ -9,7 +9,7 @@ foreach (glob("../plugins/*.php") as $plugin) {
 define("AC_PLUGINS", $pluginClasses);
 
 $editPage = $_GET["page"];
-$apath = "../pages/" . $editPage . ".md";
+$apath = "../pages/{$editPage}.md";
 if (file_exists($apath)) {
     $md = file_get_contents($apath);
 }
@@ -36,7 +36,7 @@ $description = "AfterCoffee Page Editor";
 <head>
 	<meta charset="utf-8">
 	<meta property="og:type"        content="website">
-	<title><?=USERSET["siteName"] . " " . $title?></title>
+	<title><?=USERSET["siteName"] . " {$title}"?></title>
 	<meta property="og:site_name"   content="<?=USERSET["siteName"]?>" />
 	<meta name="theme-color"        content="<?=USERSET["themeColor"]?>">
 	<meta name="generator" 			content="AfterCoffee">
