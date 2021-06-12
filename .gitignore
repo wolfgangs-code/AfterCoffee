@@ -2,7 +2,7 @@
 meta.json
 # No custom pages
 pages/*
-!pages/index.md
+!pages/default-index.md
 # No auth keys
 auth/auth_code.php
 # No custom plugins

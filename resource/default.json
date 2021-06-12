@@ -5,7 +5,7 @@
     "copyright": "Copyright",
 	"devCredits": "True",
     "author": "Author Name",
-	"indexPage": "index",
+	"indexPage": "default-index",
     "errorPath": {
         "404": "\/assets\/error\/404.html"
     },
