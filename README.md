@@ -1,7 +1,7 @@
 ![AfterCoffee](https://wolfgang.space/assets/github/aftercoffee.png)
 
 # AfterCoffee
-### A barebones Markdown CMS designed for simple, quick and dirty deployment
+### A lightweight Markdown CMS designed for simple, quick and dirty deployment
 #### Features and Perks
 
 - Drag-and-drop installation
