@@ -51,9 +51,10 @@ $description = "AfterCoffee Page Editor";
 	<div id="body">
 		<div id="guide">
 			<h3>Markdown Guide:
-				<a href="https://www.markdownguide.org/basic-syntax" target="_blank">Basic</a>
+				<a href="https://www.markdownguide.org/basic-syntax" target="_blank">Basic</a>,
 				<a href="https://www.markdownguide.org/extended-syntax" target="_blank">Extended</a>
 			</h3>
+			<p>To make a page unlisted, insert <code>&lt;!-- NOINDEX --&gt;</code> into your page.</p>
 			<h3>Custom Markdown from Plugins:</h3>
 			<ul>
 			<?php
