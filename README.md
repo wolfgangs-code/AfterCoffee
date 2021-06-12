@@ -34,5 +34,7 @@ Replace `"  "([a-z]*)": "(#\w*)",?"` with `"--$1: $2;"`
 If your installation only outputs a blank page, check if `mb_strlen()` is enabled.
 If not, Parsedown cannot run, and AfterCoffee cannot run at all. Enable it.
 
+If you cannot save new pages, create folders, or change settings- Recursively allow all folders to have the write permission, or `0777`.
+
 #### Credits
 *Coffee Bag model by Zdenko Roman*
