@@ -3,7 +3,7 @@ require_once '../auth/auth_check.php';
 
 function publishPage($text, $title) {
 	$path = "../pages/".$title;
-	if (!is_dir($path)) mkdir($path, 0777, true);
+	if (strpos($title, "/") && !is_dir($path)) mkdir($path, 0777, true);
 	$newPage = fopen($path.".md", "w");
 	fwrite($newPage, $text);
     fclose($newPage);
