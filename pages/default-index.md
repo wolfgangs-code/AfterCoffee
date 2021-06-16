@@ -1,3 +1,4 @@
+<!-- NOINDEX -->
 ![Welcome to AfterCoffee](resource/img/aftercoffee.png)
 
 # Header 1 (The Title)
