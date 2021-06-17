@@ -7,7 +7,16 @@ function publishPage($text, $title) {
 	$newPage = fopen($path.".md", "w");
 	fwrite($newPage, $text);
     fclose($newPage);
-	header('Location: ../?page='.$title);
+	# If the page is empty, delete it.
+	if (empty($text)) {
+		$errstr = "<!-- NOINDEX ERROR -->\n# There was an error deleting '{$title}'.\n";
+		$errstr.= "## Please delete this file manually.";
+		# If a page cannot be deleted, hide it and explain why.
+		$t = 2;
+		unlink(realpath($path.".md")) ?: publishPage($errstr, $title);
+		print("Successfully deleted '{$title}'.\nReturning to index in {$t} seconds...");
+		header("refresh:{$t};url=../");
+	} else {header("Location: ../?page=".$title);}
 }
 
 if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
