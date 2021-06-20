@@ -96,7 +96,7 @@ function editButton($page)
 {
     if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
         // Only show edit button if logged into the Editor.
-        return "<a href=\"./editor/?page={$page}\">[Edit]</a> ";
+        return "<a class=\"button\" href=\"./editor/?page={$page}\">Edit Page</a> ";
     } else {
         return null;
     }

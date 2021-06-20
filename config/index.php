@@ -45,8 +45,8 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 		} elseif (gettype($value) == "boolean" || in_array($value, ["True", "False"])) {
 			# Works if the option is a boolean
 			$c = $value == "True" ? " checked" : "";
-			print("<input type=\"hidden\" name=\"{$space}\" value=\"False\">\n"); # hidden input so unchedked POSTs
-			print("{$label}<input type=\"checkbox\" name=\"{$space}\"{$c}><hr></div><br>\n");
+			print("<input type=\"hidden\" name=\"{$space}\" value=\"False\">"); # hidden input so unchedked POSTs
+			print("{$label}<input type=\"checkbox\" name=\"{$space}\"{$c}><hr></div><br>");
 		} else {
 			# If none else, treat the option as text
 			print("{$label}<input name=\"{$space}\" value=\"{$value}\"><hr></div><br>\n");
@@ -73,7 +73,6 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 		<a href="../"><?=USERSET["siteName"]?></a> - <?=$title?>
 	</h3>
 	<div id="body">
-	<h3><?=$title?></h3>
         <form method="POST" class="config" action="save.php">
             <?=placeSetting()?>
 			<hr>

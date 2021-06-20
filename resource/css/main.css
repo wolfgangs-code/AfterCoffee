@@ -1,176 +1,232 @@
 @import url('https://rsms.me/inter/inter.css');
 html {
-  font-family: 'Inter', sans-serif;
+	font-family: 'Inter', sans-serif;
 }
 
 @supports (font-variation-settings: normal) {
-  html {
-    font-family: 'Inter var', sans-serif;
-  }
+	html {
+		font-family: 'Inter var', sans-serif;
+	}
 }
 
 /* Uses Windows Terminal-like theme naming */
 
 :root {
-  --black: #fbf1c7;
-  --red: #9d0006;
-  --green: #79740e;
-  --yellow: #b57614;
-  --blue: #076678;
-  --purple: #8f3f71;
-  --cyan: #427b58;
-  --white: #3c3836;
-  --brightBlack: #9d8374;
-  --brightRed: #cc241d;
-  --brightGreen: #98971a;
-  --brightYellow: #d79921;
-  --brightBlue: #458588;
-  --brightPurple: #b16186;
-  --brightCyan: #689d69;
-  --brightWhite: #7c6f64;
-  --background: #fbf1c7;
-  --foreground: #282828;
-  --selectionBackground: #d5c4a1;
-  --cursorColor: #282828;
+	--black: #fbf1c7;
+	--red: #9d0006;
+	--green: #79740e;
+	--yellow: #b57614;
+	--blue: #076678;
+	--purple: #8f3f71;
+	--cyan: #427b58;
+	--white: #3c3836;
+	--brightBlack: #9d8374;
+	--brightRed: #cc241d;
+	--brightGreen: #98971a;
+	--brightYellow: #d79921;
+	--brightBlue: #458588;
+	--brightPurple: #b16186;
+	--brightCyan: #689d69;
+	--brightWhite: #7c6f64;
+	--background: #fbf1c7;
+	--foreground: #282828;
+	--selectionBackground: #d5c4a1;
+	--cursorColor: #282828;
+	--borderDist: 0.25em;
+	--borderHalf: calc(var(--borderDist) / 2);
+	--BorderDistNeg: calc(var(--borderDist) * -1);
 }
 
 /* Default theme based on Gruvbox Light by morhetz/reynn */
 
 body, code {
-  color: var(--foreground);
-  background-color: var(--background);
-  font-size: 16px;
-  margin: 2em auto;
-  max-width: 800px;
-  padding: 1em;
-  padding-top: 0;
-  line-height: 1.4;
-  text-align: justify;
+	color: var(--foreground);
+	background-color: var(--background);
+	font-size: 16px;
+	margin: 2em auto;
+	max-width: 800px;
+	padding: 1em;
+	padding-top: 0;
+	line-height: 1.4;
+	text-align: justify;
 }
 
 select {
-  color: var(--foreground);
-  background-color: var(--selectionBackground);
-  /* appearance: none; */
-  border: none;
-  padding: 0.25em;
+	color: var(--foreground);
+	background-color: var(--selectionBackground);
+	/* appearance: none; */
+	border: none;
+	padding: 0.25em;
 }
 
 span.date {
-  margin-right: 1em
+	margin-right: 1em
 }
 
 span.bad {
-  color: var(--red)
+	color: var(--red)
 }
 
 code {
-  background-color: var(--brightBlack);
-  padding: 0.25em;
-  border-radius: 0.125em;
+	background-color: var(--selectionBackground);
+	padding: var(--borderDist);
+	border-radius: var(--borderHalf);
 }
 
 .line {
-	margin-top: 0.75em;
+	margin-top: 0.5em;
 	display: inline-block;
 }
 
-.line > hr {
+.line>hr {
 	margin-top: -0.75em;
 	margin-right: 1em;
+	border: 0.0625em solid var(--selectionBackground);
 }
 
-.line > label > span {
+.bubble>span {
+	color: var(--selectionBackground);
+	width: 1em;
+}
+
+.line>label>span {
 	background-color: var(--background);
 	padding-right: 0.25em;
 }
 
 table, th, td {
-  border: 1px solid var(--foreground);
-  border-collapse: collapse;
-  padding: 0.25em;
+	border: 1px solid var(--foreground);
+	border-collapse: collapse;
+	padding: 0.25em;
 }
 
 ul li img {
-  height: 1em
+	height: 1em
 }
 
 label {
 	display: inline-block;
-	min-width: 8em;
+	min-width: 10em;
 }
 
+.bubble, textarea {
+	display: table;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+	border-radius: var(--borderDist);
+	background: var(--background);
+	box-shadow: inset var(--borderHalf) var(--borderHalf) var(--borderDist) var(--selectionBackground);
+	border: none;
+}
 
-.bubble label {
-	min-width: none;
+input[type="submit"], a.button {
+	padding: 0.25em;
+	background: linear-gradient(-45deg, var(--background), var(--selectionBackground));
+	box-shadow: var(--borderHalf) var(--borderHalf) var(--borderHalf) var(--selectionBackground);
+	outline: none;
+	border: none;
+	border-radius: var(--borderDist);
+	color: var(--white);
+	font-family: 'Inter var', sans-serif;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+textarea {
+	border-bottom-left-radius: 0;
+	color: var(--white);
+}
+
+.editorPub {
+	display: inline-block;
+	padding: var(--borderDist);
+	box-shadow: inset var(--borderHalf) calc(var(--borderHalf) * -1) var(--borderDist) var(--selectionBackground);
+	border-radius: 0 0 var(--borderDist) var(--borderDist);
+}
+
+.bubble label b {
+	background-color: var(--background);
+	padding: var(--borderDist);
+	padding-top: var(--borderHalf);
+	padding-left: 0;
+	border-bottom-right-radius: var(--borderDist);
+	box-shadow: var(--borderHalf) var(--borderHalf) var(--borderHalf) var(--selectionBackground);
 }
 
 .bubble span {
 	display: inline-block;
 }
+
 .bubble label {
 	margin-right: -1em;
 }
 
 h1 {
-  color: var(--foreground);
-  font-weight: 720;
-  letter-spacing: -.05em;
-  word-break: break-word;
+	color: var(--foreground);
+	font-weight: 720;
+	letter-spacing: -.05em;
+	word-break: break-word;
 }
 
 a {
-  color: var(--brightBlue)
+	color: var(--brightBlue)
 }
 
 a:visited {
-  color: var(--blue)
+	color: var(--blue)
 }
 
 h1, h2, h3 {
-  line-height: 1.2;
-  text-align: left;
+	line-height: 1.2;
+	text-align: left;
 }
 
 h2 {
-  text-shadow: 0 0 0.125em var(--brightBlack);
+	text-shadow: 0 0 0.125em var(--brightBlack);
 }
 
 .banner {
-  padding: 0.25em;
-  color: var(--bg);
-  background-color: var(--cursorColor);
+	border-radius: var(--borderDist);
+	padding: 0.25em;
+	color: var(--bg);
+	background-color: var(--cursorColor);
 }
 
 .left {
-  background: linear-gradient(to left, var(--brightBlack), var(--background))
+	background: linear-gradient(145deg, var(--black), var(--selectionBackground));
 }
 
 .right {
-  background: linear-gradient(to right, var(--brightBlack), var(--background))
+	background: linear-gradient(145deg, var(--selectionBackground), var(--black));
+}
+
+.right>a {
+	text-decoration: none;
+	color: var(--white);
+	font-size: 150%;
 }
 
 h4 {
-  text-align: center;
+	text-align: center;
 }
 
 img {
-  max-width: 100%;
+	max-width: 100%;
 }
 
 img.art {
-  float: right;
-  width: 350px;
-  border: 5px solid var(--selectionBackground);
-  margin: 0.5em;
+	float: right;
+	width: 350px;
+	border: 5px solid var(--selectionBackground);
+	margin: 0.5em;
 }
 
 mark, span.mark {
-  margin: 0 -0.2em;
-  padding: 0.1em 0.2em;
-  border-radius: 0.6em 0.3em;
-  background: transparent;
-  background-image: linear-gradient( to right,  var(--background),  var(--selectionBackground) 4%, var(--background));
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
+	margin: 0 -0.2em;
+	padding: 0.1em 0.2em;
+	border-radius: 0.6em 0.3em;
+	background: transparent;
+	background-image: linear-gradient( to right, var(--background), var(--selectionBackground) 4%, var(--background));
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
 }
