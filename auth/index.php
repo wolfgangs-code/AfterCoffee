@@ -58,8 +58,8 @@ if (isset($pw) && password_verify($pw, $auth)) { // Password is correct.
 	<div id="body">
         <h3><?=$msg?></h3>
 	    <form method="POST" action="">
-            Password <input type="password" name="pass"></input>
-            <input type="submit" name="submit" value="Go"></input>
+            Password <input type="password" name="pass">
+            <input type="submit" name="submit" value="Go">
         </form>
 	</div>
 	<h4 class="banner left">&copy; <?=date("Y") . " " . USERSET["copyright"]?></h4>

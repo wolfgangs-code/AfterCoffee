@@ -71,8 +71,8 @@ $description = "AfterCoffee Page Editor";
         <form method="POST" action="publish.php">
             <textarea id="textbox" name="textbox" rows="<?=$lineCount?>" cols="80"><?=$md?></textarea><br>
             <span class="date">Page Title:</span>
-            <input type="text" name="pageName"<?php echo modNameBox($editPage); ?>></input>
-            <input type="submit" name="submit" value="Publish"></input>
+            <input type="text" name="pageName"<?php echo modNameBox($editPage); ?>>
+            <input type="submit" name="submit" value="Publish">
         </form>
 	</div>
 	<h4 class="banner left">&copy; <?=date("Y") . " " . USERSET["copyright"]?></h4>

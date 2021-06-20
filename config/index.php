@@ -41,15 +41,15 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 			# AND if the setting contains 'color'
 			# This should prevent softlocks
 			# and hinder the British
-			print("{$label}<input type= \"color\" name=\"{$space}\" value=\"{$value}\"></input><hr></div><br>\n");
+			print("{$label}<input type= \"color\" name=\"{$space}\" value=\"{$value}\"><hr></div><br>\n");
 		} elseif (gettype($value) == "boolean" || in_array($value, ["True", "False"])) {
 			# Works if the option is a boolean
 			$c = $value == "True" ? " checked" : "";
 			print("<input type=\"hidden\" name=\"{$space}\" value=\"False\">\n"); # hidden input so unchedked POSTs
-			print("{$label}<input type=\"checkbox\" name=\"{$space}\"{$c}></input><hr></div><br>\n");
+			print("{$label}<input type=\"checkbox\" name=\"{$space}\"{$c}><hr></div><br>\n");
 		} else {
 			# If none else, treat the option as text
-			print("{$label}<input name=\"{$space}\" value=\"{$value}\"></input><hr></div><br>\n");
+			print("{$label}<input name=\"{$space}\" value=\"{$value}\"><hr></div><br>\n");
 		}
 	}
 }
@@ -77,7 +77,7 @@ function placeSetting($arr = POTSET, $portal = NULL) {
         <form method="POST" class="config" action="save.php">
             <?=placeSetting()?>
 			<hr>
-            <input type="submit" value="Save"></input>
+            <input type="submit" value="Save">
         </form>
 	</div>
 	<h4 class="banner left">&copy; <?=date("Y") . " " . USERSET["copyright"]?></h4>
