@@ -24,7 +24,7 @@
 </head>
 <body>
 	<h3 class="banner right">
-		<a href="<?="/".basename(__DIR__)?>" style="text-decoration:none;color:var(--black)"><?=USERSET["siteName"]?></a>
+		<a href="<?="/".basename(__DIR__)?>"><?=USERSET["siteName"]?></a>
 	</h3>
 	<p class="info">
 		<span class="date"><?php echo editButton($page) . "Last Updated: {$date}</span>"; ?>

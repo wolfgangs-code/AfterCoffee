@@ -54,7 +54,7 @@ if (isset($pw) && password_verify($pw, $auth)) { // Password is correct.
 	<meta name="viewport" 			content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<h3 style="text-decoration:none;color:var(--black)" class="banner right"><?=USERSET["siteName"] ." - ". $title?></h3>
+	<h3 class="banner right"><?=USERSET["siteName"] ." - ". $title?></h3>
 	<div id="body">
         <h3><?=$msg?></h3>
 	    <form method="POST" action="">

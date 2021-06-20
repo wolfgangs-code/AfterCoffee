@@ -69,7 +69,7 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 	<meta name="viewport" 			content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<h3 class="banner right" style="text-decoration:none;color:var(--black)">
+	<h3 class="banner right">
 		<a href="../"><?=USERSET["siteName"]?></a> - <?=$title?>
 	</h3>
 	<div id="body">
