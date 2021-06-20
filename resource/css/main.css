@@ -34,6 +34,7 @@ html {
 	--foreground: #282828;
 	--selectionBackground: #d5c4a1;
 	--cursorColor: #282828;
+	--mono: #DDD;
 	--borderDist: 0.25em;
 	--borderHalf: calc(var(--borderDist) / 2);
 	--BorderDistNeg: calc(var(--borderDist) * -1);
