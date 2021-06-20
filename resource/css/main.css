@@ -114,7 +114,7 @@ mark, span.mark {
 
 code {
 	background-color: var(--selectionBackground);
-	padding: var(--borderDist);
+	padding: 0.125em;
 	border-radius: var(--borderHalf);
 }
 
@@ -219,7 +219,7 @@ textarea {
 
 .editorPub {
 	display: inline-block;
-	padding: var(--borderDist);
+	padding: 0.25em;
 	box-shadow: inset var(--borderHalf) calc(var(--borderHalf) * -1) var(--borderDist) var(--selectionBackground);
 	border-radius: 0 0 var(--borderDist) var(--borderDist);
 }
