@@ -11,6 +11,8 @@ html {
 
 /* Uses Windows Terminal-like theme naming */
 
+/* Default theme based on Gruvbox Light by morhetz/reynn */
+
 :root {
 	--black: #fbf1c7;
 	--red: #9d0006;
@@ -37,7 +39,9 @@ html {
 	--BorderDistNeg: calc(var(--borderDist) * -1);
 }
 
-/* Default theme based on Gruvbox Light by morhetz/reynn */
+/*==================
+	PAGE DISPLAY
+==================*/
 
 body, code {
 	color: var(--foreground);
@@ -51,6 +55,73 @@ body, code {
 	text-align: justify;
 }
 
+h1 {
+	color: var(--foreground);
+	font-weight: 720;
+	letter-spacing: -.05em;
+	word-break: break-word;
+}
+
+h2 {
+	text-shadow: 0 0 0.125em var(--brightBlack);
+}
+
+h4 {
+	text-align: center;
+}
+
+h1, h2, h3, h4 {
+	line-height: 1.2;
+}
+
+a {
+	color: var(--brightBlue)
+}
+
+a:visited {
+	color: var(--blue)
+}
+
+table, th, td {
+	border: 1px solid var(--foreground);
+	border-collapse: collapse;
+	padding: 0.25em;
+}
+
+ul li img {
+	height: 1em
+}
+
+img {
+	max-width: 100%;
+}
+
+img.art {
+	float: right;
+	width: 350px;
+	border: 5px solid var(--selectionBackground);
+	margin: 0.5em;
+}
+
+mark, span.mark {
+	margin: 0 -0.2em;
+	padding: 0.1em 0.2em;
+	border-radius: 0.6em 0.3em;
+	background: transparent;
+	background-image: linear-gradient( to right, var(--background), var(--selectionBackground) 4%, var(--background));
+	box-decoration-break: clone;
+}
+
+code {
+	background-color: var(--selectionBackground);
+	padding: var(--borderDist);
+	border-radius: var(--borderHalf);
+}
+
+/*==============
+	INFO BAR
+==============*/
+
 select {
 	color: var(--foreground);
 	background-color: var(--selectionBackground);
@@ -63,15 +134,34 @@ span.date {
 	margin-right: 1em
 }
 
-span.bad {
-	color: var(--red)
+/*======================
+	HEADER AND FOOTER
+=======================*/
+
+.banner {
+	border-radius: var(--borderDist);
+	padding: 0.25em;
+	color: var(--bg);
+	background-color: var(--cursorColor);
 }
 
-code {
-	background-color: var(--selectionBackground);
-	padding: var(--borderDist);
-	border-radius: var(--borderHalf);
+.left {
+	background: linear-gradient(145deg, var(--black), var(--selectionBackground));
 }
+
+.right {
+	background: linear-gradient(145deg, var(--selectionBackground), var(--black));
+}
+
+.right>a {
+	text-decoration: none;
+	color: var(--white);
+	font-size: 150%;
+}
+
+/*======================
+	CONFIG AND EDITOR
+=======================*/
 
 .line {
 	margin-top: 0.5em;
@@ -92,16 +182,6 @@ code {
 .line>label>span {
 	background-color: var(--background);
 	padding-right: 0.25em;
-}
-
-table, th, td {
-	border: 1px solid var(--foreground);
-	border-collapse: collapse;
-	padding: 0.25em;
-}
-
-ul li img {
-	height: 1em
 }
 
 label {
@@ -159,74 +239,4 @@ textarea {
 
 .bubble label {
 	margin-right: -1em;
-}
-
-h1 {
-	color: var(--foreground);
-	font-weight: 720;
-	letter-spacing: -.05em;
-	word-break: break-word;
-}
-
-a {
-	color: var(--brightBlue)
-}
-
-a:visited {
-	color: var(--blue)
-}
-
-h1, h2, h3 {
-	line-height: 1.2;
-	text-align: left;
-}
-
-h2 {
-	text-shadow: 0 0 0.125em var(--brightBlack);
-}
-
-.banner {
-	border-radius: var(--borderDist);
-	padding: 0.25em;
-	color: var(--bg);
-	background-color: var(--cursorColor);
-}
-
-.left {
-	background: linear-gradient(145deg, var(--black), var(--selectionBackground));
-}
-
-.right {
-	background: linear-gradient(145deg, var(--selectionBackground), var(--black));
-}
-
-.right>a {
-	text-decoration: none;
-	color: var(--white);
-	font-size: 150%;
-}
-
-h4 {
-	text-align: center;
-}
-
-img {
-	max-width: 100%;
-}
-
-img.art {
-	float: right;
-	width: 350px;
-	border: 5px solid var(--selectionBackground);
-	margin: 0.5em;
-}
-
-mark, span.mark {
-	margin: 0 -0.2em;
-	padding: 0.1em 0.2em;
-	border-radius: 0.6em 0.3em;
-	background: transparent;
-	background-image: linear-gradient( to right, var(--background), var(--selectionBackground) 4%, var(--background));
-	-webkit-box-decoration-break: clone;
-	box-decoration-break: clone;
 }
