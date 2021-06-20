@@ -26,14 +26,14 @@ $description = "AfterCoffee Settings";
 function placeSetting($arr = POTSET, $portal = NULL) {
 	asort($arr);
 	foreach ($arr as $item => $value) {
-		$label = "<label for=\"{$item}\">{$item}</label>\n";
+		$label = "<div class=\"line\"><label for=\"{$item}\"><span>{$item}</span></label>\n";
 		$space = $portal.$item;
 		if ($arr != POTSET) print("<span>".(($item === array_key_last($arr)) ? "↳" : "↦")."</span>");
 		if (gettype($value) == "array") {
 			# Works if the option is an array of values
 			# Recursion. Is it bad?
 			print("<div class=\"bubble\">");
-			print("<hr><label class='inline'><b>".$item."</b></label><br>");
+			print("<label class='inline'><b>".$item."</b></label><br>");
 			placeSetting($value, $item."-");
 			print("</div>");
 		} elseif (preg_match("/#\d{6,8}/", $value) && stripos($item, "color")) {
@@ -41,15 +41,15 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 			# AND if the setting contains 'color'
 			# This should prevent softlocks
 			# and hinder the British
-			print("{$label}<input type= \"color\" name=\"{$space}\" value=\"{$value}\"></input><br>\n");
+			print("{$label}<input type= \"color\" name=\"{$space}\" value=\"{$value}\"></input><hr></div><br>\n");
 		} elseif (gettype($value) == "boolean" || in_array($value, ["True", "False"])) {
 			# Works if the option is a boolean
 			$c = $value == "True" ? " checked" : "";
 			print("<input type=\"hidden\" name=\"{$space}\" value=\"False\">\n"); # hidden input so unchedked POSTs
-			print("{$label}<input type=\"checkbox\" name=\"{$space}\"{$c}></input><br>\n");
+			print("{$label}<input type=\"checkbox\" name=\"{$space}\"{$c}></input><hr></div><br>\n");
 		} else {
 			# If none else, treat the option as text
-			print("{$label}<input name=\"{$space}\" value=\"{$value}\"></input><br>\n");
+			print("{$label}<input name=\"{$space}\" value=\"{$value}\"></input><hr></div><br>\n");
 		}
 	}
 }
