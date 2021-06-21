@@ -34,7 +34,6 @@ html {
 	--foreground: #282828;
 	--selectionBackground: #d5c4a1;
 	--cursorColor: #282828;
-	--mono: #EEE;
 	--borderDist: 0.25em;
 	--borderHalf: calc(var(--borderDist) / 2);
 	--BorderDistNeg: calc(var(--borderDist) * -1);
@@ -195,7 +194,7 @@ label {
 	margin-top: 0.5em;
 	margin-bottom: 0;
 	border-radius: var(--borderDist);
-	background: var(--background);
+	background-color: var(--background);
 	box-shadow: inset var(--borderHalf) var(--borderHalf) var(--borderDist) var(--selectionBackground);
 	border: none;
 }
@@ -216,15 +215,15 @@ input[type="submit"], a.button {
 textarea {
 	border-bottom-left-radius: 0;
 	color: var(--white);
-	background-color: var(--mono);
+	filter: grayscale(1);
 }
 
 .editorPub {
 	display: inline-block;
 	padding: 0.25em;
+	background-color: var(--background);
 	box-shadow: inset var(--borderHalf) calc(var(--borderHalf) * -1) var(--borderDist) var(--selectionBackground);
 	border-radius: 0 0 var(--borderDist) var(--borderDist);
-	background-color: var(--mono);
 }
 
 .bubble label b {
