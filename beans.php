@@ -91,6 +91,15 @@ function loadPlugin($act)
 	}
 }
 
+function controlPanel($page)
+{
+    if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
+        // Only show edit button if logged into the Editor.
+        return "<a class=\"button\" href=\"./editor\">New Page</a> <a class=\"button\" href=\"./config\">Settings</a>";
+    } else {
+        return null;
+    }
+}
 
 function editButton($page)
 {

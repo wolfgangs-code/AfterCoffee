@@ -29,14 +29,14 @@
 	<p class="info">
 		<span class="date"><?php echo editButton($page) . "Last Updated: {$date}</span>"; ?>
 		<?php loadPlugin("addInfo"); ?>
+		<?=controlPanel($page);?>
 	</p>
 	<div id="body">
 		<?=$html?>
 	</div>
 	<h4 class="banner left">
-		&copy;
 		<?php
-			print(date("Y") . " " . USERSET["copyright"]);
+			print("&copy;". date("Y") . " " . USERSET["copyright"]);
 			if (USERSET['devCredits'] === "True") {
 				print(" - Made with <a href=\"https://github.com/wolfgang-degroot/AfterCoffee\">AfterCoffee</a>");
 			}

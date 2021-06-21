@@ -26,7 +26,7 @@ class directoryList
         $txt = "{$n}<select onchange=\"location = this.options[this.selectedIndex].value;\">{$n}";
         $txt .= $this->getFiles();
         foreach (glob("pages/*", GLOB_ONLYDIR) as $dir) {
-            $txt .= "\t<optgroup label=\"" . basename($dir) . "\">{$n}";
+            $txt .= "\t<optgroup label=\"" . ucfirst(basename($dir)) . "\">{$n}";
             $txt .= $this->getFiles($dir);
             $txt .= "\t</optgroup>{$n}";
         }
