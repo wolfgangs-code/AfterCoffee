@@ -6,7 +6,7 @@
 	"devCredits": "True",
     "author": "Author Name",
 	"indexPage": "default-index",
-	"lang": "en_us",
+	"lang": "en",
     "errorPath": {
         "404": "\/assets\/error\/404.html"
     },
