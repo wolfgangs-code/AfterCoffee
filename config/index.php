@@ -28,7 +28,8 @@ $description = "AfterCoffee Settings";
 function placeSetting($arr = POTSET, $portal = NULL) {
 	asort($arr);
 	foreach ($arr as $item => $value) {
-		$label = "<div class=\"line\"><label for=\"{$item}\"><span>{$item}</span></label>\n";
+		array_key_exists($item, USERLANG["cfg"]) ? $tname = USERLANG["cfg"][$item] : $tname = $item;
+		$label = "<div class=\"line\"><label for=\"{$item}\"><span>{$tname}</span></label>\n";
 		$space = $portal.$item;
 		if ($arr != POTSET) print("<span>".(($item === array_key_last($arr)) ? "↳" : "↦")."</span>");
 		if (gettype($value) == "array") {
