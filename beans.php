@@ -8,6 +8,7 @@ $Extra = new ParsedownExtra();
 
 # Defines the settings declared in meta.json
 require_once './config/userset.php';
+require_once './config/lang.php';
 
 # If no page is specified, show the set index page
 $page = $_GET["page"] ?? USERSET["indexPage"];
@@ -63,7 +64,7 @@ if (file_exists($apath)) {
     # If there is no Markdown file for the request,
     # Return a 404 Error
     http_response_code(404);
-    echo "{$page} Not Found";
+    echo "{$page} ".USERLANG["ac_page404"];
     include USERSET["errorPath"]["404"];
     exit;
 }
@@ -95,7 +96,7 @@ function controlPanel($page)
 {
     if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
         // Only show edit button if logged into the Editor.
-        return "<a class=\"button\" href=\"./editor\">New Page</a> <a class=\"button\" href=\"./config\">Settings</a>";
+        return "<a class=\"button\" href=\"./editor\">".USERLANG["ac_newPage"]."</a> <a class=\"button\" href=\"./config\">".USERLANG["ac_settings"]."</a>";
     } else {
         return null;
     }
@@ -105,7 +106,7 @@ function editButton($page)
 {
     if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
         // Only show edit button if logged into the Editor.
-        return "<a class=\"button\" href=\"./editor/?page={$page}\">Edit Page</a> ";
+        return "<a class=\"button\" href=\"./editor/?page={$page}\">".USERLANG["ac_editPage"]."</a> ";
     } else {
         return null;
     }

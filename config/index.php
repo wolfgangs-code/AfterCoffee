@@ -1,6 +1,8 @@
 <?php
 require_once '../auth/auth_check.php';
 require_once 'userset.php';
+require_once 'lang.php';
+
 
 foreach (glob("../plugins/*.php") as $plugin) {
     include $plugin;
@@ -76,7 +78,7 @@ function placeSetting($arr = POTSET, $portal = NULL) {
         <form method="POST" class="config" action="save.php">
             <?=placeSetting()?>
 			<hr>
-            <input type="submit" value="Save">
+            <input type="submit" value="<?=USERLANG["ac_bSave"]?>">
         </form>
 	</div>
 	<h4 class="banner left">&copy; <?=date("Y") . " " . USERSET["copyright"]?></h4>
