@@ -2,10 +2,11 @@
 	"ac_settings": "Settings",
 	"ac_page404": "Not Found!",
 	"ac_newPage": "New Page",
+	"ac_madeWithAC": "Made with",
+	"ac_hidden": "[Hidden]",
 	"ac_editPage": "Edit Page",
 	"ac_bSave": "Save",
 	"ac_bPublish": "Publish",
-	"ac_hidden": "[Hidden]",
 	"editor": {
 		"unlistedHint": "To make a page unlisted, put this line in your page:",
 		"mdPlugin": "Custom Markdown Rules from Plugins:",

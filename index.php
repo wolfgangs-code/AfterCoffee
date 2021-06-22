@@ -38,7 +38,7 @@
 		<?php
 			print("&copy;". date("Y") . " " . USERSET["copyright"]);
 			if (USERSET['devCredits'] === "True") {
-				print(" - Made with <a href=\"https://github.com/wolfgang-degroot/AfterCoffee\">AfterCoffee</a>");
+				print(" - ".USERLANG["ac_madeWithAC"]." <a href=\"https://github.com/wolfgang-degroot/AfterCoffee\">AfterCoffee</a>");
 			}
 		?>
 	</h4>
