@@ -7,6 +7,7 @@
 	"ac_editPage": "Edit Page",
 	"ac_bSave": "Save",
 	"ac_bPublish": "Publish",
+	"ac_lastEdited": "Last Updated:",
 	"editor": {
 		"unlistedHint": "To make a page unlisted, put this line in your page:",
 		"mdPlugin": "Custom Markdown Rules from Plugins:",

@@ -27,7 +27,7 @@
 		<a href="<?="/".basename(__DIR__)?>"><?=USERSET["siteName"]?></a>
 	</h3>
 	<p class="info">
-		<span class="date"><?php echo editButton($page) . "Last Updated: {$date}</span>"; ?>
+		<span class="date"><?php echo editButton($page) . USERLANG["ac_lastEdited"] ." {$date}</span>"; ?>
 		<?php loadPlugin("addInfo"); ?>
 		<?=controlPanel($page);?>
 	</p>
