@@ -32,7 +32,7 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 		if (gettype($value) == "array") {
 			# Works if the option is an array of values
 			# Recursion. Is it bad?
-			print("<div class=\"bubble\">");
+			print("<hr class=\"left\"><div class=\"bubble\">");
 			print("<label class='inline'><b>".$item."</b></label><br>");
 			placeSetting($value, $item."-");
 			print("</div>");

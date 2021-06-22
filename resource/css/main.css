@@ -195,14 +195,12 @@ label {
 	margin-bottom: 0;
 	border-radius: var(--borderDist);
 	background-color: var(--background);
-	box-shadow: inset var(--borderHalf) var(--borderHalf) var(--borderDist) var(--selectionBackground);
 	border: none;
 }
 
 input[type="submit"], a.button {
 	padding: 0.25em;
 	background: linear-gradient(-45deg, var(--background), var(--selectionBackground));
-	box-shadow: var(--borderHalf) var(--borderHalf) var(--borderHalf) var(--selectionBackground);
 	outline: none;
 	border: none;
 	border-radius: var(--borderDist);
@@ -218,21 +216,20 @@ textarea {
 	filter: grayscale(1);
 }
 
+form {
+	display: inline-block;
+}
+
+form > hr {
+	border: none;
+	height: 0.125em;
+}
+
 .editorPub {
 	display: inline-block;
 	padding: 0.25em;
 	background-color: var(--background);
-	box-shadow: inset var(--borderHalf) calc(var(--borderHalf) * -1) var(--borderDist) var(--selectionBackground);
 	border-radius: 0 0 var(--borderDist) var(--borderDist);
-}
-
-.bubble label b {
-	background-color: var(--background);
-	padding: var(--borderDist);
-	padding-top: var(--borderHalf);
-	padding-left: 0;
-	border-bottom-right-radius: var(--borderDist);
-	box-shadow: var(--borderHalf) var(--borderHalf) var(--borderHalf) var(--selectionBackground);
 }
 
 .bubble span {
