@@ -198,6 +198,11 @@ label {
 	border: none;
 }
 
+input {
+	border: 0.2em solid var(--selectionBackground);
+	border-radius: var(--borderHalf);
+}
+
 input[type="submit"], a.button {
 	padding: 0.25em;
 	background: linear-gradient(-45deg, var(--background), var(--selectionBackground));
