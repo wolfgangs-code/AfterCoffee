@@ -8,9 +8,17 @@
 	"ac_mdExtended": "Extended",
 	"ac_mdBasic": "Basic",
 	"ac_editPage": "Edit Page",
+	"ac_filename": "File Name:",
 	"ac_editor": "Page Editor",
 	"ac_bSave": "Save",
 	"ac_bPublish": "Publish",
+	"auth": {
+		"required": "Authentication Required",
+		"wrongPass": "Incorrect password.",
+		"enterPass": "Enter in your password.",
+		"setPass": "NO PASSWORD SET: Set your password now.",
+		"pass": "Password"
+	},
 	"cfg": {
 		"themeColor": "Theme Color",
 		"siteName": "Site Name",

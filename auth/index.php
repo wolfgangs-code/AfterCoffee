@@ -3,9 +3,10 @@ session_name("AfterCoffeeID");
 session_start();
 
 require_once '../config/userset.php';
+require_once '../config/lang.php';
 $pw = $_POST['pass'];
 $rt = $_GET['r'] ?? "../";
-$title = "Authentication Required";
+$title = USERLANG["auth"]["required"];
 
 define("AUTH", true);
 
@@ -18,11 +19,11 @@ if (!include ('auth_code.php')) { // If there is no password file (sorry),
         fclose($newPass);
         header("Location: ".$rt);
     }
-    $msg = "NO PASSWORD SET. Set your password below.";
+    $msg = USERLANG["auth"]["setPass"];
 } elseif (!isset($pw)) {
-    $msg = "Please enter in your password.";
+    $msg = USERLANG["auth"]["enterPass"];
 } else {
-    $msg = "Incorrect password.";
+    $msg = USERLANG["auth"]["wrongPass"];
 }
 
 if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
@@ -58,7 +59,7 @@ if (isset($pw) && password_verify($pw, $auth)) { // Password is correct.
 	<div id="body">
         <h3><?=$msg?></h3>
 	    <form method="POST" action="">
-            Password <input type="password" name="pass">
+		<?=USERLANG["auth"]["pass"]?> <input type="password" name="pass">
             <input type="submit" name="submit" value="Go">
         </form>
 	</div>

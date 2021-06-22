@@ -1,6 +1,7 @@
 <?php
 require_once '../auth/auth_check.php';
 require_once '../config/userset.php';
+require_once '../config/lang.php';
 
 foreach (glob("../plugins/*.php") as $plugin) {
     include $plugin;
@@ -27,8 +28,8 @@ function modNameBox($editPage) {
 
 /* The AfterCoffee Editor */
 
-$title = "Page Editor";
-$description = "AfterCoffee Page Editor";
+$title = USERLANG["ac_editor"];
+$description = "AfterCoffee ".USERLANG["ac_editor"];
 
 ?>
 <!DOCTYPE HTML>
@@ -50,11 +51,11 @@ $description = "AfterCoffee Page Editor";
 	</h3>
 	<div id="body">
 		<div id="guide">
-			<h3>Markdown Guide:
-				<a href="https://www.markdownguide.org/basic-syntax" target="_blank">Basic</a>,
-				<a href="https://www.markdownguide.org/extended-syntax" target="_blank">Extended</a>
+			<h3><?=USERLANG["ac_mdGuide"]?>
+				<a href="https://www.markdownguide.org/basic-syntax" target="_blank"><?=USERLANG["ac_mdBasic"]?></a>,
+				<a href="https://www.markdownguide.org/extended-syntax" target="_blank"><?=USERLANG["ac_mdExtended"]?></a>
 			</h3>
-			<p>To make a page unlisted, insert <code>&lt;!-- NOINDEX --&gt;</code> into your page.</p>
+			<p><?=USERLANG["ac_mdUnlisted"]?> <code>&lt;!-- NOINDEX --&gt;</code></p>
 			<h3>Custom Markdown from Plugins:</h3>
 			<ul>
 			<?php
@@ -71,7 +72,7 @@ $description = "AfterCoffee Page Editor";
         <form method="POST" action="publish.php">
             <textarea id="textbox" name="textbox" rows="<?=$lineCount?>" cols="80"><?=$md?></textarea>
 			<div class="editorPub">
-				<span class="date">Page Title:</span>
+				<span class="date"><?=USERLANG["ac_filename"]?></span>
             	<input type="text" name="pageName"<?php echo modNameBox($editPage); ?>>
             	<input type="submit" name="submit" value="Publish">
 			</div>

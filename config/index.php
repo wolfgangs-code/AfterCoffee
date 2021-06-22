@@ -22,8 +22,8 @@ foreach (AC_PLUGINS as $class) {
 
 define("POTSET", array_merge($pluginSettings, USERSET));
 
-$title = "Settings";
-$description = "AfterCoffee Settings";
+$title = USERLANG["ac_settings"];
+$description = "AfterCoffee ".USERLANG["ac_settings"];
 
 function placeSetting($arr = POTSET, $portal = NULL) {
 	asort($arr);
