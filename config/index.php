@@ -59,7 +59,7 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 
 ?>
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="<?=USERSET["lang"]?>">
 <head>
 	<meta charset="utf-8">
 	<meta property="og:type"        content="website">
