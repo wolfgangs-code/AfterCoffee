@@ -29,6 +29,7 @@
 		"siteName": "Site Name",
 		"lang": "Language",
 		"indexPage": "Index Page",
+		"errorPath": "HTTP Error Path",
 		"devCredits": "<i>Credit AfterCoffee</i>",
 		"dateFormat": "Date Format",
 		"copyright": "Copyright",

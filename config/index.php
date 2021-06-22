@@ -32,7 +32,7 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 		$label = "<div class=\"line\"><label for=\"{$item}\"><span>{$tname}</span></label>\n";
 		$space = $portal.$item;
 		# If it's the language option
-		if ($item == "lang") {
+		if ($item === "lang") {
 			print("{$label}<select name=\"{$space}\" value=\"{$value}\"><hr></div><br>\n");
 			$langs = array_diff(scandir("../resource/lang"), ["..", "."]);
 			foreach($langs as $lang) {
