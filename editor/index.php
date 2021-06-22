@@ -51,12 +51,12 @@ $description = "AfterCoffee ".USERLANG["ac_editor"];
 	</h3>
 	<div id="body">
 		<div id="guide">
-			<h3><?=USERLANG["ac_mdGuide"]?>
-				<a href="https://www.markdownguide.org/basic-syntax" target="_blank"><?=USERLANG["ac_mdBasic"]?></a>,
-				<a href="https://www.markdownguide.org/extended-syntax" target="_blank"><?=USERLANG["ac_mdExtended"]?></a>
+			<h3><?=USERLANG["editor"]["mdGuide"]?>
+				<a href="https://www.markdownguide.org/basic-syntax" target="_blank"><?=USERLANG["editor"]["mdBasic"]?></a>,
+				<a href="https://www.markdownguide.org/extended-syntax" target="_blank"><?=USERLANG["editor"]["mdExtended"]?></a>
 			</h3>
-			<p><?=USERLANG["ac_mdUnlisted"]?> <code>&lt;!-- NOINDEX --&gt;</code></p>
-			<h3>Custom Markdown from Plugins:</h3>
+			<p><?=USERLANG["editor"]["unlistedHint"]?> <code>&lt;!-- NOINDEX --&gt;</code></p>
+			<h3><?=USERLANG["editor"]["mdPlugin"]?></h3>
 			<ul>
 			<?php
 				# TODO: Make firing plugin functions cleaner
@@ -72,7 +72,7 @@ $description = "AfterCoffee ".USERLANG["ac_editor"];
         <form method="POST" action="publish.php">
             <textarea id="textbox" name="textbox" rows="<?=$lineCount?>" cols="80"><?=$md?></textarea>
 			<div class="editorPub">
-				<span class="date"><?=USERLANG["ac_filename"]?></span>
+				<span class="date"><?=USERLANG["editor"]["filename"]?></span>
             	<input type="text" name="pageName"<?php echo modNameBox($editPage); ?>>
             	<input type="submit" name="submit" value="Publish">
 			</div>

@@ -2,32 +2,34 @@
 	"ac_settings": "Settings",
 	"ac_page404": "Not Found!",
 	"ac_newPage": "New Page",
-	"ac_mdUnlisted": "To make a page unlisted, put this line in your page:",
-	"ac_mdPlugin": "Custom Markdown Rules from Plugins:",
-	"ac_mdGuide": "Markdown Guide:",
-	"ac_mdExtended": "Extended",
-	"ac_mdBasic": "Basic",
 	"ac_editPage": "Edit Page",
-	"ac_filename": "File Name:",
-	"ac_editor": "Page Editor",
 	"ac_bSave": "Save",
 	"ac_bPublish": "Publish",
+	"editor": {
+		"unlistedHint": "To make a page unlisted, put this line in your page:",
+		"mdPlugin": "Custom Markdown Rules from Plugins:",
+		"mdGuide": "Markdown Guide:",
+		"mdExtended": "Extended",
+		"mdBasic": "Basic",
+		"filename": "File Name:",
+		"editor": "Page Editor"
+	},
 	"auth": {
-		"required": "Authentication Required",
 		"wrongPass": "Incorrect password.",
-		"enterPass": "Enter in your password.",
 		"setPass": "NO PASSWORD SET: Set your password now.",
-		"pass": "Password"
+		"required": "Authentication Required",
+		"pass": "Password",
+		"enterPass": "Enter in your password."
 	},
 	"cfg": {
 		"themeColor": "Theme Color",
+		"stylesheet": "CSS Stylesheet",
 		"siteName": "Site Name",
-		"author": "Author",
-		"copyright": "Copyright",
-		"dateFormat": "Date Format",
-		"devCredits": "<i>Credit AfterCoffee</i>",
-		"indexPage": "Index Page",
 		"lang": "Language",
-		"stylesheet": "CSS Stylesheet"
+		"indexPage": "Index Page",
+		"devCredits": "<i>Credit AfterCoffee</i>",
+		"dateFormat": "Date Format",
+		"copyright": "Copyright",
+		"author": "Author"
 	}
 }
