@@ -31,6 +31,18 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 		array_key_exists($item, USERLANG["cfg"]) ? $tname = USERLANG["cfg"][$item] : $tname = $item;
 		$label = "<div class=\"line\"><label for=\"{$item}\"><span>{$tname}</span></label>\n";
 		$space = $portal.$item;
+		# If it's the language option
+		if ($item == "lang") {
+			print("{$label}<select name=\"{$space}\" value=\"{$value}\"><hr></div><br>\n");
+			$langs = array_diff(scandir("../resource/lang"), ["..", "."]);
+			foreach($langs as $lang) {
+				$lang = pathinfo($lang, PATHINFO_FILENAME);
+				($lang == POTSET["lang"]) ? $ss = "selected" : $ss = "";
+				print("<option value =\"{$lang}\"{$ss}>{$lang}</option>");
+			}
+			print("</select><hr></div><br>");
+			continue;
+		}
 		if ($arr != POTSET) print("<span>".(($item === array_key_last($arr)) ? "↳" : "↦")."</span>");
 		if (gettype($value) == "array") {
 			# Works if the option is an array of values
