@@ -1,10 +1,25 @@
 {
-    "ac_settings": "Settings",
-    "ac_page404": "Not Found!",
-    "ac_newPage": "New Page",
-    "ac_editPage": "Edit Page",
+	"ac_settings": "Settings",
+	"ac_page404": "Not Found!",
+	"ac_newPage": "New Page",
+	"ac_mdUnlisted": "To make a page unlisted, put this line in your page:",
+	"ac_mdPlugin": "Custom Markdown Rules from Plugins:",
+	"ac_mdGuide": "Markdown Guide:",
+	"ac_mdExtended": "Extended",
+	"ac_mdBasic": "Basic",
+	"ac_editPage": "Edit Page",
+	"ac_editor": "Page Editor",
 	"ac_bSave": "Save",
+	"ac_bPublish": "Publish",
 	"cfg": {
-		"themeColor": "YEARSS"
+		"themeColor": "Theme Color",
+		"siteName": "Site Name",
+		"author": "Author",
+		"copyright": "Copyright",
+		"dateFormat": "Date Format",
+		"devCredits": "<i>Credit AfterCoffee</i>",
+		"indexPage": "Index Page",
+		"lang": "Language",
+		"stylesheet": "CSS Stylesheet"
 	}
 }
