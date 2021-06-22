@@ -14,7 +14,7 @@ class directoryList
             $option .= $dir === "pages" ? "\t" : "\t\t";
             $option .= "<option ";
             $title = trim($h1[1] ?? $fileName);
-			if ($tags) $title .= " [Hidden]";
+			if ($tags) $title .= " ".USERLANG["ac_hidden"];
             if ($fileName == $GLOBALS["page"]) $option .= "selected ";
             $option .= "value=\"?page={$fileName}\">{$title}</option>\n\t\t";
         }
