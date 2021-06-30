@@ -1,19 +1,19 @@
 <?php
 class directoryList
 {
-    const version = '5.2';
+    const version = '5.3';
+    private $indexPath = __DIR__ . "/../pages/index.json";
     private function getFiles($dir = "pages")
     {
         $pages = [];
         $option = "";
-        $indexPath = __DIR__ . "/../pages/index.json";
 
         #=========#
         # Indexer #
         #=========#
 
         # Check if an index isn't already built
-        if (!file_exists($indexPath)) {
+        if (!file_exists($this->indexPath)) {
             $glob = glob("{$dir}/*", GLOB_ONLYDIR);
             array_push($glob, $dir);
             foreach ($glob as $folder) {
@@ -34,11 +34,11 @@ class directoryList
                     }
 
                 }}
-            $indexJSON = fopen($indexPath, 'w');
+            $indexJSON = fopen($this->indexPath, 'w');
             fwrite($indexJSON, json_encode($pages));
             fclose($indexJSON);
         } else {
-            $indexJSON = file_get_contents($indexPath);
+            $indexJSON = file_get_contents($this->indexPath);
             $pages = json_decode($indexJSON, true);
         }
 
@@ -76,7 +76,7 @@ class directoryList
             }
 
         }
-        ($isVisible) ?: $option .= "<option selected>" . $GLOBALS["page"] ." ". USERLANG["ac_hidden"] . "</option>\n";
+        ($isVisible) ?: $option .= "<option selected>" . $GLOBALS["page"] . " " . USERLANG["ac_hidden"] . "</option>\n";
         return $option;
     }
     public function addInfo()
@@ -86,5 +86,10 @@ class directoryList
         $txt .= $this->getFiles();
         $txt .= "</select>\n";
         print($txt);
+    }
+    public function onSave()
+    {
+        # Delete the index so it may be rebuilt automatically
+        unlink($this->indexPath);
     }
 }
