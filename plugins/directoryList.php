@@ -1,48 +1,81 @@
 <?php
 class directoryList
 {
-    const version = '5.0';
+    const version = '5.1';
     private function getFiles($dir = "pages")
     {
         $pages = [];
         $option = "";
-        $indexPath = __DIR__."/../{$dir}/index.json";
-        # Indexer
+        $indexPath = __DIR__ . "/../pages/index.json";
+
+		#=========#
+        # Indexer #
+		#=========#
+
+		# Check if an index isn't already built
         if (!file_exists($indexPath)) {
-            foreach (glob($dir . "/*.md") as $filePath) {
-                $fileName = substr($filePath, strpos($filePath, "/") + 1, -3);
-                $md = file_get_contents($filePath);
-                $tags = preg_match("/<!--(.* NOINDEX .*)-->/", $md);
-                if ($tags && $fileName) {
-                    continue;
+            $glob = glob("{$dir}/*", GLOB_ONLYDIR);
+            array_push($glob, $dir);
+            foreach ($glob as $folder) {
+                foreach (glob("{$folder}/*.md") as $filePath) {
+                    $fileName = substr($filePath, strpos($filePath, "/") + 1, -3);
+                    $md = file_get_contents($filePath);
+                    $tags = preg_match("/<!--(.* NOINDEX .*)-->/", $md);
+                    if ($tags && $fileName) {
+                        continue;
+                    }
+
+                    preg_match('/# (.*?)\n/', $md, $h1);
+                    $title = trim($h1[1] ?? $fileName);
+                    if ($folder === $dir) {
+                        $pages[$folder][$fileName] = $title;
+                    } else {
+                        $pages[$folder][substr($fileName, strpos($fileName, "/") + 1)] = $title;
+                    }
+
+                }}
+            $indexJSON = fopen($indexPath, 'w');
+            fwrite($indexJSON, json_encode($pages));
+            fclose($indexJSON);
+        } else {
+            $indexJSON = file_get_contents($indexPath);
+            $pages = json_decode($indexJSON, true);
+        }
+        $pages[$GLOBALS["page"]] = $pages[$GLOBALS["page"]] ?: "[Hidden]";
+
+		#===================#
+        # Directory builder #
+		#===================#
+        arsort($pages);
+        foreach ($pages as $folder => $content) {
+            # Uncommenting the below line will sort each folder's directory by title
+            // asort($content);
+
+			# Subgroup subfolders 1/2
+            ($folder === $dir) ?: $option .= "\t<optgroup label=\"" . ucfirst(basename($folder)) . "\">{$n}";
+
+			# Listing constructor
+            foreach ($content as $fileName => $title) {
+                $option .= $dir === "pages" ? "\t" : "\t\t";
+                $option .= "<option ";
+                if (empty($pages[$fileName])) {
+                    $title .= " " . USERLANG["ac_hidden"];
                 }
 
-                preg_match('/# (.*?)\n/', $md, $h1);
-                $title = trim($h1[1] ?? $fileName);
-                $pages[$fileName] = $title;
-            }
-			$indexJSON = fopen($indexPath, 'w');
-			fwrite($indexJSON, json_encode($pages));
-			fclose($indexJSON);
-        } else {
-			$indexJSON = file_get_contents($indexPath);
-			$pages = json_decode($indexJSON, true);
-		}
-		// $pages[$GLOBALS["page"]] = $pages[$GLOBALS["page"]] ?: "[Hidden]";
+				# Select the listing for the current page
+                if ($fileName == $GLOBALS["page"]) {
+                    $option .= "selected ";
+                }
 
-        # Index builder
-        foreach ($pages as $fileName => $title) {
-            $option .= $dir === "pages" ? "\t" : "\t\t";
-            $option .= "<option ";
-            if (empty($pages[$fileName])) {
-                $title .= " " . USERLANG["ac_hidden"];
+				# Subgroup subfolders 2/2
+                if ($folder === $dir) {
+                    $option .= "value=\"?page={$fileName}\">{$title}</option>\n\t\t";
+                } else {
+                    $folder = substr($folder, strpos($folder, "/") + 1);
+                    $option .= "value=\"?page={$folder}/{$fileName}\">{$title}</option>\n\t\t";
+                    $option .= "\t</optgroup>{$n}";
+                }
             }
-
-            if ($fileName == $GLOBALS["page"]) {
-                $option .= "selected ";
-            }
-
-            $option .= "value=\"?page={$fileName}\">{$title}</option>\n\t\t";
         }
         return $option;
     }
@@ -51,11 +84,6 @@ class directoryList
         $n = "\n\t\t";
         $txt = "{$n}<select onchange=\"location = this.options[this.selectedIndex].value;\">{$n}";
         $txt .= $this->getFiles();
-        foreach (glob("pages/*", GLOB_ONLYDIR) as $dir) {
-            $txt .= "\t<optgroup label=\"" . ucfirst(basename($dir)) . "\">{$n}";
-            $txt .= $this->getFiles($dir);
-            $txt .= "\t</optgroup>{$n}";
-        }
         $txt .= "</select>\n";
         print($txt);
     }
