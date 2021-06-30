@@ -1,18 +1,18 @@
 <?php
 class directoryList
 {
-    const version = '5.1';
+    const version = '5.2';
     private function getFiles($dir = "pages")
     {
         $pages = [];
         $option = "";
         $indexPath = __DIR__ . "/../pages/index.json";
 
-		#=========#
+        #=========#
         # Indexer #
-		#=========#
+        #=========#
 
-		# Check if an index isn't already built
+        # Check if an index isn't already built
         if (!file_exists($indexPath)) {
             $glob = glob("{$dir}/*", GLOB_ONLYDIR);
             array_push($glob, $dir);
@@ -41,33 +41,31 @@ class directoryList
             $indexJSON = file_get_contents($indexPath);
             $pages = json_decode($indexJSON, true);
         }
-        $pages[$GLOBALS["page"]] = $pages[$GLOBALS["page"]] ?: "[Hidden]";
 
-		#===================#
+        #===================#
         # Directory builder #
-		#===================#
+        #===================#
+        $isVisible = false;
         arsort($pages);
         foreach ($pages as $folder => $content) {
             # Uncommenting the below line will sort each folder's directory by title
             // asort($content);
 
-			# Subgroup subfolders 1/2
+            # Subgroup subfolders 1/2
             ($folder === $dir) ?: $option .= "\t<optgroup label=\"" . ucfirst(basename($folder)) . "\">{$n}";
 
-			# Listing constructor
+            # Listing constructor
             foreach ($content as $fileName => $title) {
                 $option .= $dir === "pages" ? "\t" : "\t\t";
                 $option .= "<option ";
-                if (empty($pages[$fileName])) {
-                    $title .= " " . USERLANG["ac_hidden"];
-                }
 
-				# Select the listing for the current page
+                # Select the listing for the current page
                 if ($fileName == $GLOBALS["page"]) {
                     $option .= "selected ";
+                    $isVisible = true;
                 }
 
-				# Subgroup subfolders 2/2
+                # Subgroup subfolders 2/2
                 if ($folder === $dir) {
                     $option .= "value=\"?page={$fileName}\">{$title}</option>\n\t\t";
                 } else {
@@ -76,7 +74,9 @@ class directoryList
                     $option .= "\t</optgroup>{$n}";
                 }
             }
+
         }
+        ($isVisible) ?: $option .= "<option selected>" . $GLOBALS["page"] ." ". USERLANG["ac_hidden"] . "</option>\n";
         return $option;
     }
     public function addInfo()
