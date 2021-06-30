@@ -1,21 +1,47 @@
 <?php
 class directoryList
 {
-    const version = '4.0';
+    const version = '5.0';
     private function getFiles($dir = "pages")
     {
-		$option = "";
-        foreach (glob($dir . "/*.md") as $filePath) {
-            $fileName = substr($filePath, strpos($filePath, "/") + 1, -3);
-            $md = file_get_contents($filePath);
-			$tags = preg_match("/<!--(.* NOINDEX .*)-->/", $md);
-            if ($tags && $fileName != $GLOBALS["page"]) continue;
-            preg_match('/# (.*?)\n/', $md, $h1);
+        $pages = [];
+        $option = "";
+        $indexPath = __DIR__."/../{$dir}/index.json";
+        # Indexer
+        if (!file_exists($indexPath)) {
+            foreach (glob($dir . "/*.md") as $filePath) {
+                $fileName = substr($filePath, strpos($filePath, "/") + 1, -3);
+                $md = file_get_contents($filePath);
+                $tags = preg_match("/<!--(.* NOINDEX .*)-->/", $md);
+                if ($tags && $fileName) {
+                    continue;
+                }
+
+                preg_match('/# (.*?)\n/', $md, $h1);
+                $title = trim($h1[1] ?? $fileName);
+                $pages[$fileName] = $title;
+            }
+			$indexJSON = fopen($indexPath, 'w');
+			fwrite($indexJSON, json_encode($pages));
+			fclose($indexJSON);
+        } else {
+			$indexJSON = file_get_contents($indexPath);
+			$pages = json_decode($indexJSON, true);
+		}
+		// $pages[$GLOBALS["page"]] = $pages[$GLOBALS["page"]] ?: "[Hidden]";
+
+        # Index builder
+        foreach ($pages as $fileName => $title) {
             $option .= $dir === "pages" ? "\t" : "\t\t";
             $option .= "<option ";
-            $title = trim($h1[1] ?? $fileName);
-			if ($tags) $title .= " ".USERLANG["ac_hidden"];
-            if ($fileName == $GLOBALS["page"]) $option .= "selected ";
+            if (empty($pages[$fileName])) {
+                $title .= " " . USERLANG["ac_hidden"];
+            }
+
+            if ($fileName == $GLOBALS["page"]) {
+                $option .= "selected ";
+            }
+
             $option .= "value=\"?page={$fileName}\">{$title}</option>\n\t\t";
         }
         return $option;
