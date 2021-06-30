@@ -64,39 +64,39 @@ if (file_exists($apath)) {
     # If there is no Markdown file for the request,
     # Return a 404 Error
     http_response_code(404);
-    echo "{$page} ".USERLANG["ac_page404"];
+    echo "{$page} " . USERLANG["ac_page404"];
     include USERSET["errorPath"]["404"];
     exit;
 }
 
 function pageTags($md)
 {
-	preg_match("/<!--(.*)-->/", $md, $out);
-	return array_filter(preg_split("/[\s,]+/", $out[1]));
+    preg_match("/<!--(.*)-->/", $md, $out);
+    return array_filter(preg_split("/[\s,]+/", $out[1]));
 }
 define("PAGETAGS", pageTags($md));
 
 function indexOption($tags)
 {
-	return (in_array("NOINDEX", $tags)) ? "noindex" : "index";
+    return (in_array("NOINDEX", $tags)) ? "noindex" : "index";
 }
 
 function loadPlugin($act)
 {
-	global $html; # bad practice
-	foreach (AC_PLUGINS as $class) {
-    	$plugin = new $class;
-    	if (method_exists($plugin, $act)) {
-        	call_user_func([$plugin, $act], $html);
-    	}
-	}
+    global $html; # bad practice
+    foreach (AC_PLUGINS as $class) {
+        $plugin = new $class;
+        if (method_exists($plugin, $act)) {
+            call_user_func([$plugin, $act], $html);
+        }
+    }
 }
 
 function controlPanel($page)
 {
     if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
         // Only show edit button if logged into the Editor.
-        return "<a class=\"button\" href=\"./editor\">".USERLANG["ac_newPage"]."</a> <a class=\"button\" href=\"./config\">".USERLANG["ac_settings"]."</a>";
+        return "<a class=\"button\" href=\"./editor\">" . USERLANG["ac_newPage"] . "</a> <a class=\"button\" href=\"./config\">" . USERLANG["ac_settings"] . "</a>";
     } else {
         return null;
     }
@@ -106,7 +106,7 @@ function editButton($page)
 {
     if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
         // Only show edit button if logged into the Editor.
-        return "<a class=\"button\" href=\"./editor/?page={$page}\">".USERLANG["ac_editPage"]."</a> ";
+        return "<a class=\"button\" href=\"./editor/?page={$page}\">" . USERLANG["ac_editPage"] . "</a> ";
     } else {
         return null;
     }
