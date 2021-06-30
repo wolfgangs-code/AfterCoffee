@@ -7,6 +7,7 @@ class directoryList
     {
         $pages = [];
         $option = "";
+		$n = '\n\n\n\n';
 
         #=========#
         # Indexer #
