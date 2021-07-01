@@ -72,7 +72,7 @@ if (file_exists($apath)) {
 function pageTags($md)
 {
     preg_match("/<!--(.*)-->/", $md, $out);
-    return array_filter(preg_split("/[\s,]+/", $out[1]));
+    return array_filter(preg_split("/[\s,]+/", $out[1] ?? null));
 }
 define("PAGETAGS", pageTags($md));
 
