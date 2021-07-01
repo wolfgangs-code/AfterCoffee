@@ -35,7 +35,7 @@ function insideTag($string, $tagname)
 {
     $pattern = "#<\s*?$tagname\b[^>]*>(.*?)</$tagname\b[^>]*>#s";
     preg_match($pattern, $string, $matches);
-    return $matches[1];
+    return $matches[1] ?? null;
 }
 
 # Only compose page if the Markdown file exists
