@@ -21,11 +21,7 @@ if (file_exists($apath)) {
 $lineCount = isset($editPage) ? substr_count( $md, "\n" ) + 1 : 8;
 
 function modNameBox($editPage) {
-	if (isset($editPage)) {
-		return " value=\"{$editPage}\" readonly";
-	} else {
-		return null;
-	}
+	return (isset($editPage)) ? " value=\"{$editPage}\" readonly" : null;
 }
 
 /* The AfterCoffee Editor */
