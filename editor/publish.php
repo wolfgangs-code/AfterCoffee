@@ -24,7 +24,7 @@ function publishPage($text, $title)
     foreach (AC_PLUGINS as $class) {
         $plugin = new $class;
         if (method_exists($plugin, "onSave")) {
-			call_user_func($plugin->onSave());
+			$plugin->onSave();
         }
     }
 
