@@ -7,7 +7,7 @@ class directoryList
     {
         $pages = [];
         $option = "";
-		$n = '\n\n\n\n';
+        $n = '\n\n\n\n';
 
         #=========#
         # Indexer #
@@ -61,7 +61,10 @@ class directoryList
                 $option .= "<option ";
 
                 # Select the listing for the current page
-				$subname = substr($folder, 6) . "/{$fileName}";
+                $subname = substr($folder, 6);
+                $subname .= ($subname) ? "/" : "";
+				$subname .= $fileName;
+                print("{$subname}<br>");
                 if ($subname == $GLOBALS["page"]) {
                     $option .= "selected ";
                     $isVisible = true;
