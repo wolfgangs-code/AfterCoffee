@@ -1,5 +1,6 @@
 <?php
 require_once '../auth/auth_check.php';
+require_once '../config/userset.php';
 
 foreach (glob("../plugins/*.php") as $plugin) {
     include $plugin;
@@ -22,7 +23,8 @@ function publishPage($text, $title)
     foreach (AC_PLUGINS as $class) {
         $plugin = new $class;
         if (method_exists($plugin, "onSave")) {
-			call_user_func($plugin->onSave());
+			$cb;
+			call_user_func($plugin->onSave(), $cb);
         }
     }
 
