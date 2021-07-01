@@ -64,7 +64,6 @@ class directoryList
                 $subname = substr($folder, 6);
                 $subname .= ($subname) ? "/" : "";
 				$subname .= $fileName;
-                print("{$subname}<br>");
                 if ($subname == $GLOBALS["page"]) {
                     $option .= "selected ";
                     $isVisible = true;
