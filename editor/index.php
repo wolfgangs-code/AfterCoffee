@@ -9,10 +9,12 @@ foreach (glob("../plugins/*.php") as $plugin) {
 }
 define("AC_PLUGINS", $pluginClasses);
 
-$editPage = $_GET["page"];
+$editPage = $_GET["page"] ?? null;
 $apath = "../pages/{$editPage}.md";
 if (file_exists($apath)) {
     $md = file_get_contents($apath);
+} else {
+	$md = null;
 }
 
 // If there is a page, set rows to the page's contents plus one. If not, 8.
@@ -28,8 +30,8 @@ function modNameBox($editPage) {
 
 /* The AfterCoffee Editor */
 
-$title = USERLANG["ac_editor"];
-$description = "AfterCoffee ".USERLANG["ac_editor"];
+$title = USERLANG["editor"]["editor"];
+$description = "AfterCoffee ".USERLANG["editor"]["editor"];
 
 ?>
 <!DOCTYPE HTML>
