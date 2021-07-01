@@ -11,8 +11,9 @@ define("AC_PLUGINS", $pluginClasses);
 function publishPage($text, $title)
 {
     $path = "../pages/" . $title;
-    if (strpos($title, "/") && !is_dir($path)) {
-        mkdir($path, 0777, true);
+    if (strpos($title, "/") && !is_dir(substr($path, 0, strrpos($path, "/")))) {
+		$npath = substr($path, 0, strrpos($path, "/"));
+        mkdir($npath, 0777, true);
     }
 
     $newPage = fopen($path . ".md", "w");
