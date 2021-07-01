@@ -61,7 +61,8 @@ class directoryList
                 $option .= "<option ";
 
                 # Select the listing for the current page
-                if ($fileName == $GLOBALS["page"]) {
+				$subname = substr($folder, 6) . "/{$fileName}";
+                if ($subname == $GLOBALS["page"]) {
                     $option .= "selected ";
                     $isVisible = true;
                 }
