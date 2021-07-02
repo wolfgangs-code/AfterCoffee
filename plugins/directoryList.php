@@ -64,7 +64,7 @@ class directoryList
                 $subname = substr($folder, );
                 $subname .= ($subname) ? "/" : "";
 				$subname .= $fileName;
-                if ($subname == $GLOBALS["page"]) {
+                if ($subname === substr($GLOBALS["page"], strrpos($GLOBALS["page"], '/' )+1)) {
                     $option .= "selected ";
                     $isVisible = true;
                 }
@@ -79,7 +79,7 @@ class directoryList
             }
 			($folder === $dir) ?: $option .= "\t</optgroup>\n\t\t";
         }
-        ($isVisible) ?: $option .= "<option selected>" . $GLOBALS["page"] . " " . USERLANG["ac_hidden"] . "</option>\n";
+        ($isVisible) ?: $option .= "\t\t<option selected>" . $GLOBALS["page"] . " " . USERLANG["ac_hidden"] . "</option>\n";
         return $option;
     }
     public function addInfo()
