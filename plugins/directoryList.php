@@ -61,7 +61,7 @@ class directoryList
                 $option .= "<option ";
 
                 # Select the listing for the current page
-                $subname = substr($folder, 6);
+                $subname = substr($folder, );
                 $subname .= ($subname) ? "/" : "";
 				$subname .= $fileName;
                 if ($subname == $GLOBALS["page"]) {
@@ -73,8 +73,8 @@ class directoryList
                 if ($folder === $dir) {
                     $option .= "value=\"?page={$fileName}\">{$title}</option>\n\t\t";
                 } else {
-                    $folder = substr($folder, strpos($folder, "/") + 1);
-                    $option .= "value=\"?page={$folder}/{$fileName}\">{$title}</option>\n\t\t";
+                    $nfolder = substr($folder, strpos($folder, "/") + 1);
+                    $option .= "value=\"?page={$nfolder}/{$fileName}\">{$title}</option>\n\t\t";
                     $option .= "\t</optgroup>{$n}";
                 }
             }
