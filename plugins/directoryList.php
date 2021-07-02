@@ -53,11 +53,11 @@ class directoryList
             // asort($content);
 
             # Subgroup subfolders 1/2
-            ($folder === $dir) ?: $option .= "\t<optgroup label=\"" . ucfirst(basename($folder)) . "\">{$n}";
+            ($folder === $dir) ?: $option .= "\t<optgroup label=\"" . ucfirst(basename($folder)) . "\">\n\t\t";
 
             # Listing constructor
             foreach ($content as $fileName => $title) {
-                $option .= $dir === "pages" ? "\t" : "\t\t";
+                $option .= $dir === "pages" ? "\t\t" : "\t\t";
                 $option .= "<option ";
 
                 # Select the listing for the current page
@@ -75,10 +75,9 @@ class directoryList
                 } else {
                     $nfolder = substr($folder, strpos($folder, "/") + 1);
                     $option .= "value=\"?page={$nfolder}/{$fileName}\">{$title}</option>\n\t\t";
-                    $option .= "\t</optgroup>{$n}";
                 }
             }
-
+			($folder === $dir) ?: $option .= "\t</optgroup>\n\t\t";
         }
         ($isVisible) ?: $option .= "<option selected>" . $GLOBALS["page"] . " " . USERLANG["ac_hidden"] . "</option>\n";
         return $option;
