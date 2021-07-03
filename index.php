@@ -31,7 +31,7 @@
 		<?php loadPlugin("addInfo"); ?>
 		<?=controlPanel($page);?>
 	</p>
-	<div id="body">
+	<div id="body" class="page">
 		<?=$html?>
 	</div>
 	<h4 class="banner left">

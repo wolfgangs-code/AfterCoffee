@@ -9,6 +9,28 @@ html {
 	}
 }
 
+/*===============
+	ANIMATION
+===============*/
+
+@keyframes blurIn {
+	from {filter: blur(0em);}
+	to {filter: blur(0.125em);}
+}
+
+@keyframes blurOut {
+	from {filter: blur(0.125em);}
+	to {filter: blur(0em);}
+}
+
+#body.page {
+	animation: blurOut 0.125s ease-out forwards;
+}
+
+#body.pageOut {
+	animation: blurIn 0.125s ease-in forwards;
+}
+
 /* Uses Windows Terminal-like theme naming */
 
 /* Default theme based on Gruvbox Light by morhetz/reynn */

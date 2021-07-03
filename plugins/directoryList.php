@@ -86,7 +86,7 @@ class directoryList
     public function addInfo()
     {
         $n = "\n\t\t";
-        $txt = "{$n}<select onchange=\"location = this.options[this.selectedIndex].value;\">{$n}";
+        $txt = "{$n}<select onchange=\"document.getElementById('body').className = ' pageOut'; location = this.options[this.selectedIndex].value;\">{$n}";
         $txt .= $this->getFiles();
         $txt .= "</select>\n";
         print($txt);
