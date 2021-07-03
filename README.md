@@ -17,6 +17,13 @@ Being flat-file, means it uses no database- guaranteeing portability if you need
   - Edit, create, and delete existing and new pages, using native HTML form editing for increased accessibility.
   - Works using Markdown, Markdown Extra, and placing HTML tags as you please.
   - Plugins can document and demonstrate their custom markdown in the editor
+- Translation and i18n
+  - Simple translation format, allowing any custom one to be made with ease
+  - **Default Languages:**
+  - English
+  - Japanese
+  - Russian
+  - Simplified Chinese
 - Small but Ready to Grow
   - AfterCoffee only comes with the bare essentials, allowing full control to how your build performs
   - Plugins can extend features to infinity and beyond
