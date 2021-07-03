@@ -10,3 +10,6 @@ plugins/*
 !plugins/customMarkdown.php
 !plugins/dateFormat.php
 !plugins/directoryList.php
+# No built files
+buildtmp
+AfterCoffee-*.zip
