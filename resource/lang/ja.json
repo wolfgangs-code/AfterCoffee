@@ -1,0 +1,39 @@
+{
+	"ac_settings": "設定",
+	"ac_page404": "エラー",
+	"ac_newPage": "新規作成",
+	"ac_madeWithAC": "アプリケーション",
+	"ac_hidden": "[プライバシー]",
+	"ac_editPage": "編集",
+	"ac_bSave": "保存",
+	"ac_bPublish": "保存",
+	"ac_lastEdited": "更新日",
+	"editor": {
+		"unlistedHint": "ページを非表示にするには：",
+		"mdPlugin": "プラグインからのカスタムルール:",
+		"mdGuide": "書式設定ガイド:",
+		"mdExtended": "高度な",
+		"mdBasic": "基本",
+		"filename": "名前:",
+		"editor": "コンパイラ"
+	},
+	"auth": {
+		"wrongPass": "パスワードが一致しません",
+		"setPass": "パスワード 登録 ",
+		"required": "ログイン",
+		"pass": "パスワード",
+		"enterPass": "パスワード"
+	},
+	"cfg": {
+		"themeColor": "テーマカラー",
+		"stylesheet": "CSS",
+		"siteName": "ウェブサイト",
+		"lang": "言語",
+		"indexPage": "ブックマーク",
+		"errorPath": "HTTP エラー フォルダ ",
+		"devCredits": "<i>名誉 AfterCoffee</i>",
+		"dateFormat": "年(4桁)-月(2桁)-日(2桁)",
+		"copyright": "著作権",
+		"author": "著者"
+	}
+}
