@@ -1,0 +1,39 @@
+{
+	"ac_settings": "控制中心",
+	"ac_page404": "오류",
+	"ac_newPage": "创建",
+	"ac_madeWithAC": "应用程序",
+	"ac_hidden": "[隐私]",
+	"ac_editPage": "编辑",
+	"ac_bSave": "存储",
+	"ac_bPublish": "发布",
+	"ac_lastEdited": "日期:",
+	"editor": {
+		"unlistedHint": "隐藏页面:",
+		"mdPlugin": "来自软件的新规则:",
+		"mdGuide": "指南:",
+		"mdExtended": "先进",
+		"mdBasic": "根本",
+		"filename": "姓名:",
+		"editor": "编辑工具"
+	},
+	"auth": {
+		"wrongPass": "密码不符",
+		"setPass": "注册",
+		"required": "登录",
+		"pass": "密码",
+		"enterPass": "密码"
+	},
+	"cfg": {
+		"themeColor": "主题色",
+		"stylesheet": "CSS3 样式表",
+		"siteName": "称号",
+		"lang": "语",
+		"indexPage": "书签",
+		"errorPath": "HTTP 错误目录",
+		"devCredits": "<i>感谢 AfterCoffee</i>",
+		"dateFormat": "年-月-日",
+		"copyright": "版权",
+		"author": "作者"
+	}
+}
