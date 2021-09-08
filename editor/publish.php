@@ -42,7 +42,11 @@ function publishPage($text, $title)
 
 if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
     // Logged in, ready to go.
-    publishPage($_POST['textbox'], $_POST['pageName']);
+    publishPage(
+		$_SESSION["postData"]["text"]	??	$_POST["textbox"],
+		$_SESSION["postData"]["title"]	??	$_POST["pageName"]
+	);
+	unset($_SESSION["postData"]);
 
 } else {
     // You aren't logged in, but are trying to publish...
