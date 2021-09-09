@@ -4,7 +4,7 @@
 #=====================================================================#
 class dateFormat
 {
-    const version = '1.0';
+    const version = '6.0';
     public function changeText($html)
     {
         $form = USERSET["dateFormat"] ?? "F jS, Y";
