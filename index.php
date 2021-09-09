@@ -1,4 +1,4 @@
-<?php require_once "beans.php";?>
+<?php require_once __DIR__."/src/CoffeeBeans.php";?>
 
 <!DOCTYPE HTML>
 <html lang="<?=USERSET["lang"]?>">
