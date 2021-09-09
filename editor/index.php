@@ -1,13 +1,11 @@
 <?php
 require_once '../auth/auth_check.php';
+require_once "../src/PluginManager.php";
 require_once '../config/userset.php';
 require_once '../config/lang.php';
 
-foreach (glob("../plugins/*.php") as $plugin) {
-    include $plugin;
-    $pluginClasses[] = basename($plugin, ".php");
-}
-define("AC_PLUGINS", $pluginClasses);
+$plugins = new PluginManager;
+$plugins->init();
 
 $editPage = $_GET["page"] ?? null;
 $apath = "../pages/{$editPage}.md";
@@ -56,15 +54,7 @@ $description = "AfterCoffee ".USERLANG["editor"]["editor"];
 			<p><?=USERLANG["editor"]["unlistedHint"]?> <code>&lt;!-- NOINDEX --&gt;</code></p>
 			<h3><?=USERLANG["editor"]["mdPlugin"]?></h3>
 			<ul>
-			<?php
-				# TODO: Make firing plugin functions cleaner
-				foreach (AC_PLUGINS as $class) {
-    				$plugin = new $class;
-    				if (method_exists($plugin, "editorGuide")) {
-        				echo "<li>{$plugin->editorGuide()}</li>";
-    				}
-				}
-			?>
+				<?php $plugins->load("editorGuide");?>
 			</ul>
 		</div>
         <form method="POST" action="publish.php">

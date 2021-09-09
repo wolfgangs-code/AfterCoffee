@@ -1,26 +1,13 @@
 <?php
 require_once '../auth/auth_check.php';
+require_once "../src/PluginManager.php";
 require_once 'userset.php';
 require_once 'lang.php';
 
+$plugins = new PluginManager;
+$plugins->init();
 
-foreach (glob("../plugins/*.php") as $plugin) {
-    include $plugin;
-    $pluginClasses[] = basename($plugin, ".php");
-}
-define("AC_PLUGINS", $pluginClasses);
-
-$pluginSettings = [];
-foreach (AC_PLUGINS as $class) {
-	$plugin = new $class;
-	if (method_exists($plugin, "addSetting")) {
-		foreach($plugin->addSetting() as $s) {
-			$pluginSettings[get_class($plugin)][$s] = "";
-		}
-	}
-}
-
-define("POTSET", array_merge($pluginSettings, USERSET));
+define("POTSET", array_merge($plugins->settings(), USERSET));
 
 $title = USERLANG["ac_settings"];
 $description = "AfterCoffee ".USERLANG["ac_settings"];

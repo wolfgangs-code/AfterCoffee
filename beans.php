@@ -1,6 +1,7 @@
 <?php
 session_name("AfterCoffeeID");
 session_start();
+require_once "./src/PluginManager.php";
 require './lib/Parsedown.php';
 require './lib/ParsedownExtra.php';
 $Parsedown = new Parsedown();
@@ -22,11 +23,8 @@ function getURL($page)
 }
 
 # Load all plugins and defines them into an array
-foreach (glob("./plugins/*.php") as $plugin) {
-    include $plugin;
-    $pluginClasses[] = basename($plugin, ".php");
-}
-define("AC_PLUGINS", $pluginClasses);
+$plugins = new PluginManager;
+$plugins->init();
 
 $apath = "./pages/{$page}.md";
 
@@ -49,6 +47,7 @@ if (file_exists($apath)) {
             $html = $plugin->changeText($html);
         }
     }
+	$plugins->load("changeText", $html);
     # Uses regex to find the first image in the page,
     # And uses that as the Open Graph thumbnail
     if (preg_match('/!\[.*\]\((.*)\)/i', $md, $match)) {
@@ -79,17 +78,6 @@ define("PAGETAGS", pageTags($md));
 function indexOption($tags)
 {
     return (in_array("NOINDEX", $tags)) ? "noindex" : "index";
-}
-
-function loadPlugin($act)
-{
-    global $html; # bad practice
-    foreach (AC_PLUGINS as $class) {
-        $plugin = new $class;
-        if (method_exists($plugin, $act)) {
-            call_user_func([$plugin, $act], $html);
-        }
-    }
 }
 
 function controlPanel($page)

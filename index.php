@@ -1,4 +1,5 @@
-<?php require_once "beans.php"; ?>
+<?php require_once "beans.php";?>
+
 <!DOCTYPE HTML>
 <html lang="<?=USERSET["lang"]?>">
 <head>
@@ -20,7 +21,7 @@
 	<link rel="stylesheet" href="./resource/css/<?=USERSET["stylesheet"]?>">
 	<meta name="robots" 			content="<?=indexOption(PAGETAGS)?>">
 	<meta name="viewport" 			content="width=device-width, initial-scale=1">
-	<?php loadPlugin("addHead"); ?>
+	<?php $plugins->load("addHead") ?>
 </head>
 <body>
 	<h3 class="banner right">
@@ -28,7 +29,7 @@
 	</h3>
 	<p class="info">
 		<span class="date"><?php echo editButton($page) . USERLANG["ac_lastEdited"] ." {$date}</span>"; ?>
-		<?php loadPlugin("addInfo"); ?>
+		<?php $plugins->load("addInfo") ?>
 		<?=controlPanel($page);?>
 	</p>
 	<div id="body" class="page">
@@ -42,6 +43,6 @@
 			}
 		?>
 	</h4>
-	<?php loadPlugin("addFooter"); ?>
+	<?php $plugins->load("addFooter") ?>
 </body>
 </html>
