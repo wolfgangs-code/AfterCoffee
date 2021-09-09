@@ -9,7 +9,10 @@ class dateFormat
     {
         $form = USERSET["dateFormat"] ?? "F jS, Y";
         $html = preg_replace_callback(
-            "(\d{4}(-\d{2}){2})",
+			// Accounts for shortened ISO dates (2021-09-09),
+			// But also accepts full-length ISO 8601 and RFC 3339/ATOM formats as well.
+			// Apologies for the nightmare.
+            "(\d{4}(-\d+)+(T(\d+:)+\d+\+(\d+:*\d+))*)",
             function ($m) use ($form) {
                 return date($form, strtotime($m[0]));
             },
