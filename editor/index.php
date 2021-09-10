@@ -1,9 +1,9 @@
 <?php
-require_once '../auth/auth_check.php';
-require_once "../src/PluginManager.php";
-require_once "../src/MetaTagger.php";
-require_once '../config/userset.php';
-require_once '../config/lang.php';
+require_once __DIR__."/../auth/auth_check.php";
+require_once __DIR__."/../src/PluginManager.php";
+require_once __DIR__."/../src/MetaTagger.php";
+require_once __DIR__."/../config/userset.php";
+require_once __DIR__."/../config/lang.php";
 
 $plugins = new PluginManager;
 $plugins->init();

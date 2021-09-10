@@ -19,7 +19,7 @@ class PluginManager
             if (method_exists($plugin, $act)) {
                 switch ($act) {
                     case "editorGuide":
-                        echo "<li>{$plugin->editorGuiude()}</li>";
+                        echo "<li>{$plugin->editorGuide()}</li>";
                         break;
                     case "addSetting":
 						foreach($plugin->addSetting() as $set) {
