@@ -1,27 +1,23 @@
 <?php require_once __DIR__."/src/CoffeeBeans.php";?>
+<?php require_once __DIR__."/src/MetaTagger.php";?>
 
 <!DOCTYPE HTML>
 <html lang="<?=USERSET["lang"]?>">
 <head>
-	<meta charset="utf-8">
-	<meta property="og:type"        content="website">
-	<meta property="og:url"         content="<?=getURL($page)?>">
-	<title><?="{$title} - " . USERSET["siteName"]?></title>
-	<meta property="og:site_name"   content="<?=USERSET["siteName"]?>" />
-	<meta name="theme-color"        content="<?=USERSET["themeColor"]?>">
-	<meta name="author"             content="<?=USERSET["author"]?>">
-	<meta name="generator" 			content="AfterCoffee">
-	<meta property="og:title"       content="<?=$title?>" />
-	<meta name="description"        content="<?=$description?>">
-	<meta property="og:description" content="<?=$description?>" />
-	<meta name="twitter:card" 		content="summary_large_image" />
-	<?php if (defined('metaImg')) {echo "<meta property=\"og:image\" content=\"{$image}\">";}?>
-	<meta property="article:author" content="<?=USERSET["author"]?>" />
-	<meta property="article:published_time" content="<?=$date?>">
-	<link rel="stylesheet" href="./resource/css/<?=USERSET["stylesheet"]?>">
-	<meta name="robots" 			content="<?=indexOption(PAGETAGS)?>">
-	<meta name="viewport" 			content="width=device-width, initial-scale=1">
 	<?php $plugins->load("addHead") ?>
+	<?php if (defined('metaImg')) {echo "<meta property=\"og:image\" content=\"{$image}\">";}?>
+	<link rel="stylesheet" href="./resource/css/<?=USERSET["stylesheet"]?>">
+	<meta charset="utf-8">
+	<?php
+		$meta = new MetaTagger($title, $description, USERSET["author"]);
+		$meta->changeSetting("name",	"robots",						indexOption(PAGETAGS));
+		$meta->changeSetting("name",	"theme-color",					USERSET["themeColor"]);
+		$meta->changeSetting("property","og:article:published_time",	$date);
+		$meta->changeSetting("property","og:site_name",USERSET["siteName"]);
+		$meta->changeSetting("property","og:url",						getURL($page));
+		$meta->render(1);
+	?>
+	<title><?="{$title} - " . USERSET["siteName"]?></title>
 </head>
 <body>
 	<h3 class="banner right">
