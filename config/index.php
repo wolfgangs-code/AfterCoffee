@@ -1,6 +1,7 @@
 <?php
 require_once '../auth/auth_check.php';
 require_once "../src/PluginManager.php";
+require_once "../src/MetaTagger.php";
 require_once 'userset.php';
 require_once 'lang.php';
 
@@ -61,14 +62,14 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 <html lang="<?=USERSET["lang"]?>">
 <head>
 	<meta charset="utf-8">
-	<meta property="og:type"        content="website">
 	<title><?=USERSET["siteName"] . " " . $title?></title>
-	<meta property="og:site_name"   content="<?=USERSET["siteName"]?>" />
-	<meta name="theme-color"        content="<?=USERSET["themeColor"]?>">
-	<meta name="generator" 			content="AfterCoffee">
-	<meta property="og:title"       content="<?=$title?>" />
 	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["stylesheet"]?>">
-	<meta name="viewport" 			content="width=device-width, initial-scale=1">
+	<?php
+		$meta = new MetaTagger($title, $description, USERSET["author"]);
+		$meta->changeSetting("name",	"theme-color",	USERSET["themeColor"]);
+		$meta->changeSetting("property","og:site_name",	USERSET["siteName"]);
+		$meta->render(1);
+	?>
 </head>
 <body>
 	<h3 class="banner right">
