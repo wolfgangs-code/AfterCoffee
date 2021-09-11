@@ -177,6 +177,7 @@ select {
 	padding: 0.25em;
 	color: var(--bg);
 	background-color: var(--cursorColor);
+	margin-bottom: 0.125rem;
 }
 
 .left {
