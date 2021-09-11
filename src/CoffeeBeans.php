@@ -83,18 +83,13 @@ function indexOption($tags)
 function controlPanel($page)
 {
     if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
+		$buttomForm	= "<a class=\"button\" href=\"./";
+		$end		= "</a>";
         // Only show edit button if logged into the Editor.
-        return "<a class=\"button\" href=\"./editor\">" . USERLANG["ac_newPage"] . "</a> <a class=\"button\" href=\"./config\">" . USERLANG["ac_settings"] . "</a>";
-    } else {
-        return null;
-    }
-}
-
-function editButton($page)
-{
-    if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
-        // Only show edit button if logged into the Editor.
-        return "<a class=\"button\" href=\"./editor/?page={$page}\">" . USERLANG["ac_editPage"] . "</a> ";
+		$editPage	= $buttomForm."editor/?page={$page}\">" . USERLANG["ac_editPage"]	. $end;
+		$newPage	= $buttomForm."editor\">"				. USERLANG["ac_newPage"]	. $end;
+		$settings	= $buttomForm."config\">"				. USERLANG["ac_settings"]	. $end;
+		return $editPage.$newPage.$settings;
     } else {
         return null;
     }

@@ -227,15 +227,17 @@ input {
 }
 
 input[type="submit"], a.button {
-	padding: 0.25rem;
 	background: linear-gradient(-45deg, var(--background), var(--selectionBackground));
-	outline: none;
-	border: none;
 	border-radius: var(--borderDist);
+	border: none;
 	color: var(--white);
 	font-family: sans-serif;
 	font-weight: bold;
+	margin: 0.125rem;
+	outline: none;
+	padding: 0.25rem;
 	text-decoration: none;
+	white-space: nowrap;
 }
 
 textarea {
