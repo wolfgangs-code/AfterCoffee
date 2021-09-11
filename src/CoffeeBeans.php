@@ -89,7 +89,7 @@ function controlPanel($page)
 		$editPage	= $buttomForm."editor/?page={$page}\">" . USERLANG["ac_editPage"]	. $end;
 		$newPage	= $buttomForm."editor\">"				. USERLANG["ac_newPage"]	. $end;
 		$settings	= $buttomForm."config\">"				. USERLANG["ac_settings"]	. $end;
-		return $editPage.$newPage.$settings;
+		return "<div id=\"controlPanel\">".$editPage.$newPage.$settings."</div>";
     } else {
         return null;
     }

@@ -26,7 +26,7 @@
 	<div class="info">
 		<div class="infoBlock"><?php echo USERLANG["ac_lastEdited"] ." {$date}"; ?></div>
 		<div><?php $plugins->load("addInfo") ?></div>
-		<div id="controlPanel"><?=controlPanel($page);?></div>
+		<?=controlPanel($page);?>
 	</div>
 	<div id="body" class="page">
 		<?=$html?>
