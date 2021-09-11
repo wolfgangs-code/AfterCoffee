@@ -83,7 +83,7 @@ function indexOption($tags)
 function controlPanel($page)
 {
     if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
-		$buttomForm	= "<a class=\"button\" href=\"./";
+		$buttomForm	= "<a class=\"infoBlock button\" href=\"./";
 		$end		= "</a>";
         // Only show edit button if logged into the Editor.
 		$editPage	= $buttomForm."editor/?page={$page}\">" . USERLANG["ac_editPage"]	. $end;

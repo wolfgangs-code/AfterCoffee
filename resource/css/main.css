@@ -141,9 +141,16 @@ code {
 ==============*/
 
 .info {
+	align-items: center;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	text-align: left;
+}
+
+.info div {
+	text-align: center;
+	max-width: 100%;
 }
 
 select {
@@ -156,8 +163,9 @@ select {
 	padding: 0.25rem;
 }
 
-span.date {
-	margin-right: 1em
+#controlPanel {
+	display: flex;
+	max-width: 100%;
 }
 
 /*======================
@@ -229,17 +237,20 @@ input {
 	border-radius: var(--borderHalf);
 }
 
-input[type="submit"], a.button {
+.infoBlock, input[type="submit"] {
 	background: linear-gradient(-45deg, var(--background), var(--selectionBackground));
 	border-radius: var(--borderDist);
 	border: none;
 	color: var(--white);
 	font-family: sans-serif;
-	font-weight: bold;
-	margin: 0.125rem;
 	outline: none;
 	padding: 0.25rem;
 	text-decoration: none;
+	margin: 0.125rem;
+}
+
+input[type="submit"], a.button {
+	font-weight: bold;
 	white-space: nowrap;
 }
 
@@ -247,6 +258,7 @@ textarea {
 	border-bottom-left-radius: 0;
 	color: var(--white);
 	filter: grayscale(1);
+	max-width: 800px;
 }
 
 form {
