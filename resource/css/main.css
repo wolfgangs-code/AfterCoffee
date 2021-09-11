@@ -130,6 +130,7 @@ mark, span.mark {
 }
 
 code {
+	font-family: monospace;
 	background-color: var(--selectionBackground);
 	padding: 0.2rem;
 	border-radius: var(--borderHalf);
