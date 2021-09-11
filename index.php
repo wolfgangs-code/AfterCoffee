@@ -23,11 +23,11 @@
 	<h3 class="banner right">
 		<a href="<?="/".basename(__DIR__)?>"><?=USERSET["siteName"]?></a>
 	</h3>
-	<p class="info">
+	<div class="info">
 		<span class="date"><?php echo USERLANG["ac_lastEdited"] ." {$date}</span>"; ?>
 		<?php $plugins->load("addInfo") ?>
-		<?=controlPanel($page);?>
-	</p>
+		<div id="controlPanel"><?=controlPanel($page);?></div>
+	</div>
 	<div id="body" class="page">
 		<?=$html?>
 	</div>

@@ -140,16 +140,19 @@ code {
 	INFO BAR
 ==============*/
 
-p.info {
+.info {
+	display: flex;
+	justify-content: space-between;
 	text-align: left;
 }
 
 select {
-	color: var(--foreground);
 	background-color: var(--selectionBackground);
-	/* appearance: none; */
-	border: none;
 	border-radius: var(--borderDist);
+	border: none;
+	color: var(--foreground);
+	max-width: 12rem;
+	max-height: 2rem;
 	padding: 0.25rem;
 }
 
