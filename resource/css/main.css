@@ -140,6 +140,10 @@ code {
 	INFO BAR
 ==============*/
 
+p.info {
+	text-align: left;
+}
+
 select {
 	color: var(--foreground);
 	background-color: var(--selectionBackground);
