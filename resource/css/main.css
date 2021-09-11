@@ -50,6 +50,11 @@
 	--BorderDistNeg: calc(var(--borderDist) * -1);
 }
 
+::selection {
+	color: var(--background);
+	background: var(--foreground);
+}
+
 /*==================
 	PAGE DISPLAY
 ==================*/
@@ -117,7 +122,7 @@ img.art {
 
 mark, span.mark {
 	margin: 0 -0.2em;
-	padding: 0.1em 0.2em;
+	padding: 0.25rem 0.3em;
 	border-radius: 0.6em 0.3em;
 	background: transparent;
 	background-image: linear-gradient( to right, var(--background), var(--selectionBackground) 4%, var(--background));
@@ -126,7 +131,7 @@ mark, span.mark {
 
 code {
 	background-color: var(--selectionBackground);
-	padding: 0.125em;
+	padding: 0.2rem;
 	border-radius: var(--borderHalf);
 }
 
@@ -139,7 +144,8 @@ select {
 	background-color: var(--selectionBackground);
 	/* appearance: none; */
 	border: none;
-	padding: 0.25em;
+	border-radius: var(--borderDist);
+	padding: 0.25rem;
 }
 
 span.date {
@@ -216,7 +222,7 @@ input {
 }
 
 input[type="submit"], a.button {
-	padding: 0.25em;
+	padding: 0.25rem;
 	background: linear-gradient(-45deg, var(--background), var(--selectionBackground));
 	outline: none;
 	border: none;
@@ -225,7 +231,6 @@ input[type="submit"], a.button {
 	font-family: sans-serif;
 	font-weight: bold;
 	text-decoration: none;
-	box-shadow: var(--borderHalf) var(--borderHalf) var(--borderHalf) var(--selectionBackground);
 }
 
 textarea {
