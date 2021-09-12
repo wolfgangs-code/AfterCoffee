@@ -2,12 +2,13 @@
 
 # AfterCoffee
 ![MIT License](https://img.shields.io/github/license/wolfgang-degroot/AfterCoffee) ![Code Size](https://img.shields.io/github/languages/code-size/wolfgang-degroot/AfterCoffee) ![Release Version](https://img.shields.io/github/v/release/wolfgang-degroot/AfterCoffee)
-## A fast, low-power, scriptless flat-file CMS ☕
-It needs no installation and is self-contained- Letting you put as many installations you want in as many different folders as you need.
+## A fast, low-power, scriptless blogging/notetaking CMS ☕
+It needs no formal installation and is self-contained- Letting you place as many installations you want in as many different folders as you need.
 
-It has a pleasantly low footprint in both size and bandwidth, making hosting on slow networks easy. *A page without images will use just about **10 KB** of bandwidth.*
-Being flat-file, means it uses no database- guaranteeing portability if you need to move your build around.
+It has a pleasantly low footprint in both size and bandwidth, making hosting on slow networks easy. *A page without images will use just about **3.5 KB** of bandwidth.¹*
+AfterCoffee stores everything locally and uses no database- guaranteeing portability if you need to move your build around.
 
+###### 1: Using default plugins and a 1000 word *Lorem ipsum*
 ### Features
 
 - Drag-and-Drop Installation
@@ -30,7 +31,7 @@ Being flat-file, means it uses no database- guaranteeing portability if you need
 - SEO Ready
   - Full, automatically generated meta tags
   - [Open Graph](https://ogp.me/) ready
-  - Includes image thumbail support
+  - Includes image thumbnail support
 - Page Indexing
   - Shrinks disk I/O
   - Simple JSON structure
@@ -62,5 +63,4 @@ If not, Parsedown cannot run, and AfterCoffee cannot run at all. Enable it.
 
 If you cannot save new pages, create folders, or change settings- Recursively allow all folders to have the write permission, or `0777`.
 
-#### Credits
-*Coffee Bag model by Zdenko Roman*
+###### *Coffee Bag model by Zdenko Roman*
