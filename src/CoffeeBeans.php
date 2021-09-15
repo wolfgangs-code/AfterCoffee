@@ -1,6 +1,5 @@
 <?php
-session_name("AfterCoffeeID");
-session_start();
+require_once "./src/Auth.php";
 require_once "./src/PluginManager.php";
 require './lib/Parsedown.php';
 require './lib/ParsedownExtra.php';

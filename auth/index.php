@@ -1,7 +1,5 @@
 <?php
-session_name("AfterCoffeeID");
-session_start();
-
+require_once "../src/Auth.php";
 require_once '../config/userset.php';
 require_once '../config/lang.php';
 require_once "../src/MetaTagger.php";
@@ -27,11 +25,11 @@ if (!include ('auth_code.php')) { // If there is no password file (sorry),
     $msg = USERLANG["auth"]["wrongPass"];
 }
 
-if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
-    // Already authorized.
+if ($Auth->isAuthed()) {
     header("Location: ".$rt); // Return to the editor
     exit;
 }
+
 
 if (isset($pw) && password_verify($pw, $auth)) { // Password is correct.
     $_SESSION['authorized'] = 1;

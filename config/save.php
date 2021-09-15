@@ -1,5 +1,6 @@
 <?php
-require_once '../auth/auth_check.php';
+require_once "../src/Auth.php";
+$Auth->demandAuth();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 	header("Location: ./");

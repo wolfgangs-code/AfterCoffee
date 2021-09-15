@@ -1,9 +1,11 @@
 <?php
-require_once '../auth/auth_check.php';
+require_once "../src/Auth.php";
 require_once "../src/PluginManager.php";
 require_once "../src/MetaTagger.php";
 require_once 'userset.php';
 require_once 'lang.php';
+
+$Auth->demandAuth();
 
 $plugins = new PluginManager;
 $plugins->init();

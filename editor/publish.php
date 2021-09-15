@@ -1,5 +1,7 @@
 <?php
-require_once '../auth/auth_check.php';
+require_once "../src/Auth.php";
+$Auth->demandAuth();
+
 require_once '../config/userset.php';
 
 foreach (glob("../plugins/*.php") as $plugin) {
