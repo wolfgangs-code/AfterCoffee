@@ -1,14 +1,11 @@
 <?php
 require_once "../src/Auth.php";
+require_once "../src/PluginManager.php";
 $Auth->demandAuth();
 
-require_once '../config/userset.php';
-
-foreach (glob("../plugins/*.php") as $plugin) {
-    include $plugin;
-    $pluginClasses[] = basename($plugin, ".php");
-}
-define("AC_PLUGINS", $pluginClasses);
+# Load all plugins and defines them into an array
+$Plugins = new PluginManager;
+$Plugins->init();
 
 function sanitize($input)
 {
@@ -23,7 +20,7 @@ function sanitize($input)
 	}
 }
 
-function publishPage($text, $title)
+function publishPage($text, $title, $Plugins)
 {
 	$title = sanitize($title);
     $path = "../pages/" . $title;
@@ -36,13 +33,7 @@ function publishPage($text, $title)
     fwrite($newPage, $text);
     fclose($newPage);
 
-    # TODO: Make firing plugin functions cleaner
-    foreach (AC_PLUGINS as $class) {
-        $plugin = new $class;
-        if (method_exists($plugin, "onSave")) {
-			$plugin->onSave();
-        }
-    }
+	$Plugins->load("onSave");
 
     # If the page is empty, delete it.
     if (empty($text)) {
@@ -60,7 +51,8 @@ if ($Auth->isAuthed()) {
     // Logged in, ready to go.
     publishPage(
 		$_SESSION["postData"]["text"]	??	$_POST["textbox"],
-		$_SESSION["postData"]["title"]	??	$_POST["pageName"]
+		$_SESSION["postData"]["title"]	??	$_POST["pageName"],
+		$Plugins
 	);
 	unset($_SESSION["postData"]);
 }
