@@ -225,7 +225,6 @@ label {
 }
 
 .bubble, textarea {
-	display: table;
 	margin-top: 0.5em;
 	margin-bottom: 0;
 	border-radius: var(--borderDist);

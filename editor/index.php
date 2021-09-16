@@ -18,8 +18,8 @@ if (file_exists($apath)) {
 	$md = null;
 }
 
-// If there is a page, set rows to the page's contents plus one. If not, 8.
-$lineCount = isset($editPage) ? substr_count( $md, "\n" ) + 1 : 8;
+// If there is a page, set rows to the page's contents plus two. If not, 24.
+$lineCount = (substr_count($md, "\n") > 24) ? substr_count( $md, "\n" ) + 2: 24;
 
 function modNameBox($editPage) {
 	return (isset($editPage)) ? " value=\"{$editPage}\" readonly" : null;
@@ -61,7 +61,7 @@ $description = "AfterCoffee ".USERLANG["editor"]["editor"];
 			</ul>
 		</div>
         <form method="POST" action="publish.php">
-            <textarea id="textbox" name="textbox" rows="<?=$lineCount?>" cols="80"><?=$md?></textarea>
+            <textarea id="textbox" name="textbox" rows="<?=$lineCount?>" cols="120"><?=$md?></textarea>
 			<div class="editorPub">
 				<span class="date"><?=USERLANG["editor"]["filename"]?></span>
             	<input type="text" name="pageName"<?php echo modNameBox($editPage); ?>>
