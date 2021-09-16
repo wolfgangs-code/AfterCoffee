@@ -12,6 +12,7 @@ define("AC_PLUGINS", $pluginClasses);
 
 function publishPage($text, $title)
 {
+	$title = ($title[0] == "/") ? ltrim($title, "/") : $title;
     $path = "../pages/" . $title;
     if (strpos($title, "/") && !is_dir(substr($path, 0, strrpos($path, "/")))) {
 		$npath = substr($path, 0, strrpos($path, "/"));
