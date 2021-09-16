@@ -55,7 +55,7 @@ AfterCoffee stores everything locally and uses no database- guaranteeing portabi
 To tune colors in the default CSS, a Windows Terminal-like structure is used.
 To quickly turn [Windows Terminal theme](https://windowsterminalthemes.dev) JSON into valid CSS, use this Regex Replace-with:
 
-Replace `"  "([a-z]*)": "(#\w*)",?"` with `"--$1: $2;"`
+Replace `"([a-z]*)": "(#\w*)",?` with `"--$1: $2;"`
 
 #### Potential Issues
 If your installation only outputs a blank page, check if `mb_strlen()` is enabled.
