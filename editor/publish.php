@@ -43,16 +43,11 @@ function publishPage($text, $title)
     } else {header("Location: ../?page=" . $title);}
 }
 
-if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
+if ($Auth->isAuthed()) {
     // Logged in, ready to go.
     publishPage(
 		$_SESSION["postData"]["text"]	??	$_POST["textbox"],
 		$_SESSION["postData"]["title"]	??	$_POST["pageName"]
 	);
 	unset($_SESSION["postData"]);
-
-} else {
-    // You aren't logged in, but are trying to publish...
-    header('Location: ../'); // Boot back to the pages
-    exit;
 }
