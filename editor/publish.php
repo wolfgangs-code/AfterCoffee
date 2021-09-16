@@ -1,6 +1,7 @@
 <?php
 require_once "../src/Auth.php";
 require_once "../src/PluginManager.php";
+require_once __DIR__."/../config/userset.php";
 $Auth->demandAuth();
 
 # Load all plugins and defines them into an array
