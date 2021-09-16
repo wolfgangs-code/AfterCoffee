@@ -10,9 +10,22 @@ foreach (glob("../plugins/*.php") as $plugin) {
 }
 define("AC_PLUGINS", $pluginClasses);
 
+function sanitize($input)
+{
+	$trimmedSlash = trim($input, "/");
+	$extraSlashPos = strpos($trimmedSlash, "/");
+	if ($extraSlashPos !== false) {
+		$preString = substr($trimmedSlash, 0, ++$extraSlashPos);
+		$postString = str_replace("/", "-", substr($trimmedSlash, $extraSlashPos));
+		return $preString.$postString;
+	} else {
+		return $trimmedSlash;
+	}
+}
+
 function publishPage($text, $title)
 {
-	$title = trim($title, "/");
+	$title = sanitize($title);
     $path = "../pages/" . $title;
     if (strpos($title, "/") && !is_dir(substr($path, 0, strrpos($path, "/")))) {
 		$npath = substr($path, 0, strrpos($path, "/"));
