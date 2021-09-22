@@ -48,7 +48,9 @@ public function addInfo() {
 
 ### addSetting
 
-**addSetting** allows your plugins to define their configuration through the Settings page. AfterCoffee handles managing and saving them from there. - ⚠ Be sure to use a _null coalescing operator_[^nco] when parsing settings to account for unset values!
+**addSetting** allows your plugins to define their configuration through the Settings page. AfterCoffee handles managing and saving them from there.
+
+* ⚠ Be sure to use a _null coalescing operator_[^nco] when parsing settings to account for unset values!
 
 [^nco]: \*e.g., `$form = USERSET["dateFormat"] ?? "F jS, Y";` sets `$form` to `F jS, Y` if the `dateFormat` setting is unset or does not exist.
 
