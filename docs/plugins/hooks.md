@@ -1,6 +1,8 @@
 # Plugin Hooks
 **Plugin Hooks** are a vital part of AfterCoffee's plugin system, giving them most, if not all of the functionality plugins need. Hooks are used as to organize and specialize what each plugin is capable of, so they may easily perform a variety of actions. They are meant to allow as much flexibility as possible.
 
+----
+
 ### addFooter
 **addFooter** is called after the main text is called, below the page right before the end of the `</body>` tag.
 This is primarily used to insert JavaScript to have it load after the body.
@@ -12,6 +14,8 @@ public function addFooter($html) {
 	!$hasTweet ?: print("<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>");
 }
 ```
+
+----
 
 ### addHead
 **addHead** is called at the top of the `<head>` tag, before any other tag is set.
@@ -32,6 +36,8 @@ public function addHead() {
 }
 ```
 
+----
+
 ### addInfo
 **addInfo** is called within the Info bar within the page, between the _Date Modified_ block and the _Control Panel_ block (if logged in).
 This is primarily used to add in-page controls, statuses, or to display relevant metadata.
@@ -46,13 +52,15 @@ public function addInfo() {
 }
 ```
 
+----
+
 ### addSetting
 
 **addSetting** allows your plugins to define their configuration through the Settings page. AfterCoffee handles managing and saving them from there.
 
 * ⚠ Be sure to use a _null coalescing operator_[^nco] when parsing settings to account for unset values!
 
-[^nco]: \*e.g., `$form = USERSET["dateFormat"] ?? "F jS, Y";` sets `$form` to `F jS, Y` if the `dateFormat` setting is unset or does not exist.
+[^nco]: *e.g.,* `$form = USERSET["dateFormat"] ?? "F jS, Y";` sets `$form` to `F jS, Y` if the `dateFormat` setting is unset or does not exist.
 
 ##### Example (googleAnalytics)
 ```php
@@ -61,6 +69,8 @@ public function addSetting() {
 	return $settings;
 }
 ```
+
+----
 
 ### changeText
 **changeText** modifies **the HTML** compiled by ParsedownExtra from the Markdown file source. You must return your changed HTML.
@@ -88,6 +98,8 @@ public function changeText($html) {
 }
 ```
 
+----
+
 ### editorGuide
 **editorGuide** allows you to give hints in the Editor as to how to use your plugins. editorGuide is called within a `<ul>` tag, with each plugin being automatically placed within its own `<li>` tag.
 
@@ -98,6 +110,8 @@ public function editorGuide() {
 	return $guide;
 }
 ```
+
+----
 
 ### onSave
 **onSave** runs whenever the Editor publishes or saves a page file.

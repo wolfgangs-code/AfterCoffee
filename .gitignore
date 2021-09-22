@@ -13,3 +13,4 @@ plugins/*
 # No built files
 buildtmp
 AfterCoffee-*.zip
+*.backup
