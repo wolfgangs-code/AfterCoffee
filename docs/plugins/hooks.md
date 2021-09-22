@@ -1,4 +1,5 @@
 # Plugin Hooks
+**Plugin Hooks** are a vital part of AfterCoffee's plugin system, giving them most, if not all of the functionality plugins need. Hooks are used as to organize and specialize what each plugin is capable of, so they may easily perform a variety of actions. They are meant to allow as much flexibility as possible.
 
 ### addFooter
 **addFooter** is called after the main text is called, below the page right before the end of the `</body>` tag.
