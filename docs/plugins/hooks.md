@@ -47,7 +47,9 @@ public function addInfo() {
 ```
 
 ### addSetting
+
 **addSetting** allows your plugins to define their configuration through the Settings page. AfterCoffee handles managing and saving them from there. - ⚠ Be sure to use a _null coalescing operator_[^nco] when parsing settings to account for unset values!
+
 [^nco]: \*e.g., `$form = USERSET["dateFormat"] ?? "F jS, Y";` sets `$form` to `F jS, Y` if the `dateFormat` setting is unset or does not exist.
 
 ##### Example (googleAnalytics)
@@ -59,7 +61,11 @@ public function addSetting() {
 ```
 
 ### changeText
-**changeText** modifies **the HTML** compiled by ParsedownExtra from the Markdown file source. You must return your changed HTML. - ℹ You are given the HTML _after_ markdown, you do not receive raw markdown. Expect HTML tags galore. - ⚠ _Remember:_ You **must** return the modified HTML/text.
+**changeText** modifies **the HTML** compiled by ParsedownExtra from the Markdown file source. You must return your changed HTML.
+
+* ℹ You are given the HTML _after_ markdown, you do not receive raw markdown. Expect HTML tags galore.
+* ⚠ _Remember:_ You **must** return the modified HTML/text
+
 This is the 'main' use of plugins, due to it directly modifying text.
 
 ##### Example (dateFormat)
