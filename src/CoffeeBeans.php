@@ -56,7 +56,7 @@ if (file_exists($apath)) {
     # Get the modified date directly from the markdown file,
     # Then get the title and description for the HTML from it as well.
     $date = date(USERSET["dateFormat"] ?? "Y-m-d", filemtime($apath));
-    $title = insideTag($html, "h1");
+    $title = insideTag($html, "h1") ?? $page;
     $description = insideTag($html, "h2");
 } else {
     # If there is no Markdown file for the request,
