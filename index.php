@@ -7,6 +7,7 @@
 	<?php $plugins->load("addHead") ?>
 	<?php if (defined('metaImg')) {echo "<meta property=\"og:image\" content=\"{$image}\">";}?>
 	<link rel="stylesheet" href="./resource/css/<?=USERSET["stylesheet"]?>">
+	<link rel="stylesheet" href="./resource/css/<?=USERSET["colorsheet"]?>">
 	<meta charset="utf-8">
 	<?php
 		$meta = new MetaTagger($title, $description, USERSET["author"]);

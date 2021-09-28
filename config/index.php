@@ -66,6 +66,7 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 	<meta charset="utf-8">
 	<title><?=USERSET["siteName"] . " " . $title?></title>
 	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["stylesheet"]?>">
+	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["colorsheet"]?>">
 	<?php
 		$meta = new MetaTagger($title, $description, USERSET["author"]);
 		$meta->changeSetting("name",	"theme-color",	USERSET["themeColor"]);

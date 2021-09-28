@@ -45,6 +45,7 @@ if (isset($pw) && password_verify($pw, $auth)) { // Password is correct.
 	<meta charset="utf-8">
 	<title><?=$title?></title>
 	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["stylesheet"]?>">
+	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["colorsheet"]?>">
 	<meta name="viewport" 			content="width=device-width, initial-scale=1">
 	<?php
 		$meta = new MetaTagger($title, $description, USERSET["author"]);

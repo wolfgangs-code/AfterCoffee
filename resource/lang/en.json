@@ -27,6 +27,7 @@
 	"cfg": {
 		"themeColor": "Theme Color",
 		"stylesheet": "CSS Stylesheet",
+		"colorsheet": "Stylesheet Colors",
 		"siteName": "Site Name",
 		"lang": "Language",
 		"indexPage": "Index Page",
