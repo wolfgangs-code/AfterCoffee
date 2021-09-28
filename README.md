@@ -58,9 +58,6 @@ To quickly turn [Windows Terminal theme](https://windowsterminalthemes.dev) JSON
 Replace `"([a-z]*)": "(#\w*)",?` with `--$1: $2;\n`
 
 #### Potential Issues
-If your installation only outputs a blank page, check if `mb_strlen()` is enabled.
-If not, Parsedown cannot run, and AfterCoffee cannot run at all. Enable it.
-
-If you cannot save new pages, create folders, or change settings- Recursively allow all folders to have the write permission, or `0777`.
+Remember to give AfterCoffee appropriate write permissions, or else critical functions such as Auth and the Editor will not function.
 
 ###### *Coffee Bag model by Zdenko Roman*
