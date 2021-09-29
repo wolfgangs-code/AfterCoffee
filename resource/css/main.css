@@ -92,11 +92,11 @@ h1, h2, h3, h4 {
 }
 
 a {
-	color: var(--brightBlue)
+	color: var(--brightBlue);
 }
 
 a:visited {
-	color: var(--blue)
+	color: var(--blue);
 }
 
 table, th, td {
@@ -180,12 +180,8 @@ select {
 	margin-bottom: 0.125rem;
 }
 
-.left {
-	background: linear-gradient(145deg, var(--black), var(--selectionBackground));
-}
-
-.right {
-	background: linear-gradient(145deg, var(--selectionBackground), var(--black));
+.left, .right {
+	background: var(--brightBlack);
 }
 
 .right a:first-of-type {
@@ -238,7 +234,7 @@ input {
 }
 
 .infoBlock, input[type="submit"] {
-	background: linear-gradient(-45deg, var(--background), var(--selectionBackground));
+	background: var(--selectionBackground);
 	border-radius: var(--borderDist);
 	border: none;
 	color: var(--white);
