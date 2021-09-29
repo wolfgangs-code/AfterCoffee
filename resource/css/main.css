@@ -175,7 +175,7 @@ select {
 .banner {
 	border-radius: var(--borderDist);
 	padding: 0.25em;
-	color: var(--bg);
+	color: var(--background);
 	background-color: var(--cursorColor);
 	margin-bottom: 0.125rem;
 }
