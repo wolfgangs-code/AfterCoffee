@@ -15,6 +15,21 @@ define("POTSET", array_merge($plugins->settings(), USERSET));
 $title = USERLANG["ac_settings"];
 $description = "AfterCoffee ".USERLANG["ac_settings"];
 
+function getAllStylesheets() {
+	$cssPath = __DIR__ . "/../resource/css";
+	$stylesheets = [];
+	foreach (glob("{$cssPath}/*.css") as $filePath) {
+		$fileName = substr($filePath, strrpos($filePath, "/") + 1, -4);
+		if (in_array(substr($fileName, 0, 6), ["color-", "colour"])) {
+			$stylesheets["colorsheet"][] = $fileName;
+		} else {
+			$stylesheets["stylesheet"][] = $fileName;
+		}
+
+	}
+	return $stylesheets;
+}
+
 function placeSetting($arr = POTSET, $portal = NULL) {
 	asort($arr);
 	foreach ($arr as $item => $value) {
@@ -29,6 +44,23 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 				$lang = pathinfo($lang, PATHINFO_FILENAME);
 				($lang == POTSET["lang"]) ? $ss = "selected" : $ss = "";
 				print("<option value =\"{$lang}\"{$ss}>{$lang}</option>");
+			}
+			print("</select><hr></div><br>");
+			continue;
+		}
+		if (in_array($item, ["stylesheet", "colorsheet"])) {
+			print("{$label}<select name=\"{$space}\" value=\"{$value}\"><hr></div><br>\n");
+			$allSheets = getAllStylesheets()[$item];
+			foreach($allSheets as $sheet) {
+				($sheet.".css" == POTSET[$item]) ? $ss = "selected" : $ss = "";
+				if ($item == "colorsheet") {
+					$prefix = substr($sheet, 0, strpos($sheet, "-") + 1);
+					$sheet = substr($sheet, strpos($sheet, "-") );
+				} else {
+					$prefix = "";
+				}
+				$sheet = ($item ==  "colorsheet") ? substr($sheet, strpos($sheet, "-") +1) : $sheet;
+				print("<option value =\"{$prefix}{$sheet}.css\"{$ss}>{$sheet}</option>");
 			}
 			print("</select><hr></div><br>");
 			continue;
