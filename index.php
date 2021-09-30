@@ -25,7 +25,10 @@
 		<a href="<?="/".basename(__DIR__)?>"><?=USERSET["siteName"]?></a>
 	</h3>
 	<div class="info">
-		<div class="infoBlock"><?php echo USERLANG["ac_lastEdited"] ." {$date}"; ?></div>
+		<div class="infoBlock">
+				<span><?=USERLANG["ac_lastEdited"]?></span>
+				<time datetime="<?=$dateISO?>"><?=$date?></time>
+		</div>
 		<div><?php $plugins->load("addInfo") ?></div>
 		<?=controlPanel($page);?>
 	</div>
