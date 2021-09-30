@@ -186,7 +186,7 @@ select {
 
 .right a:first-of-type {
 	text-decoration: none;
-	color: var(--white);
+	color: var(--background);
 	font-size: 150%;
 }
 
