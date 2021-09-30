@@ -89,7 +89,8 @@ function controlPanel($page)
 		$editPage	= $buttomForm."editor/?page={$page}\">" . USERLANG["ac_editPage"]	. $end;
 		$newPage	= $buttomForm."editor\">"				. USERLANG["ac_newPage"]	. $end;
 		$settings	= $buttomForm."config\">"				. USERLANG["ac_settings"]	. $end;
-		return "<div id=\"controlPanel\">".$editPage.$newPage.$settings."</div>";
+		$unAuth		= $buttomForm."auth/unauth.php\">"		. USERLANG["ac_unAuth"]		. $end;
+		return "<div id=\"controlPanel\">{$editPage}{$newPage}<br>{$settings}{$unAuth}</div>";
     } else {
         return null;
     }

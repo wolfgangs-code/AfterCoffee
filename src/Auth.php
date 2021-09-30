@@ -37,6 +37,7 @@ class Auth
     {
         if ($this->isAuthed()) {
             $_SESSION["authorized"] = false;
+			session_destroy();
 			return true; //	true:	Successfully unauthenticated!
         } else {
             return false; //false:	Not authenticated already.
