@@ -72,10 +72,10 @@ class directoryList
 
                 # Subgroup subfolders 2/2
                 if ($folder === $dir) {
-                    $option .= "value=\"?page={$fileName}\">{$title}</option>\n\t\t";
+                    $option .= "value=\"{$fileName}\">{$title}</option>\n\t\t";
                 } else {
                     $nfolder = substr($folder, strpos($folder, "/") + 1);
-                    $option .= "value=\"?page={$nfolder}/{$fileName}\">{$title}</option>\n\t\t";
+                    $option .= "value=\"{$nfolder}/{$fileName}\">{$title}</option>\n\t\t";
                 }
             }
 			($folder === $dir) ?: $option .= "\t</optgroup>\n\t\t";
@@ -86,9 +86,10 @@ class directoryList
     public function addInfo()
     {
         $n = "\n\t\t";
-        $txt = "{$n}<select onchange=\"document.getElementById('body').className = ' pageOut'; location = this.options[this.selectedIndex].value;\">{$n}";
+        $txt = "{$n}<select name=\"page\" onchange=\"document.getElementById('body').className = ' pageOut'; location = '?page=' + this.options[this.selectedIndex].value;\" form=\"directoryList\">{$n}";
         $txt .= $this->getFiles();
         $txt .= "</select>\n";
+		$txt .= "<noscript><form id=\"directoryList\" action=\"\" method=\"get\"><input type=\"submit\"></form></noscript>";
         print($txt);
     }
     public function onSave()
