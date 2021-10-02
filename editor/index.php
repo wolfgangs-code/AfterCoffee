@@ -14,6 +14,8 @@ $editPage = $_GET["page"] ?? null;
 $apath = "../pages/{$editPage}.md";
 if (file_exists($apath)) {
     $md = file_get_contents($apath);
+} elseif (USERSET["hidePageByDefault"] === "True") {
+	$md = "<!-- NOINDEX -->\n\n";
 } else {
 	$md = null;
 }
