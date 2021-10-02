@@ -34,6 +34,7 @@
 		"indexPage": "Index Page",
 		"errorPath": "HTTP Error Path",
 		"devCredits": "<i>Credit AfterCoffee</i>",
+		"hidePageByDefault": "Hide New Pages",
 		"dateFormat": "Date Format",
 		"copyright": "Copyright",
 		"author": "Author"

@@ -5,6 +5,7 @@
 	"ac_madeWithAC": "Сделано с",
 	"ac_hidden": "[Скрыто]",
 	"ac_editPage": "Редактировать страницу",
+	"ac_unAuth": "Выход",
 	"ac_bSave": "сохранять",
 	"ac_bPublish": "Опубликовать",
 	"ac_lastEdited": "Обновлено на:",
@@ -27,11 +28,13 @@
 	"cfg": {
 		"themeColor": "Встраивание цвета",
 		"stylesheet": "Файл CSS",
+		"colorsheet": "Цвет CSS",
 		"siteName": "Название сайта",
 		"lang": "Язык",
 		"indexPage": "Корневая страница",
 		"errorPath": "Каталог ошибок HTTP",
 		"devCredits": "<i>Дань уважения AfterCoffee</i>",
+		"hidePageByDefault": "Hide New Pages",
 		"dateFormat": "Формат даты",
 		"copyright": "Авторское право",
 		"author": "Автор"

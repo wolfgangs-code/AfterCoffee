@@ -5,6 +5,7 @@
 	"ac_madeWithAC": "アプリケーション",
 	"ac_hidden": "[プライバシー]",
 	"ac_editPage": "編集",
+	"ac_unAuth": "終了する",
 	"ac_bSave": "保存",
 	"ac_bPublish": "保存",
 	"ac_lastEdited": "更新日",
@@ -27,11 +28,13 @@
 	"cfg": {
 		"themeColor": "テーマカラー",
 		"stylesheet": "CSS",
+		"colorsheet": "CSS 色",
 		"siteName": "ウェブサイト",
 		"lang": "言語",
 		"indexPage": "ブックマーク",
 		"errorPath": "HTTP エラー フォルダ ",
 		"devCredits": "<i>名誉 AfterCoffee</i>",
+		"hidePageByDefault": "Hide New Pages",
 		"dateFormat": "年(4桁)-月(2桁)-日(2桁)",
 		"copyright": "著作権",
 		"author": "著者"
