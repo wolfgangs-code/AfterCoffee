@@ -122,6 +122,8 @@ select {
 #controlPanel {
 	display: flex;
 	max-width: 100%;
+	justify-content: space-evenly;
+	margin-bottom: var(--borderDist);
 }
 
 /*======================

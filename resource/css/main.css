@@ -166,6 +166,8 @@ select {
 #controlPanel {
 	display: flex;
 	max-width: 100%;
+	justify-content: space-evenly;
+	margin-bottom: var(--borderDist);
 }
 
 /*======================
@@ -252,7 +254,7 @@ input[type="submit"], a.button {
 
 textarea {
 	border-bottom-left-radius: 0;
-	color: var(--white);
+	color: var(--foreground);
 	filter: grayscale(1);
 	max-width: 800px;
 }
