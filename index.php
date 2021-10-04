@@ -32,9 +32,9 @@
 		<div><?php $plugins->load("addInfo") ?></div>
 		<?=controlPanel($page);?>
 	</div>
-	<div id="body" class="page">
+	<article>
 		<?=$html?>
-	</div>
+	</article>
 	<h4 class="banner left">
 		<?php
 			print("&copy;". date("Y") . " " . USERSET["copyright"]);

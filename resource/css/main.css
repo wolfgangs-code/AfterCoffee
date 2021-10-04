@@ -12,11 +12,11 @@
 	to {filter: blur(0em);}
 }
 
-#body.page {
+article.page {
 	animation: blurOut 0.125s ease-out forwards;
 }
 
-#body.pageOut {
+article.pageOut {
 	animation: blurIn 0.125s ease-in forwards;
 }
 
