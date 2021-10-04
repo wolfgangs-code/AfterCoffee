@@ -34,8 +34,8 @@
 	<article>
 		<?=$html?>
 	</article>
+	<?=controlPanel($page);?>
 	<h4 class="banner left">
-		<?=controlPanel($page);?>
 		<?php
 			print("&copy;". date("Y") . " " . USERSET["copyright"]);
 			if (USERSET['devCredits'] === "True") {
