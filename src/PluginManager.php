@@ -26,6 +26,16 @@ class PluginManager
 							$settingsArr[get_class($plugin)][$set] = "";
 						}
                         break;
+					case "widgetPage":
+						if (!isset($html)) {
+							$widgetPlugins[] = $class;
+						}
+						if ($class == $html) {
+							return call_user_func([$plugin, $act]);
+						} else {
+							break;
+						}
+						break;
                     default:
                         call_user_func([$plugin, $act], $html);
                 }
