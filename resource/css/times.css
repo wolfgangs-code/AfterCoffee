@@ -1,0 +1,249 @@
+article {
+	width: calc(100% - 40px);
+}
+
+:root {
+	--borderDist: 0.15em;
+	--borderHalf: calc(var(--borderDist) / 2);
+	--BorderDistNeg: calc(var(--borderDist) * -1);
+}
+
+::selection {
+	color: var(--background);
+	background: var(--foreground);
+}
+
+/*==================
+	PAGE DISPLAY
+==================*/
+
+body, code {
+	color: var(--foreground);
+	background-color: var(--background);
+	font-size: 100%;
+	font-family: serif;
+	margin: 2em auto;
+	max-width: 600px;
+	padding: 1em;
+	padding-top: 0;
+	line-height: 1.4;
+	text-align: justify;
+}
+
+h1 {
+	color: var(--foreground);
+	font-size: 2.25rem;
+	text-align: left;
+	line-height: 2.5rem;
+	font-weight: 200;
+	word-break: break-word;
+}
+
+h4 {
+	text-align: center;
+}
+
+h1, h2, h3, h4 {
+	line-height: 1.2;
+}
+
+a {
+	color: var(--brightBlue);
+}
+
+a:visited {
+	color: var(--blue);
+}
+
+table, th, td {
+	border: 1px solid var(--foreground);
+	border-collapse: collapse;
+	padding: 0.25em;
+}
+
+ul li img {
+	height: 1em
+}
+
+img {
+	max-width: 100%;
+}
+
+img.art {
+	float: right;
+	width: 350px;
+	border: 5px solid var(--selectionBackground);
+	margin: 0.5em;
+}
+
+mark, span.mark {
+	margin: 0 -0.2em;
+	padding: 0.25rem 0.3em;
+	border-radius: 0.3em 0.3em;
+	background: transparent;
+	background-image: linear-gradient( to right, var(--selectionBackground), var(--background), var(--selectionBackground) );
+	box-decoration-break: clone;
+}
+
+code {
+	font-family: monospace;
+	background-color: var(--selectionBackground);
+	padding: 0.2rem;
+	border-radius: var(--borderHalf);
+}
+
+/*==============
+	INFO BAR
+==============*/
+
+.info {
+	align-items: center;
+	display: flex;
+	flex-flow: column-reverse;
+	justify-content: space-between;
+	text-align: left;
+}
+
+.info div {
+	text-align: center;
+	max-width: 100%;
+}
+
+select {
+	background-color: var(--background);
+	border: var(--borderHalf) solid var(--selectionBackground);
+	border-style: none solid;
+	color: var(--foreground);
+	max-width: 12rem;
+	max-height: 2rem;
+	padding: 0.25rem;
+}
+
+#controlPanel {
+	display: flex;
+	max-width: 100%;
+}
+
+/*======================
+	HEADER AND FOOTER
+=======================*/
+
+.banner {
+	border-radius: var(--borderDist);
+	padding: 0.25em;
+	color: var(--foreground);
+	margin-bottom: 0.125rem;
+	text-align: center;
+}
+
+.right a:first-of-type {
+	text-decoration: none;
+	color: var(--foreground);
+	font-size: 2rem;
+	font-weight: 300;
+}
+
+/*======================
+	CONFIG AND EDITOR
+=======================*/
+
+.line {
+	margin-top: 0.5em;
+	display: inline-block;
+}
+
+.line>hr {
+	margin-top: -0.75em;
+	margin-right: 1em;
+	border: var(--borderHalf) solid var(--selectionBackground);
+}
+
+.bubble>span {
+	color: var(--selectionBackground);
+	width: 1em;
+}
+
+.line>label>span {
+	background-color: var(--background);
+	padding-right: 0.25em;
+}
+
+label {
+	display: inline-block;
+	min-width: 10em;
+}
+
+.bubble, textarea {
+	margin-top: 0.5em;
+	margin-bottom: 0;
+	border-radius: var(--borderDist);
+	background-color: var(--background);
+	border: none;
+}
+
+input {
+	background: var(--background);
+	color: var(--foreground);
+	border: var(--borderHalf) solid var(--selectionBackground);
+	border-style: none solid;
+	min-height: 1rem;
+}
+
+input[type="submit"] {
+	background: var(--selectionBackground);
+	border-radius: var(--borderDist);
+	border: none;
+	font-family: sans-serif;
+	outline: none;
+	padding: 0.25rem;
+	text-decoration: none;
+	margin: 0.125rem;
+}
+
+.infoBlock {
+	font-size: 0.8125rem;
+	line-height: 1rem;
+	font-family: sans-serif;
+}
+
+input[type="submit"], a.button {
+	border: var(--borderDist) solid var(--selectionBackground);
+	border-style: none solid;
+	margin: 0 var(--borderDist);
+	padding: 0 var(--borderDist);
+	text-decoration: none;
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+textarea {
+	border-bottom-left-radius: 0;
+	color: var(--foreground);
+	background-color: var(--background);
+	filter: grayscale(1);
+	max-width: 800px;
+}
+
+form {
+	display: inline-block;
+}
+
+form > hr {
+	border: none;
+	height: 0.125em;
+}
+
+.editorPub {
+	display: inline-block;
+	padding: 0.25em;
+	background-color: var(--background);
+	border-radius: 0 0 var(--borderDist) var(--borderDist);
+}
+
+.bubble span {
+	display: inline-block;
+}
+
+.bubble label {
+	margin-right: -1em;
+}
