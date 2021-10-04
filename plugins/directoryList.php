@@ -89,7 +89,7 @@ class directoryList
         $txt = "{$n}<select name=\"page\" onchange=\"document.getElementsByTagName('article')[0].className = ' pageOut'; location = '?page=' + this.options[this.selectedIndex].value;\" form=\"directoryList\">{$n}";
         $txt .= $this->getFiles();
         $txt .= "</select>\n";
-		$txt .= "<noscript><form id=\"directoryList\" action=\"\" method=\"get\"><input type=\"submit\" value=\"Go\"></form></noscript>";
+		$txt .= "<noscript><form id=\"directoryList\" action=\".\" method=\"get\"><input type=\"submit\" value=\"Go\"></form></noscript>";
         print($txt);
     }
     public function onSave()
