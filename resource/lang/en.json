@@ -6,6 +6,7 @@
 	"ac_hidden": "[Hidden]",
 	"ac_editPage": "Edit Page",
 	"ac_unAuth": "Logout",
+	"ac_auth": "Login",
 	"ac_bSave": "Save",
 	"ac_bPublish": "Publish",
 	"ac_lastEdited": "Last Updated:",
