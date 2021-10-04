@@ -30,12 +30,12 @@
 				<time datetime="<?=$dateISO?>"><?=$date?></time>
 		</div>
 		<div><?php $plugins->load("addInfo") ?></div>
-		<?=controlPanel($page);?>
 	</div>
 	<article>
 		<?=$html?>
 	</article>
 	<h4 class="banner left">
+		<?=controlPanel($page);?>
 		<?php
 			print("&copy;". date("Y") . " " . USERSET["copyright"]);
 			if (USERSET['devCredits'] === "True") {
