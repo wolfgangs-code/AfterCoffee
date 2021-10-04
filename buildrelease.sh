@@ -3,7 +3,7 @@ echo "AfterCoffee Release Builder"
 read -p "=What is the release tag? >" tag
 mkdir buildtmp
 
-folders=("auth" "config" "editor" "lib" "pages" "plugins" "resource" "src")
+folders=("auth" "config" "editor" "lib" "pages" "plugins" "resource" "src" "widget")
 folders+=("index.php" "LICENSE")
 
 for f in "${folders[@]}"
