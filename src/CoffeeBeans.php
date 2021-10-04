@@ -82,9 +82,9 @@ function indexOption($tags)
 
 function controlPanel($page)
 {
+	$buttomForm	= "<a class=\"infoBlock button\" href=\"./";
+	$end		= "</a>";
     if (isset($_SESSION['authorized']) && $_SESSION['authorized'] == 1) {
-		$buttomForm	= "<a class=\"infoBlock button\" href=\"./";
-		$end		= "</a>";
         // Only show edit button if logged into the Editor.
 		$editPage	= $buttomForm."editor/?page={$page}\">" . USERLANG["ac_editPage"]	. $end;
 		$newPage	= $buttomForm."editor\">"				. USERLANG["ac_newPage"]	. $end;
@@ -92,6 +92,7 @@ function controlPanel($page)
 		$unAuth		= $buttomForm."auth/unauth.php\">"		. USERLANG["ac_unAuth"]		. $end;
 		return "<div id=\"controlPanel\">{$editPage}{$newPage}{$settings}{$unAuth}</div>";
     } else {
-        return null;
+		$auth		= $buttomForm."auth\">"					. USERLANG["ac_auth"]		. $end;
+        return "<div id=\"controlPanel\">{$auth}</div>";
     }
 }
