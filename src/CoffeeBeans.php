@@ -42,8 +42,10 @@ function pageTags($md)
 }
 define("PAGETAGS", pageTags($md));
 
+$hiddenDemandsAuth = USERSET["hiddenDemandsAuth"] === "False" ?? true;
+
 # Only compose page if the Markdown file exists
-if (file_exists($apath) && ($Auth->isAuthed() || USERSET["hiddenDemandsAuth"] === "False" ?? true)) {
+if (file_exists($apath) && ($Auth->isAuthed() || $hiddenDemandsAuth)) {
     $md = file_get_contents($apath);
     $html = $Extra->setBreaksEnabled(true)->text($md);
     # TODO: Make firing plugin functions cleaner
