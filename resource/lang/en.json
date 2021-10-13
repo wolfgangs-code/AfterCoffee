@@ -36,6 +36,7 @@
 		"errorPath": "HTTP Error Path",
 		"devCredits": "<i>Credit AfterCoffee</i>",
 		"hidePageByDefault": "Hide New Pages",
+		"hiddenDemandsAuth": "Authenticate Hidden",
 		"dateFormat": "Date Format",
 		"copyright": "Copyright",
 		"author": "Author"

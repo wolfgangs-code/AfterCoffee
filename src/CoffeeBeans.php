@@ -35,8 +35,15 @@ function insideTag($string, $tagname)
     return $matches[1] ?? null;
 }
 
+function pageTags($md)
+{
+    preg_match("/<!--(.*)-->/", $md, $out);
+    return array_filter(preg_split("/[\s,]+/", $out[1] ?? null));
+}
+define("PAGETAGS", pageTags($md));
+
 # Only compose page if the Markdown file exists
-if (file_exists($apath)) {
+if (file_exists($apath) && ($Auth->isAuthed() || USERSET["hiddenDemandsAuth"] === "False" ?? true)) {
     $md = file_get_contents($apath);
     $html = $Extra->setBreaksEnabled(true)->text($md);
     # TODO: Make firing plugin functions cleaner
@@ -67,13 +74,6 @@ if (file_exists($apath)) {
     include USERSET["errorPath"]["404"];
     exit;
 }
-
-function pageTags($md)
-{
-    preg_match("/<!--(.*)-->/", $md, $out);
-    return array_filter(preg_split("/[\s,]+/", $out[1] ?? null));
-}
-define("PAGETAGS", pageTags($md));
 
 function indexOption($tags)
 {
