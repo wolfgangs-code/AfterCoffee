@@ -61,7 +61,7 @@ class directoryList
                 $option .= "<option ";
 
                 # Select the listing for the current page
-                $subname = substr($folder, );
+                $subname = substr($folder, 6);
                 $subname .= ($subname) ? "/" : "";
 				$subname .= $fileName;
 				$basePage = substr($GLOBALS["page"], strrpos($GLOBALS["page"], '/' ) + !($folder === $dir));
