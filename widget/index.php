@@ -9,6 +9,13 @@ $Plugins = new PluginManager;
 $Plugins->init();
 
 $pluginGet = $_GET["plugin"];
+$title = USERSET["siteName"]." - ".$pluginGet ?? "Select a Plugin";
+$description = "Widget";
+
+if (isset($_GET["action"])) {
+	$Plugins->load("action", $pluginGet);
+	die;
+}
 
 /* AfterCoffee Plugin Widgets */
 ?>
