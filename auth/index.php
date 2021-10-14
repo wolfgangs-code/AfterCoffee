@@ -28,6 +28,8 @@ if (!include ('auth_code.php')) { // If there is no password file (sorry),
 if ($Auth->isAuthed()) {
     header("Location: ".$rt); // Return to the editor
     exit;
+} else {
+	http_response_code(401);
 }
 
 

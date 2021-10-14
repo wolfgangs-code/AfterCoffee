@@ -44,8 +44,12 @@ function publishPage($text, $title, $Plugins)
         $t = 2;
         unlink(realpath($path . ".md")) ?: publishPage($errstr, $title);
         print("Successfully deleted '{$title}'.\nReturning to index in {$t} seconds...");
+		http_response_code(202);
         header("refresh:{$t};url=../");
-    } else {header("Location: ../?page=" . $title);}
+    } else {
+		http_response_code(302);
+		header("Location: ../?page=" . $title);
+	}
 }
 
 if ($Auth->isAuthed()) {
