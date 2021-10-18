@@ -56,7 +56,7 @@ h1 {
 }
 
 h2 {
-	text-shadow: 0 0 0.125em var(--brightBlack);
+	text-shadow: 0 0 0.125em var(--midground);
 }
 
 h4 {
@@ -154,12 +154,12 @@ select {
 	border-radius: var(--borderDist);
 	padding: 0.25em;
 	color: var(--background);
-	background-color: var(--cursorColor);
+	background-color: var(--midground);
 	margin-bottom: 0.125rem;
 }
 
 .left, .right {
-	background: var(--brightBlack);
+	background: var(--midground);
 }
 
 .right a:first-of-type {
