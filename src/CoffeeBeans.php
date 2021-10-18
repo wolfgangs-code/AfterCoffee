@@ -1,6 +1,7 @@
 <?php
 require_once "./src/Auth.php";
 require_once "./src/PluginManager.php";
+require_once "./src/Style.php";
 require './lib/Parsedown.php';
 require './lib/ParsedownExtra.php';
 $Parsedown = new Parsedown();

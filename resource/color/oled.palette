@@ -1,0 +1,20 @@
+{
+	"light": {
+		"critical": "#F44",
+		"serious": "#FA0",
+		"caution": "#EE0",
+		"normal": "#5D0",
+		"standby": "#2CF",
+		"off": "#9AA",
+		"background": "#FFF",
+		"midground": "#666",
+		"foreground": "#000",
+		"selectionBackground": "#CCC"
+	},
+	"dark": {
+		"background": "#000",
+		"foreground": "#FFF",
+		"selectionBackground": "#666",
+		"cursorColor": "#CCC"
+	}
+}
