@@ -222,7 +222,7 @@ textarea {
 	color: var(--foreground);
 	background-color: var(--background);
 	filter: grayscale(1);
-	max-width: 800px;
+	max-width: 600px;
 }
 
 form {
