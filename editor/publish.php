@@ -2,7 +2,7 @@
 require_once "../src/Auth.php";
 require_once "../src/PluginManager.php";
 require_once __DIR__."/../config/userset.php";
-$Auth->demandAuth();
+Auth::demandAuth();
 
 # Load all plugins and defines them into an array
 $Plugins = new PluginManager;
@@ -52,7 +52,7 @@ function publishPage($text, $title, $Plugins)
 	}
 }
 
-if ($Auth->isAuthed()) {
+if (Auth::isAuthed()) {
     // Logged in, ready to go.
     publishPage(
 		$_SESSION["postData"]["text"]	??	$_POST["textbox"],

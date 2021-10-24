@@ -1,6 +1,6 @@
 <?php
 require_once "../src/Auth.php";
-$Auth->unAuth();
+Auth::unAuth();
 header("Location: ..");
 exit;
 ?>

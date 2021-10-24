@@ -1,6 +1,6 @@
 <?php
 require_once "../src/Auth.php";
-$Auth->demandAuth();
+Auth::demandAuth();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 	http_response_code(405);

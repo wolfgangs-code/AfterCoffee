@@ -5,7 +5,7 @@ require_once "../src/MetaTagger.php";
 require_once 'userset.php';
 require_once 'lang.php';
 
-$Auth->demandAuth();
+Auth::demandAuth();
 
 $plugins = new PluginManager;
 $plugins->init();

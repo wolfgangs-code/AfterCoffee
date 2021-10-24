@@ -1,19 +1,14 @@
 <?php
 class Auth
 {
-	function __construct()
-	{
-		$this->continueSession();
-	}
-
 	// Authentication
 
-    public function isAuthed()
+    public static function isAuthed()
     {
         return (isset($_SESSION["authorized"]) && $_SESSION["authorized"] = true);
     }
 
-    public function demandAuth()
+    public static function demandAuth()
     {
         if (!$this->isAuthed()) {
 			// TODO: IMPROVE LOCATION
@@ -22,7 +17,7 @@ class Auth
         }
     }
 
-    public function continueSession()
+    public static function continueSession()
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_name("AfterCoffeeID");
@@ -33,7 +28,7 @@ class Auth
         }
     }
 
-    public function unAuth()
+    public static function unAuth()
     {
         if ($this->isAuthed()) {
             $_SESSION["authorized"] = false;
@@ -44,4 +39,4 @@ class Auth
         }
     }
 }
-$Auth = new Auth();
+Auth::continueSession();

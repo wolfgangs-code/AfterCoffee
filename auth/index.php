@@ -25,7 +25,7 @@ if (!include ('auth_code.php')) { // If there is no password file (sorry),
     $msg = USERLANG["auth"]["wrongPass"];
 }
 
-if ($Auth->isAuthed()) {
+if (Auth::isAuthed()) {
     header("Location: ".$rt); // Return to the editor
     exit;
 } else {

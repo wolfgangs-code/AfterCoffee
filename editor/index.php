@@ -5,7 +5,7 @@ require_once __DIR__."/../src/MetaTagger.php";
 require_once __DIR__."/../config/userset.php";
 require_once __DIR__."/../config/lang.php";
 
-$Auth->demandAuth();
+Auth::demandAuth();
 
 $plugins = new PluginManager;
 $plugins->init();
