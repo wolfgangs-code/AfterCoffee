@@ -18,7 +18,7 @@
 		$meta->changeSetting("property","og:url",						getURL($page));
 		$meta->render(1);
 	?>
-	<title><?="{$title} - " . USERSET["siteName"]?></title>
+	<title><?="{$title} – " . USERSET["siteName"]?></title>
 </head>
 <body>
 	<h3 class="banner right">
@@ -39,7 +39,7 @@
 		<?php
 			print("&copy;". date("Y") . " " . USERSET["copyright"]);
 			if (USERSET['devCredits'] === "True") {
-				print(" - ".USERLANG["ac_madeWithAC"]." <a href=\"https://github.com/wolfgang-degroot/AfterCoffee\">AfterCoffee</a>");
+				print(" – ".USERLANG["ac_madeWithAC"]." <a href=\"https://github.com/wolfgang-degroot/AfterCoffee\">AfterCoffee</a>");
 			}
 		?>
 	</h4>
