@@ -153,7 +153,7 @@ select {
 .banner {
 	border-radius: var(--borderDist);
 	padding: 0.25em;
-	color: var(--background);
+	color: var(--foreground);
 	background-color: var(--midground);
 	margin-bottom: 0.125rem;
 }
@@ -164,7 +164,7 @@ select {
 
 .right a:first-of-type {
 	text-decoration: none;
-	color: var(--background);
+	color: var(--foreground);
 	font-size: 150%;
 }
 
