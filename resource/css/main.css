@@ -220,7 +220,7 @@ input {
 	outline: none;
 	padding: 0.25rem;
 	text-decoration: none;
-	margin: 0.125rem;
+	margin: 0;
 }
 
 input[type="submit"], a.button {
