@@ -1,8 +1,11 @@
 <?php
-require_once "../src/Auth.php";
+require_once __DIR__."/../src/Auth.php";
+require_once __DIR__."/../src/MetaTagger.php";
+require_once __DIR__."/../src/Style.php";
+
 require_once '../config/userset.php';
 require_once '../config/lang.php';
-require_once "../src/MetaTagger.php";
+
 $pw = $_POST['pass'];
 $rt = $_GET['r'] ?? "../";
 $title = USERLANG["auth"]["required"];
@@ -47,7 +50,7 @@ if (isset($pw) && password_verify($pw, $auth)) { // Password is correct.
 	<meta charset="utf-8">
 	<title><?=$title?></title>
 	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["stylesheet"]?>">
-	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["colorsheet"]?>">
+	<?=Style::colorPalette();?>
 	<meta name="viewport" 			content="width=device-width, initial-scale=1">
 	<?php
 		$meta = new MetaTagger($title, $description, USERSET["author"]);

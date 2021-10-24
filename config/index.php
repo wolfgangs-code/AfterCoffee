@@ -1,9 +1,11 @@
 <?php
-require_once "../src/Auth.php";
-require_once "../src/PluginManager.php";
-require_once "../src/MetaTagger.php";
-require_once 'userset.php';
-require_once 'lang.php';
+require_once __DIR__."/../src/Auth.php";
+require_once __DIR__."/../src/MetaTagger.php";
+require_once __DIR__."/../src/PluginManager.php";
+require_once __DIR__."/../src/Style.php";
+
+require_once "userset.php";
+require_once "lang.php";
 
 Auth::demandAuth();
 
@@ -98,7 +100,7 @@ function placeSetting($arr = POTSET, $portal = NULL) {
 	<meta charset="utf-8">
 	<title><?=USERSET["siteName"] . " " . $title?></title>
 	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["stylesheet"]?>">
-	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["colorsheet"]?>">
+	<?=Style::colorPalette();?>
 	<?php
 		$meta = new MetaTagger($title, $description, USERSET["author"]);
 		$meta->changeSetting("name",	"theme-color",	USERSET["themeColor"]);

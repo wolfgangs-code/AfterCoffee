@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__."/../src/Auth.php";
-require_once __DIR__."/../src/PluginManager.php";
 require_once __DIR__."/../src/MetaTagger.php";
+require_once __DIR__."/../src/PluginManager.php";
+require_once __DIR__."/../src/Style.php";
+
 require_once __DIR__."/../config/userset.php";
 require_once __DIR__."/../config/lang.php";
 
@@ -39,7 +41,7 @@ $description = "AfterCoffee ".USERLANG["editor"]["editor"];
 	<meta charset="utf-8">
 	<title><?=USERSET["siteName"] . " {$title}"?></title>
 	<link rel="stylesheet" href="../resource/css/<?=USERSET["stylesheet"]?>">
-	<link rel="stylesheet" href="../resource/css/<?=USERSET["colorsheet"]?>">
+	<?=Style::colorPalette();?>
 	<?php
 		$meta = new MetaTagger($title, $description, USERSET["author"]);
 		$meta->changeSetting("name",	"theme-color",	USERSET["themeColor"]);
