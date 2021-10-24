@@ -10,7 +10,7 @@ class Auth
 
     public static function demandAuth()
     {
-        if (!$this->isAuthed()) {
+        if (!self::isAuthed()) {
 			// TODO: IMPROVE LOCATION
             header("Location: ../auth/?r=" . $_SERVER['REQUEST_URI']);
             exit;
@@ -30,7 +30,7 @@ class Auth
 
     public static function unAuth()
     {
-        if ($this->isAuthed()) {
+        if (self::isAuthed()) {
             $_SESSION["authorized"] = false;
 			session_destroy();
 			return true; //	true:	Successfully unauthenticated!
