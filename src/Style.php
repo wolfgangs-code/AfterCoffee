@@ -5,7 +5,7 @@ class Style
     {
         if ($paletteName == "none") {return;} // No palette, no function
         $bufferArray = []; // Init. Color buffer
-        $paletteColors = json_decode(file_get_contents(__DIR__ . "/../resource/color/{$paletteName}.palette"), true);
+        $paletteColors = json_decode(file_get_contents(__DIR__ . "/../resource/color/{$paletteName}"), true);
         foreach (["light", "dark"] as $mode) {
 			// For both light and dark modes, convert the array to CSS variables
             foreach ($paletteColors[$mode] as $color => $value) {
