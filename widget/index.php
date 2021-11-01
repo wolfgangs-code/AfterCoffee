@@ -27,7 +27,7 @@ if (isset($_GET["action"])) {
 	<meta charset="utf-8">
 	<title><?=USERSET["siteName"] . " {$title}"?></title>
 	<link rel="stylesheet" href="../resource/css/<?=USERSET["stylesheet"]?>">
-	<?=Style::colorPalette();?>
+	<?=Style::colorPalette(USERSET["colorsheet"]);?>
 	<?php
 		$meta = new MetaTagger($title, $description, USERSET["author"]);
 		$meta->changeSetting("name",	"theme-color",	USERSET["themeColor"]);
