@@ -76,7 +76,6 @@ function placeSetting($arr = POTSET, $portal = null)
             $allPalettes = getAllPalettes();
             foreach ($allPalettes as $palette) {
                 (substr($palette, 1) . ".palette" == POTSET[$item]) ? $ss = "selected" : $ss = "";
-				print("<!-- {$palette}, ".POTSET[$item]." -->");
                 $palette = ($item == "colorsheet") ? substr($palette, strpos($palette, "-") + 1) : $palette;
                 print("<option value =\"{$palette}.palette\"{$ss}>{$palette}</option>");
             }
