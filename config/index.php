@@ -65,7 +65,7 @@ function placeSetting($arr = POTSET, $portal = null)
             foreach ($allSheets as $sheet) {
                 ($sheet . ".css" == POTSET[$item]) ? $ss = "selected" : $ss = "";
                 $sheet = ($item == "colorsheet") ? substr($sheet, strpos($sheet, "-") + 1) : $sheet;
-                print("<option value =\"{$sheet}.css\"{$ss}>{$sheet}</option>");
+                print("<option value=\"{$sheet}.css\" {$ss}>{$sheet}</option>");
             }
             print("</select><hr></div><br>");
             continue;
@@ -77,7 +77,7 @@ function placeSetting($arr = POTSET, $portal = null)
             foreach ($allPalettes as $palette) {
                 (substr($palette, 1) . ".palette" == POTSET[$item]) ? $ss = "selected" : $ss = "";
                 $palette = ($item == "colorsheet") ? substr($palette, strpos($palette, "-") + 1) : $palette;
-                print("<option value =\"{$palette}.palette\"{$ss}>{$palette}</option>");
+                print("<option value=\"{$palette}.palette\" {$ss}>{$palette}</option>");
             }
             print("</select><hr></div><br>");
             continue;
