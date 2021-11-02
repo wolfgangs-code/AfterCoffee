@@ -35,10 +35,6 @@ if(is_file(__DIR__."/../meta.json")) {
 	$final = bob($_POST);
 }
 
-print("<pre>");
-print_r($final);
-print("</pre>");
-
 $file = fopen(__DIR__."/../meta.json", "w");
 fwrite($file, json_encode($final, JSON_PRETTY_PRINT));
 fclose($file);
