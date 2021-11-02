@@ -1,7 +1,7 @@
 <?php
 class Style
 {
-    public static function colorPalette($paletteName = "default")
+    public static function colorPalette($paletteName = "default.palette")
     {
         if ($paletteName == "none") {return;} // No palette, no function
         $bufferArray = []; // Init. Color buffer
