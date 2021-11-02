@@ -42,7 +42,7 @@ function getAllPalettes()
 
 function placeSetting($arr = POTSET, $portal = null)
 {
-    asort($arr);
+    ksort($arr);
     foreach ($arr as $item => $value) {
         array_key_exists($item, USERLANG["cfg"]) ? $tname = USERLANG["cfg"][$item] : $tname = $item;
         $label = "<div class=\"line\"><label for=\"{$item}\"><span>{$tname}</span></label>\n";
