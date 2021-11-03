@@ -1,7 +1,7 @@
 <?php
 class directoryList
 {
-    const version = '7.0';
+    const version = '7.1';
     private $indexPath = __DIR__ . "/../pages/index.json";
 
     private function isHidden($string, $mode = "markdown")
@@ -70,31 +70,20 @@ class directoryList
 
     private function buildList($pages, $dir = "pages")
     {
-        // TODO: Modernize this function
         $option = "";
-        $n = "\n\n\n\n";
-
         arsort($pages);
-        foreach ($pages as $folder => $content) {
 
-            # Subgroup subfolders 1/2
+        foreach ($pages as $folder => $folderContent)
+		{
+            // Create <optgroup> for folders
             ($folder === $dir) ?: $option .= "\t<optgroup label=\"" . ucfirst(basename($folder)) . "\">\n\t\t";
 
-            # Listing constructor
-            foreach ($content as $fileName => $title) {
+            // Create all the pages for each file within folders. This is a BIG
+			// chunk of code, but it gets the job done.
+            foreach ($folderContent as $fileName => $title) {
                 $path = ($folder === $dir) ? $fileName : substr($folder, strpos($folder, "/") + 1) . "/{$fileName}";
-                $option .= $dir === "pages" ? "\t\t" : "\t\t";
-                $option .= "<option ";
-
-                # Select the listing for the current page
-                $subname = substr($folder, 6);
-                $subname .= ($subname) ? "/" : "";
-                $subname .= $fileName;
-                $basePage = substr($GLOBALS["page"], strrpos($GLOBALS["page"], '/')+!($folder === $dir));
-                if ($subname === $basePage) {
-                    $option .= "selected ";
-                    $isVisible = true;
-                }
+                $option .= ($dir === "pages" ? "\t\t" : "\t\t") . "<option ";
+                if ($path === $GLOBALS["page"]) $option .= "selected ";
                 $hiddenMark = ($this->isHidden($path, "filePath")) ? " " . USERLANG["ac_hidden"] : null;
                 $option .= "value=\"{$path}\">{$title}{$hiddenMark}</option>\n\t\t";
             }
@@ -103,7 +92,7 @@ class directoryList
         return $option;
     }
 
-    public function addInfo() // (Hook)
+    public function addInfo() //	(Hook)
 
     {
         $n = "\n\t\t";
@@ -114,7 +103,7 @@ class directoryList
         print($txt);
     }
 
-    public function onSave() // (Hook)
+    public function onSave() //		(Hook)
 
     {
         // This function overwrites the previous index file with the up-to-date
