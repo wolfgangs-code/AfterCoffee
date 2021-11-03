@@ -1,100 +1,124 @@
 <?php
 class directoryList
 {
-    const version = '5.3';
+    const version = '7.0';
     private $indexPath = __DIR__ . "/../pages/index.json";
-    private function getFiles($dir = "pages")
+
+    private function isHidden($string, $mode = "markdown")
     {
-        $pages = [];
-        $option = "";
-        $n = '\n\n\n\n';
+        // Evaluates whether or not a page should be hidden. It uses two modes:
+		// Markdown, for directly accessing the string to search, or a filename
+		// which allows the Markdown to be loaded from disk.
+        switch ($mode) {
+            case "filePath":
+                $text = file_get_contents(__DIR__ . "/../pages/{$string}.md");
+                break;
+            case "markdown":
+            default:
+                $text = $string;
+                break;
+        }
+        return preg_match("/<!--(.* NOINDEX .*)-->/", $text);
+    }
 
-        #=========#
-        # Indexer #
-        #=========#
-
-        # Check if an index isn't already built
-        if (!file_exists($this->indexPath)) {
-            $glob = glob("{$dir}/*", GLOB_ONLYDIR);
-            array_push($glob, $dir);
-            foreach ($glob as $folder) {
-                foreach (glob("{$folder}/*.md") as $filePath) {
-                    $fileName = substr($filePath, strpos($filePath, "/") + 1, -3);
-                    $md = file_get_contents($filePath);
-                    $tags = preg_match("/<!--(.* NOINDEX .*)-->/", $md);
-                    if ($tags && $fileName) {
-                        continue;
-                    }
-
-                    preg_match('/# (.*?)\n/', $md, $h1);
-                    $title = trim($h1[1] ?? $fileName);
-                    if ($folder === $dir) {
-                        $pages[$folder][$fileName] = $title;
-                    } else {
-                        $pages[$folder][substr($fileName, strpos($fileName, "/") + 1)] = $title;
-                    }
-
-                }}
-            $indexJSON = fopen($this->indexPath, 'w');
-            fwrite($indexJSON, json_encode($pages));
-            fclose($indexJSON);
-        } else {
-            $indexJSON = file_get_contents($this->indexPath);
-            $pages = json_decode($indexJSON, true);
+    private function readFiles($skipHiddenPages = true)
+    {
+        // If we are skipping pages, and an index is already build, we load and
+		// then return that instead of performing a lot of reads onto the disk.
+        if ($skipHiddenPages && file_exists($this->indexPath)) {
+            return json_decode(file_get_contents($this->indexPath), true);
         }
 
-        #===================#
-        # Directory builder #
-        #===================#
-        $isVisible = false;
+        // Reads all files in the pages directory, and then returns a completed
+		// array of them.
+        $pages = [];
+        $dir = "pages";
+        $glob = glob("{$dir}/*", GLOB_ONLYDIR);
+        array_push($glob, $dir);
+        foreach ($glob as $folder) {
+            foreach (glob("{$folder}/*.md") as $filePath) {
+                $fileName = substr($filePath, strpos($filePath, "/") + 1, -3);
+                $md = file_get_contents($filePath);
+                if ($skipHiddenPages && $this->isHidden($md, "markdown")) {continue;}
+
+                // Find the first Header 1 in the Markdown, and when making the
+				// array, make that the set title of the page if it's possible.
+                // If not, the filename of the Markdown file.
+                preg_match('/# (.*?)\n/', $md, $h1);
+                $title = trim($h1[1] ?? $fileName);
+                if ($folder === $dir) {
+                    $pages[$folder][$fileName] = $title;
+                } else {
+                    $pages[$folder][substr($fileName, strpos($fileName, "/") + 1)] = $title;
+                }
+            }
+        }
+        // When skipping hidden pages, try and use the cached version. If there
+		// is none, make one for the next load and return that.
+        if ($skipHiddenPages && !file_exists($this->indexPath)) $this->buildIndex($pages);
+        return $pages;
+    }
+
+    private function buildIndex($pages)
+    {
+        // Creates and saves a JSON file of the page index, with all the hidden
+		// pages removed before writing the file to disk.
+        $indexJSON = fopen($this->indexPath, 'w');
+        fwrite($indexJSON, json_encode($pages));
+        fclose($indexJSON);
+    }
+
+    private function buildList($pages, $dir = "pages")
+    {
+        // TODO: Modernize this function
+        $option = "";
+        $n = "\n\n\n\n";
+
         arsort($pages);
         foreach ($pages as $folder => $content) {
-            # Uncommenting the below line will sort each folder's directory by title
-            // asort($content);
 
             # Subgroup subfolders 1/2
             ($folder === $dir) ?: $option .= "\t<optgroup label=\"" . ucfirst(basename($folder)) . "\">\n\t\t";
 
             # Listing constructor
             foreach ($content as $fileName => $title) {
+                $path = ($folder === $dir) ? $fileName : substr($folder, strpos($folder, "/") + 1) . "/{$fileName}";
                 $option .= $dir === "pages" ? "\t\t" : "\t\t";
                 $option .= "<option ";
 
                 # Select the listing for the current page
                 $subname = substr($folder, 6);
                 $subname .= ($subname) ? "/" : "";
-				$subname .= $fileName;
-				$basePage = substr($GLOBALS["page"], strrpos($GLOBALS["page"], '/' ) + !($folder === $dir));
+                $subname .= $fileName;
+                $basePage = substr($GLOBALS["page"], strrpos($GLOBALS["page"], '/')+!($folder === $dir));
                 if ($subname === $basePage) {
                     $option .= "selected ";
                     $isVisible = true;
                 }
-
-                # Subgroup subfolders 2/2
-                if ($folder === $dir) {
-                    $option .= "value=\"{$fileName}\">{$title}</option>\n\t\t";
-                } else {
-                    $nfolder = substr($folder, strpos($folder, "/") + 1);
-                    $option .= "value=\"{$nfolder}/{$fileName}\">{$title}</option>\n\t\t";
-                }
+                $hiddenMark = ($this->isHidden($path, "filePath")) ? " " . USERLANG["ac_hidden"] : null;
+                $option .= "value=\"{$path}\">{$title}{$hiddenMark}</option>\n\t\t";
             }
-			($folder === $dir) ?: $option .= "\t</optgroup>\n\t\t";
         }
-        ($isVisible) ?: $option .= "\t\t<option selected>" . $GLOBALS["page"] . " " . USERLANG["ac_hidden"] . "</option>\n";
+        ($folder === $dir) ?: $option .= "\t</optgroup>\n\t\t";
         return $option;
     }
-    public function addInfo()
+
+    public function addInfo() // (Hook)
+
     {
         $n = "\n\t\t";
         $txt = "{$n}<select name=\"page\" onchange=\"document.getElementsByTagName('article')[0].className = ' pageOut'; location = '?page=' + this.options[this.selectedIndex].value;\" form=\"directoryList\">{$n}";
-        $txt .= $this->getFiles();
+        $txt .= $this->buildList($this->readFiles(!Auth::isAuthed()));
         $txt .= "</select>\n";
-		$txt .= "<noscript><form id=\"directoryList\" action=\".\" method=\"get\"><input type=\"submit\" value=\"Go\"></form></noscript>";
+        $txt .= "<noscript><form id=\"directoryList\" action=\".\" method=\"get\"><input type=\"submit\" value=\"Go\"></form></noscript>";
         print($txt);
     }
-    public function onSave()
+
+    public function onSave() // (Hook)
+
     {
-        # Delete the index so it may be rebuilt automatically
-        unlink($this->indexPath);
+        // This function overwrites the previous index file with the up-to-date
+		// version after saving or deleting any page.
+        $this->buildIndex($this->readFiles(true));
     }
 }
