@@ -76,29 +76,28 @@ class directoryList
         foreach ($pages as $folder => $folderContent)
 		{
             // Create <optgroup> for folders
-            ($folder === $dir) ?: $option .= "\t<optgroup label=\"" . ucfirst(basename($folder)) . "\">\n\t\t";
+            ($folder === $dir) ?: $option .= "\t\t<optgroup label=\"" . ucfirst(basename($folder)) . "\">\n\t\t";
 
             // Create all the pages for each file within folders. This is a BIG
 			// chunk of code, but it gets the job done.
             foreach ($folderContent as $fileName => $title) {
                 $path = ($folder === $dir) ? $fileName : substr($folder, strpos($folder, "/") + 1) . "/{$fileName}";
-                $option .= ($dir === "pages" ? "\t\t" : "\t\t") . "<option ";
+                $option .= (strpos($path, "/") ? "\t\t\t" : "\t\t") . "<option ";
                 if ($path === $GLOBALS["page"]) $option .= "selected ";
                 $hiddenMark = ($this->isHidden($path, "filePath")) ? " " . USERLANG["ac_hidden"] : null;
                 $option .= "value=\"{$path}\">{$title}{$hiddenMark}</option>\n\t\t";
             }
         }
-        ($folder === $dir) ?: $option .= "\t</optgroup>\n\t\t";
+        ($folder === $dir) ?: $option .= "\t\t</optgroup>\n\t\t";
         return $option;
     }
 
     public function addInfo() //	(Hook)
 
     {
-        $n = "\n\t\t";
-        $txt = "{$n}<select name=\"page\" onchange=\"document.getElementsByTagName('article')[0].className = ' pageOut'; location = '?page=' + this.options[this.selectedIndex].value;\" form=\"directoryList\">{$n}";
+        $txt = "\n\t\t\t<select name=\"page\" onchange=\"document.getElementsByTagName('article')[0].className = ' pageOut'; location = '?page=' + this.options[this.selectedIndex].value;\" form=\"directoryList\">{$n}";
         $txt .= $this->buildList($this->readFiles(!Auth::isAuthed()));
-        $txt .= "</select>\n";
+        $txt .= "\t</select>\n";
         $txt .= "<noscript><form id=\"directoryList\" action=\".\" method=\"get\"><input type=\"submit\" value=\"Go\"></form></noscript>";
         print($txt);
     }
