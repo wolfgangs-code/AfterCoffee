@@ -22,7 +22,7 @@ class directoryList
         }
 
         // Reads all files in the pages directory, and then returns an array.
-		$pages = [];
+        $pages = [];
         $dir = "pages";
         $glob = glob("{$dir}/*", GLOB_ONLYDIR);
         array_push($glob, $dir);
@@ -33,7 +33,7 @@ class directoryList
                 if ($skipHiddenPages && $this->isHidden($md, true)) {continue;}
 
                 // Find the first H1 in the Markdown, and when making the array
-				// use it as the title.
+                // use it as the title.
                 preg_match('/# (.*?)\n/', $md, $h1);
                 $title = trim($h1[1] ?? $fileName);
                 if ($folder === $dir) {
@@ -64,8 +64,12 @@ class directoryList
     {
         $option = "";
         arsort($pages);
-
         foreach ($pages as $folder => $folderContent) {
+			$explode = explode("/", $GLOBALS["page"]);
+            if (isset($pages[$folder."/".$explode[0]][$explode[1]])) {
+                $pages[$folder."/".$explode[0]][$explode[1]] = USERLANG["ac_hidden"];
+            }
+
             // Create <optgroup> for folders
             ($folder === $dir) ?: $option .= "\t\t<optgroup label=\"" . ucfirst(basename($folder)) . "\">\n\t\t";
 
