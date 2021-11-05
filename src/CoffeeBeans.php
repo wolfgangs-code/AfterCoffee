@@ -17,8 +17,8 @@ $page = $_GET["page"] ?? USERSET["indexPage"];
 function getURL($page)
 {
     $url = "http";
-    $url .= isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "s" : "";
-    $url .= "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+    $url .= (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] === 'on')) ? "s" : "";
+    $url .= "://" . (@$_SERVER['HTTP_HOST'] ?? null) . ($_SERVER['REQUEST_URI'] ?? null);
     return $url;
 }
 
