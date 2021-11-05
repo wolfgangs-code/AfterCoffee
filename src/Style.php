@@ -7,6 +7,7 @@ class Style
         $bufferArray = []; // Init. Color buffer
         $paletteColors = json_decode(file_get_contents(__DIR__ . "/../resource/color/{$paletteName}"), true);
         foreach (["light", "dark"] as $mode) {
+			if (!isset($paletteColors[$mode])) {continue;}
 			// For both light and dark modes, convert the array to CSS variables
             foreach ($paletteColors[$mode] as $color => $value) {
                 $bufferArray[$mode] .= "--{$color}:{$value};";
