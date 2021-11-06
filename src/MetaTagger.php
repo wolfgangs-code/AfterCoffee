@@ -28,12 +28,14 @@ class MetaTagger
     {
         $tags = $this->tags;
         ksort($tags);
+		$first = true;
         foreach ($tags as $space) {
 			ksort($space);
             foreach ($space as $key => $value) {
 				$type = key($tags);
-                echo str_repeat("\t", $tab);
+                echo str_repeat($first ? null : "\t", $tab);
                 echo "<meta {$type}=\"{$key}\"\tcontent=\"{$value}\">\n";
+				$first = false;
             }
 			next($tags);
         }
