@@ -4,7 +4,7 @@ class Style
     public static function colorPalette($paletteName = "default.palette")
     {
         if ($paletteName == "none") {return;} // No palette, no function
-        $bufferArray = []; // Init. Color buffer
+        $bufferArray = ["light" => "", "dark" => ""]; // Init. Color buffer
         $paletteColors = json_decode(file_get_contents(__DIR__ . "/../resource/color/{$paletteName}"), true);
         foreach (["light", "dark"] as $mode) {
 			if (!isset($paletteColors[$mode])) {continue;}
