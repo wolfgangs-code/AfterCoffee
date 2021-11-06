@@ -91,9 +91,10 @@ class directoryList
 
     public function addInfo()
     {
-        $txt = "\n\t\t\t<select name=\"page\" onchange=\"document.getElementsByTagName('article')[0].className = ' pageOut'; location = '?page=' + this.options[this.selectedIndex].value;\" form=\"directoryList\">\n\t\t";
+		$n = "\n\t\t";
+        $txt = "{$n}\t<select name=\"page\" onchange=\"document.getElementsByTagName('article')[0].className = ' pageOut'; location = '?page=' + this.options[this.selectedIndex].value;\" form=\"directoryList\">{$n}";
         $txt .= $this->buildList($this->readFiles(!Auth::isAuthed())) . "\t</select>\n";
-        $txt .= "<noscript><form id=\"directoryList\" action=\".\" method=\"get\"><input type=\"submit\" value=\"Go\"></form></noscript>";
+        $txt .= "\t\t\t<noscript><form id=\"directoryList\" action=\".\" method=\"get\"><input type=\"submit\" value=\"Go\"></form></noscript>{$n}";
         print($txt);
     }
 

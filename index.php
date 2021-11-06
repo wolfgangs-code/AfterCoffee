@@ -26,8 +26,8 @@
 	</h3>
 	<div class="info">
 		<div class="infoBlock">
-				<span><?=USERLANG["ac_lastEdited"]?></span>
-				<time datetime="<?=$dateISO?>"><?=$date?></time>
+			<span><?=USERLANG["ac_lastEdited"]?></span>
+			<time datetime="<?=$dateISO?>"><?=$date?></time>
 		</div>
 		<div><?php $plugins->load("addInfo") ?></div>
 	</div>
