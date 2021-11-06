@@ -168,6 +168,10 @@ select {
 	font-size: 150%;
 }
 
+h3.banner {
+	padding-left: 0;
+}
+
 /*======================
 	CONFIG AND EDITOR
 =======================*/

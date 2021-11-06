@@ -2,7 +2,7 @@
 	"light": {
 		"critical": "#9d0006",
 		"serious": "#d79921",
-		"caution": "#b57614",
+		"caution": "#ffcf84",
 		"normal": "#79740e",
 		"standby": "#076678",
 		"off": "#7c6f64",
