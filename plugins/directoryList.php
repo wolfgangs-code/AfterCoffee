@@ -66,7 +66,7 @@ class directoryList
         arsort($pages);
         foreach ($pages as $folder => $folderContent) {
 			$explode = explode("/", $GLOBALS["page"]);
-            if (isset($pages[$folder."/".$explode[0]][$explode[1]])) {
+            if (isset($pages[$folder."/".$explode[0]][@$explode[1]])) {
                 $pages[$folder."/".$explode[0]][$explode[1]] = USERLANG["ac_hidden"];
             }
 
