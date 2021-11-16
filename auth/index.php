@@ -6,7 +6,7 @@ require_once __DIR__."/../src/Style.php";
 require_once '../config/userset.php';
 require_once '../config/lang.php';
 
-$pw = $_POST['pass'];
+$pw = $_POST['pass'] ?? null;
 $rt = $_GET['r'] ?? "../";
 $title = USERLANG["auth"]["required"];
 
@@ -53,7 +53,7 @@ if (isset($pw) && password_verify($pw, $auth)) { // Password is correct.
 	<?=Style::colorPalette(USERSET["colorsheet"]);?>
 	<meta name="viewport" 			content="width=device-width, initial-scale=1">
 	<?php
-		$meta = new MetaTagger($title, $description, USERSET["author"]);
+		$meta = new MetaTagger($title, $title, USERSET["author"]);
 		$meta->changeSetting("name",	"robots",		"noindex");
 		$meta->changeSetting("name",	"theme-color",	USERSET["themeColor"]);
 		$meta->changeSetting("property","og:site_name",	USERSET["siteName"]);
