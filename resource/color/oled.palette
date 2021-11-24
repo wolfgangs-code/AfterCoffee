@@ -6,15 +6,16 @@
 		"normal": "#5D0",
 		"standby": "#2CF",
 		"off": "#9AA",
-		"background": "#FFF",
+		"background": "#F8F8F8",
 		"midground": "#666",
 		"foreground": "#000",
 		"selectionBackground": "#CCC"
 	},
 	"dark": {
 		"background": "#000",
-		"foreground": "#FFF",
+		"foreground": "#F8F8F8",
 		"selectionBackground": "#666",
-		"cursorColor": "#CCC"
+		"cursorColor": "#CCC",
+		"caution": "#6F6F00"
 	}
 }
