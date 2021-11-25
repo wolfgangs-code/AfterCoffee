@@ -27,6 +27,12 @@
 		"enterPass": "Enter in your password."
 	},
 	"cfg": {
+		"identity": "Identity",
+		"locale": "Locale",
+		"security": "Security",
+		"style": "Style",
+		"system": "System",
+
 		"themeColor": "Theme Color",
 		"stylesheet": "CSS Stylesheet",
 		"colorsheet": "Stylesheet Colors",

@@ -45,23 +45,23 @@ if (isset($pw) && password_verify($pw, $auth)) { // Password is correct.
 {?>
 
 <!DOCTYPE HTML>
-<html lang="<?=USERSET["lang"]?>">
+<html lang="<?=USERSET["locale"]["lang"]?>">
 <head>
 	<meta charset="utf-8">
 	<title><?=$title?></title>
-	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["stylesheet"]?>">
-	<?=Style::colorPalette(USERSET["colorsheet"]);?>
+	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["style"]["stylesheet"]?>">
+	<?=Style::colorPalette(USERSET["style"]["colorsheet"]);?>
 	<meta name="viewport" 			content="width=device-width, initial-scale=1">
 	<?php
-		$meta = new MetaTagger($title, $title, USERSET["author"]);
+		$meta = new MetaTagger($title, $title, USERSET["identity"]["author"]);
 		$meta->changeSetting("name",	"robots",		"noindex");
-		$meta->changeSetting("name",	"theme-color",	USERSET["themeColor"]);
-		$meta->changeSetting("property","og:site_name",	USERSET["siteName"]);
+		$meta->changeSetting("name",	"theme-color",	USERSET["style"]["themeColor"]);
+		$meta->changeSetting("property","og:site_name",	USERSET["identity"]["siteName"]);
 		$meta->render(1);
 	?>
 </head>
 <body>
-	<h3 class="banner right"><?=USERSET["siteName"] ." - ". $title?></h3>
+	<h3 class="banner right"><?=USERSET["identity"]["siteName"] ." - ". $title?></h3>
 	<div id="body">
         <h3><?=$msg?></h3>
 	    <form method="POST" action="">
@@ -69,7 +69,7 @@ if (isset($pw) && password_verify($pw, $auth)) { // Password is correct.
             <input type="submit" name="submit" value="Go">
         </form>
 	</div>
-	<h4 class="banner left">&copy; <?=date("Y") . " " . USERSET["copyright"]?></h4>
+	<h4 class="banner left">&copy; <?=date("Y") . " " . USERSET["identity"]["copyright"]?></h4>
 </body>
 </html>
 

@@ -70,16 +70,16 @@ if (Auth::isAuthed()) {
 }
 ?>
 <!DOCTYPE HTML>
-<html lang="<?=USERSET["lang"]?>">
+<html lang="<?=USERSET["locale"]["lang"]?>">
 <head>
 	<meta charset="utf-8">
 	<title><?=$title?></title>
-	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["stylesheet"]?>">
-	<?=Style::colorPalette(USERSET["colorsheet"]);?>
+	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["style"]["stylesheet"]?>">
+	<?=Style::colorPalette(USERSET["style"]["colorsheet"]);?>
 	<meta name="viewport" 			content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<h3 class="banner right"><?=USERSET["siteName"] ." - ". USERLANG["ac_bPublish"]?></h3>
+	<h3 class="banner right"><?=USERSET["identity"]["siteName"] ." - ". USERLANG["ac_bPublish"]?></h3>
 	<div id="loading">
 		<h1>🗑️ - <?=$timeout?>s...</h1>
 	</div>

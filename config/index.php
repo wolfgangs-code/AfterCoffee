@@ -114,22 +114,22 @@ function placeSetting($arr = POTSET, $portal = null)
 
 ?>
 <!DOCTYPE HTML>
-<html lang="<?=USERSET["lang"]?>">
+<html lang="<?=USERSET["locale"]["lang"]?>">
 <head>
 	<meta charset="utf-8">
-	<title><?=USERSET["siteName"] . " " . $title?></title>
-	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["stylesheet"]?>">
+	<title><?=USERSET["locale"]["siteName"] . " " . $title?></title>
+	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["style"]["stylesheet"]?>">
 	<?=Style::colorPalette(USERSET["colorsheet"]);?>
 	<?php
-$meta = new MetaTagger($title, $description, USERSET["author"]);
-$meta->changeSetting("name", "theme-color", USERSET["themeColor"]);
-$meta->changeSetting("property", "og:site_name", USERSET["siteName"]);
+$meta = new MetaTagger($title, $description, USERSET["identity"]["author"]);
+$meta->changeSetting("name", "theme-color", USERSET["style"]["themeColor"]);
+$meta->changeSetting("property", "og:site_name", USERSET["identity"]["siteName"]);
 $meta->render(1);
 ?>
 </head>
 <body>
 	<h3 class="banner right">
-		<a href="../"><?=USERSET["siteName"]?></a> - <?=$title?>
+		<a href="../"><?=USERSET["identity"]["siteName"]?></a> - <?=$title?>
 	</h3>
 	<div id="body">
         <form method="POST" class="config" action="save.php">
@@ -138,6 +138,6 @@ $meta->render(1);
             <input type="submit" value="<?=USERLANG["ac_bSave"]?>">
         </form>
 	</div>
-	<h4 class="banner left">&copy; <?=date("Y") . " " . USERSET["copyright"]?></h4>
+	<h4 class="banner left">&copy; <?=date("Y") . " " . USERSET["identity"]["copyright"]?></h4>
 </body>
 </html>

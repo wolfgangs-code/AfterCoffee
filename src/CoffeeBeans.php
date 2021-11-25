@@ -12,7 +12,7 @@ require_once './config/userset.php';
 require_once './config/lang.php';
 
 # If no page is specified, show the set index page
-$page = $_GET["page"] ?? USERSET["indexPage"];
+$page = $_GET["page"] ?? USERSET["system"]["indexPage"];
 
 function getURL($page)
 {
@@ -42,7 +42,7 @@ function pageTags($md)
     return array_filter(preg_split("/[\s,]+/", $out[1] ?? null));
 }
 
-$hiddenDemandsAuth = USERSET["hiddenDemandsAuth"] === "False" ?? true;
+$hiddenDemandsAuth = USERSET["security"]["hiddenDemandsAuth"] === "False" ?? true;
 
 # Only compose page if the Markdown file exists
 if (file_exists($apath) && (Auth::isAuthed() || $hiddenDemandsAuth)) {
@@ -65,7 +65,7 @@ if (file_exists($apath) && (Auth::isAuthed() || $hiddenDemandsAuth)) {
     }
     # Get the modified date directly from the markdown file,
     # Then get the title and description for the HTML from it as well.
-    $date = date(USERSET["dateFormat"] ?? "Y-m-d", filemtime($apath));
+    $date = date(USERSET["locale"]["dateFormat"] ?? "Y-m-d", filemtime($apath));
     $dateISO = date("Y-m-d", filemtime($apath));
     $title = insideTag($html, "h1") ?? $page;
     $description = insideTag($html, "h2");
@@ -74,7 +74,7 @@ if (file_exists($apath) && (Auth::isAuthed() || $hiddenDemandsAuth)) {
     # Return a 404 Error
     http_response_code(404);
     echo "{$page} " . USERLANG["ac_page404"];
-    include USERSET["errorPath"]["404"];
+    include USERSET["system"]["errorPath"]["404"];
     exit;
 }
 
