@@ -83,9 +83,11 @@ function placeSetting($arr = POTSET, $portal = null)
             continue;
         }
 
+		/*
         if ($arr != POTSET) {
             print("<span>" . (($item === array_key_last($arr)) ? "↳" : "↦") . "</span>");
         }
+		*/
 
         if (gettype($value) == "array") {
             # Works if the option is an array of values
@@ -117,7 +119,7 @@ function placeSetting($arr = POTSET, $portal = null)
 <html lang="<?=USERSET["locale"]["lang"]?>">
 <head>
 	<meta charset="utf-8">
-	<title><?=USERSET["locale"]["siteName"] . " " . $title?></title>
+	<title><?=USERSET["identity"]["siteName"] . " " . $title?></title>
 	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["style"]["stylesheet"]?>">
 	<?=Style::colorPalette(USERSET["style"]["colorsheet"]);?>
 	<?php
