@@ -41,7 +41,7 @@ $description = "AfterCoffee ".USERLANG["editor"]["editor"];
 	<meta charset="utf-8">
 	<title><?=USERSET["identity"]["siteName"] . " {$title}"?></title>
 	<link rel="stylesheet" href="../resource/css/<?=USERSET["style"]["stylesheet"]?>">
-	<?=Style::colorPalette(USERSET["colorsheet"]);?>
+	<?=Style::colorPalette(USERSET["style"]["colorsheet"]);?>
 	<?php
 		$meta = new MetaTagger($title, $description, USERSET["identity"]["author"]);
 		$meta->changeSetting("name",	"theme-color",	USERSET["style"]["themeColor"]);
