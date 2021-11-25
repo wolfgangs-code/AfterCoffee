@@ -2,6 +2,11 @@
 require_once "../src/Auth.php";
 require_once "../src/PluginManager.php";
 require_once __DIR__."/../config/userset.php";
+
+# Data recovery in the event of session loss
+is_null($_POST["textbox"]) ?: $_SESSION["postData"]["text"] = $_POST["textbox"];
+is_null($_POST["pageName"]) ?: $_SESSION["postData"]["title"] = $_POST["pageName"];
+
 Auth::demandAuth();
 
 # Load all plugins and defines them into an array
