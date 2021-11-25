@@ -1,7 +1,10 @@
 <?php
 require_once "../src/Auth.php";
 require_once "../src/PluginManager.php";
-require_once __DIR__."/../config/userset.php";
+require_once "../src/Style.php";
+require_once "../config/userset.php";
+require_once "../config/lang.php";
+
 
 # Data recovery in the event of session loss
 is_null($_POST["textbox"]) ?: $_SESSION["postData"]["text"] = $_POST["textbox"];
@@ -48,9 +51,9 @@ function publishPage($text, $title, $Plugins)
         # If a page cannot be deleted, hide it and explain why.
         $t = 2;
         unlink(realpath($path . ".md")) ?: publishPage($errstr, $title);
-        print("Successfully deleted '{$title}'.\nReturning to index in {$t} seconds...");
 		http_response_code(202);
         header("refresh:{$t};url=../");
+		return $t;
     } else {
 		http_response_code(302);
 		header("Location: ../?page=" . $title);
@@ -59,9 +62,26 @@ function publishPage($text, $title, $Plugins)
 
 if (Auth::isAuthed()) {
     // Logged in, ready to go.
-	$text = $_SESSION["postData"]["text"]	??	$_POST["textbox"];
+	$text =  $_SESSION["postData"]["text"]	??	$_POST["textbox"];
 	$title = $_SESSION["postData"]["title"]	??	$_POST["pageName"];
 
-    publishPage($text, $title, $Plugins);
+    $timeout = publishPage($text, $title, $Plugins) ?? 0;
 	unset($_SESSION["postData"]);
 }
+?>
+<!DOCTYPE HTML>
+<html lang="<?=USERSET["lang"]?>">
+<head>
+	<meta charset="utf-8">
+	<title><?=$title?></title>
+	<link rel="stylesheet" 			href="../resource/css/<?=USERSET["stylesheet"]?>">
+	<?=Style::colorPalette(USERSET["colorsheet"]);?>
+	<meta name="viewport" 			content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<h3 class="banner right"><?=USERSET["siteName"] ." - ". USERLANG["ac_bPublish"]?></h3>
+	<div id="loading">
+		<h1>🗑️ - <?=$timeout?>s...</h1>
+	</div>
+</body>
+</html>
