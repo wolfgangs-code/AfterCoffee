@@ -93,7 +93,7 @@ function placeSetting($arr = POTSET, $portal = null)
             # Works if the option is an array of values
             # Recursion. Is it bad?
             print("<hr class=\"left\"><div class=\"bubble\">");
-            print("<label class='inline'><b>" . $item . "</b></label><br>");
+            print("<label class='inline'><b>" . USERLANG["cfg"][$item] . "</b></label><br>");
             placeSetting($value, $item . "-");
             print("</div>");
         } elseif (preg_match("/#\d{6,8}/", $value) && stripos($item, "color")) {
