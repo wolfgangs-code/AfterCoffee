@@ -54,10 +54,9 @@ function publishPage($text, $title, $Plugins)
 
 if (Auth::isAuthed()) {
     // Logged in, ready to go.
-    publishPage(
-		$_SESSION["postData"]["text"]	??	$_POST["textbox"],
-		$_SESSION["postData"]["title"]	??	$_POST["pageName"],
-		$Plugins
-	);
+	$text = $_SESSION["postData"]["text"]	??	$_POST["textbox"];
+	$title = $_SESSION["postData"]["title"]	??	$_POST["pageName"];
+
+    publishPage($text, $title, $Plugins);
 	unset($_SESSION["postData"]);
 }
