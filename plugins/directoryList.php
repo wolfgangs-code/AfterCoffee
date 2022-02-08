@@ -1,15 +1,26 @@
 <?php
 class directoryList
 {
-    const version = '7.1';
+    const version = '8.0';
     private $indexPath = __DIR__ . "/../pages/index.json";
 
     private function isHidden($string, $isMarkdownNotFilePath = true)
     {
+		$filePath = __DIR__ . "/../pages/{$string}.md";
         // Evaluates whether or not a page should be hidden. It uses two modes:
         // Markdown, for directly accessing the string to search, or a filename
         // which allows the Markdown to be loaded from disk.
-        $text = ($isMarkdownNotFilePath) ? $string : file_get_contents(__DIR__ . "/../pages/{$string}.md");
+		if ($isMarkdownNotFilePath) {
+			$text = $string;
+		} elseif (file_exists($filePath)) {
+			// Checks if the file exists before getting.
+			$text = file_get_contents($filePath);
+		} else {
+			// If this is met, index.json is either corrupted or outdated.
+			// Make a new one and get out of here (Could cause problems?)
+			$this->buildIndex($this->readFiles(true));
+			return true;
+		}
         return preg_match("/<!--(.* NOINDEX .*)-->/", $text);
     }
 
