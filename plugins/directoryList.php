@@ -19,7 +19,7 @@ class directoryList
 			// If this is met, index.json is either corrupted or outdated.
 			// Make a new one and get out of here (Could cause problems?)
 			$this->buildIndex($this->readFiles(true));
-			return true;
+			return false;
 		}
         return preg_match("/<!--(.* NOINDEX .*)-->/", $text);
     }
