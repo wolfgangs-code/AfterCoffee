@@ -12,10 +12,10 @@ function bob($arr)
 {
     $data = [];
     foreach ($arr as $item => $value) {
-		if ($value == "on") {
-			$value = "True";
-		} elseif ($value == "false") {
-			$value == "False";
+		if ($value == "on" || $value == "True") {
+			$value = true;
+		} else {
+			$value == false;
 		}
         if ($pos = strpos($item, "-")) {
             $n = explode("-", $item);
