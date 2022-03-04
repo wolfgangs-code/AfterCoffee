@@ -1,17 +1,27 @@
 <?php
 class Router
 {
-    public $endpoint; //    e.g. "/page/default-index"
-    public $paths; //       e.g. ["page", "default-index"]
+    public $route; //	e.g. "/page/folder/default-index"
+	public $base; //	e.g. "page"
+    public $path; //	e.g. ["folder",	"default-index"]
+	public $method; //	e.g. "GET"
 
     public function __construct()
     {
-        // Prepare Endpoint
-        $this->endpoint = key($_GET);
+        // Prepare route
+        $this->route = key($_GET);
+
         // Split the endpoint into an array of paths
-        $this->paths = explode("/", $this->endpoint);
-        array_shift($this->paths); // Remove the blank first value
-        print_r($this->paths);
+        $this->path = explode("/", $this->route);
+
+		// Remove the blank first value
+        array_shift($this->path);
+
+		// Set the base variable and remove it from the path
+		$this->base = $this->path[0];
+        array_shift($this->path);
+
+		// Set method
+		$this->method = $_SERVER['REQUEST_METHOD'];
     }
 }
-$Router = new Router();
