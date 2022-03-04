@@ -5,8 +5,9 @@ require_once(__DIR__ . "/../lib/Parsedown.php");
 require_once(__DIR__ . "/../lib/ParsedownExtra.php");
 class Page
 {
-	public $name; // "page" OR "folder/page"
-	public $path; // "/var/www/AfterCoffee/pages/folder/page.md"
+	public $name; //	"page" OR "folder/page"
+	public $path; //	"/var/www/AfterCoffee/pages/folder/page.md"
+	private $md; //		A full Markdown file string.
 
 	public function __construct($path = ["default-index"])
     {
@@ -19,8 +20,13 @@ class Page
 	// Returns the raw markdown of a page.
 	public function getMarkdown()
 	{
-		$path = $this->path;
-		return file_exists($path)? file_get_contents($path): false;
+		if (isset($this->md)) {
+			return $this->md;
+		} else {
+			$path = $this->path;
+			$this->md = file_exists($path)? file_get_contents($path): false;
+			return $this->md;
+		}
 	}
 
 	public function getHTML($disablePlugins = false)
