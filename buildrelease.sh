@@ -11,6 +11,9 @@ do
 	cp -r $f buildtmp
 done
 
+# Flag as release build
+sed -i -e "s/RELEASE = false/RELEASE = true/g" ./src/Globals.php
+
 # Clean directories
 find buildtmp/pages -mindepth 1 -not -name 'default-index.md' -delete
 find buildtmp/plugins -type f -not -name 'customMarkdown.php'  -not -name 'dateFormat.php' -not -name 'directoryList.php' -delete
@@ -21,5 +24,6 @@ rm buildtmp/auth/auth_code.php
 cd buildtmp
 zip -r "../AfterCoffee-"$tag".zip" ./* -q
 cd ..
+sed -i -e "s/RELEASE = true/RELEASE = false/g" ./src/Globals.php
 rm -rf buildtmp
 echo "Release $tag built!"
