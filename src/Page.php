@@ -8,6 +8,7 @@ class Page
 	public $name; //	"page" OR "folder/page"
 	public $path; //	"/var/www/AfterCoffee/pages/folder/page.md"
 	private $md; //		A full Markdown file string.
+	private $dm; //		DateTime object
 
 	public function __construct($path = ["default-index"])
     {
@@ -29,6 +30,7 @@ class Page
 		}
 	}
 
+	// Returns the rendered HTML of a page.
 	public function getHTML($disablePlugins = false)
 	{
 		$Parsedown = new ParsedownExtra();
@@ -41,6 +43,17 @@ class Page
 			$rawHTML = $Parsedown->setBreaksEnabled(true)->text($markdown);
 			// Return raw until PluginManager is rewritten
 			return $rawHTML;
+		}
+	}
+
+	// Returns a DateTime object of when the page was last modified.
+	public function getDateModified()
+	{
+		if (isset($this->dm)) {
+			return $this->dm;
+		} else {
+			$this->dm = new DateTime(filemtime($apath));
+			return $this->dm;
 		}
 	}
 

@@ -13,10 +13,12 @@ switch ($Router->base)
 		if (in_array("text/html", $Router->accept)) {
 			// If the user is specifically requesting HTML
 			$API->body = $Page->getHTML();
+			$API->dateModified = $Page->getDateModified();
 			$API->contentType = "text/html";
 		} else {
 			// If not, markdown.
 			$API->body = $Page->getMarkdown();
+			$API->dateModified = $Page->getDateModified();
 			$API->contentType = "text/markdown";
 		}
 		break;

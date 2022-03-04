@@ -10,7 +10,7 @@ class API
 	public $contentType; //	e.g. "text/html", "application/json"
 	public $body; //		e.g. A full Markdown file
 	// Page
-	public $lastModified; //e.g. (Unix Timestamp)
+	public $dateModified; //A DateTime object
 
 	public function __construct()
 	{
@@ -27,10 +27,9 @@ class API
 		// Use the 'Content-Type' header.
 		#header("Content-Type: {$this->contentType}; ; charset=utf-8");
 
-		// If set, use the 'Last-Modified' header.
-		if (isset($this->lastModified)) {
-			$Date = new DateTime($this->lastModified);
-			header("Last-Modified: {$Date->format(DATE_RFC7231)}");
+		// If any Last-Modified set, use the 'Last-Modified' header.
+		if (isset($this->dateModified)) {
+			header("Last-Modified: {$this->dateModified->format(DATE_RFC7231)}");
 		}
 
 		// Finally, *wink*
