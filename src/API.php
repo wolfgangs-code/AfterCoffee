@@ -8,6 +8,7 @@ class API
 	// Universal Responses
 	public $statusCode; //	e.g. "200", "404", "500"
 	public $contentType; //	e.g. "text/html", "application/json"
+	public $body; //		e.g. A full Markdown file
 	// Page
 	public $lastModified; //e.g. (Unix Timestamp)
 
@@ -35,6 +36,7 @@ class API
 		// Finally, *wink*
 		$signature = Globals::signature();
 		header("X-Powered-By: {$signature}");
+		print($this->body);
 	}
 }
 ?>
