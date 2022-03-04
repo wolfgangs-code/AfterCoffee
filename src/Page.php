@@ -14,8 +14,6 @@ class Page
 		$this->name = rtrim(implode("/", $path), "/");
 		// Set the path (canonical)
 		$this->path = substr(__DIR__, 0, -3) . "pages/{$this->name}.md";
-
-		print($this->getHTML());
     }
 
 	// Returns the raw markdown of a page.
