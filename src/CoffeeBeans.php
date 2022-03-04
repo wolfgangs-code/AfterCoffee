@@ -24,7 +24,6 @@ function getURL($page)
 
 # Load all plugins and defines them into an array
 $plugins = new PluginManager;
-$plugins->init();
 
 $apath = "./pages/{$page}.md";
 

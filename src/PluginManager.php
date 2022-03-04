@@ -3,7 +3,7 @@ class PluginManager
 {
     private $settingsArr = [];
 
-    public function init()
+    public function __construct()
     {
         foreach (glob(__DIR__ . "/../plugins/*.php") as $plugin) {
             include $plugin;
