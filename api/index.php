@@ -7,6 +7,13 @@ switch ($Router->base)
 {
 	case "page":
 		$Page = new Page($Router->path);
+		if (!$Page->exists) {
+			$API->statusCode = 404;
+			$API->contentType = "application/json";
+			$API->body = json_encode("That page does not exist.");
+			unset($API->dateModified);
+			$API->respond();
+		}
 
 		// Heads up: This is tricky to test on browsers.
 		// Be absolutely sure of your 'Accept' header.

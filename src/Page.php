@@ -56,7 +56,7 @@ class Page
 			return $this->dm;
 		} elseif ($this->exists) {
 			// If we need to find a date for an existing file.
-			$this->dm = new DateTime(filemtime($this->path));
+			$this->dm = new DateTime(strtotime(filemtime($this->path)));
 			return $this->dm;
 		} else {
 			// Default to now for non-existant files.
