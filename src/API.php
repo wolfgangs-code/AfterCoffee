@@ -1,6 +1,7 @@
 <?php
 require_once("Router.php");
 require_once("Page.php");
+require_once("Globals.php");
 
 class API
 {
@@ -32,7 +33,8 @@ class API
 		}
 
 		// Finally, *wink*
-		header("X-Powered-By: AfterCoffee");
+		$signature = Globals::signature();
+		header("X-Powered-By: {$signature}");
 	}
 }
 ?>
