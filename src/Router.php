@@ -5,6 +5,7 @@ class Router
 	public $base; //	e.g. "page"
     public $path; //	e.g. ["folder",	"default-index"]
 	public $method; //	e.g. "GET"
+	public $accept; //	e.g. "text/html"
 
     public function __construct()
     {
@@ -23,5 +24,8 @@ class Router
 
 		// Set method
 		$this->method = $_SERVER['REQUEST_METHOD'];
+
+		// Set accept headers
+		$this->accept = explode(",", $_SERVER["HTTP_ACCEPT"]);
     }
 }
