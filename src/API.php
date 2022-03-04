@@ -25,7 +25,7 @@ class API
 		http_response_code($this->statusCode);
 
 		// Use the 'Content-Type' header.
-		#header("Content-Type: {$this->contentType}; ; charset=utf-8");
+		header("Content-Type: {$this->contentType}; ; charset=utf-8");
 
 		// If any Last-Modified set, use the 'Last-Modified' header.
 		if (isset($this->dateModified)) {
@@ -36,6 +36,7 @@ class API
 		$signature = Globals::signature();
 		header("X-Powered-By: {$signature}");
 		print($this->body);
+		exit;
 	}
 }
 ?>
