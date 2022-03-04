@@ -9,7 +9,7 @@ class Page
 	public $name; //	"page" OR "folder/page"
 	public $path; //	"/var/www/AfterCoffee/pages/folder/page.md"
 	private $md; //		A full Markdown file string.
-	private $dm; //		DateTime object.
+	private $date; //	DateTime object.
 
 	public function __construct($path = ["default-index"])
     {
@@ -51,17 +51,17 @@ class Page
 	// Returns a DateTime object of when the page was last modified.
 	public function getDateModified()
 	{
-		if (isset($this->dm)) {
+		if (isset($this->date)) {
 			// If we've already known the date modified.
-			return $this->dm;
+			return $this->date;
 		} elseif ($this->exists) {
 			// If we need to find a date for an existing file.
-			$this->dm = new DateTime(strtotime(filemtime($this->path)));
-			return $this->dm;
+			$this->date = new DateTime(strtotime(filemtime($this->path)));
+			return $this->date;
 		} else {
 			// Default to now for non-existant files.
-			$this->dm = new DateTime("now");
-			return $this->dm;
+			$this->date = new DateTime("now");
+			return $this->date;
 		}
 	}
 
