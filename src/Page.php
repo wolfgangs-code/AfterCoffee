@@ -52,7 +52,7 @@ class Page
 		if (isset($this->dm)) {
 			return $this->dm;
 		} else {
-			$this->dm = new DateTime(filemtime($apath));
+			$this->dm = new DateTime(filemtime($this->path));
 			return $this->dm;
 		}
 	}
