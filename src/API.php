@@ -7,15 +7,41 @@ class API
 {
 	// Universal Responses
 	public $statusCode; //	e.g. "200", "404", "500"
-	public $contentType; //	e.g. "text/html", "application/json"
 	public $body; //		e.g. A full Markdown file
+	private $status; //		e.g. "success", "fail", or "error".
 	// Page
 	public $dateModified; //A DateTime object
 
 	public function __construct()
 	{
+		// Everything is OK by default.
 		$this->statusCode = 200;
-		$this->contentType = "application/json";
+		$this->status = "success";
+	}
+
+	public function setStatus($statusCode, $message = null)
+	{
+		$this->statusCode = $statusCode;
+		$category = $statusCode - $statusCode % 100; // e.g. 404 becomes 400
+		switch($category)
+		{
+			case 200:
+			case 300:
+				$this->status = "success";
+				break;
+			case 400:
+				$this->status = "fail";
+				$this->body = $message ?? "An unknown error occured with the client.";
+				break;
+			case 500:
+				$this->status = "error";
+				$this->body = $message ?? "An unknown error occured with the server.";
+			default:
+				$this->statusCode = 500;
+				$this->status = "error";
+				$this->body = "Invalid HTTP response code '{$statusCode}' attempted.";
+				return false;
+		}
 	}
 
 	// Send out the final response.
@@ -24,8 +50,8 @@ class API
 		// HTTP response code
 		http_response_code($this->statusCode);
 
-		// Use the 'Content-Type' header.
-		header("Content-Type: {$this->contentType}; charset=utf-8");
+		// Signal that we are responding with JSON.
+		header("Content-Type: application/json; charset=utf-8");
 
 		// If any Last-Modified set, use the 'Last-Modified' header.
 		if (isset($this->dateModified)) {
@@ -37,7 +63,9 @@ class API
 		header("X-Powered-By: {$signature}");
 
 		// Print response body and quit everything. We're done here.
-		print($this->body);
+		print(json_encode([
+			""
+		]));
 		exit;
 	}
 }

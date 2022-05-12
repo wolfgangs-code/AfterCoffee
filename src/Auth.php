@@ -1,11 +1,17 @@
 <?php
+include_once(__DIR__ . "/../auth/auth_code.php");
 class Auth
 {
-	// Authentication
+	private static function keyCheck($key)
+	{
+
+	}
 
     public static function isAuthed()
     {
-        return (isset($_SESSION["authorized"]) && $_SESSION["authorized"] = true);
+		$webAuth = isset($_SESSION["authorized"]) && $_SESSION["authorized"];
+		$APIAuth = isset($_SERVER["PHP_AUTH_USER"]) && self::keyCheck($_SERVER["PHP_AUTH_PW"]);
+		return $webAuth || $APIAuth;
     }
 
     public static function demandAuth()

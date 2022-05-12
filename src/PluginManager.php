@@ -40,6 +40,9 @@ class PluginManager
                         call_user_func([$plugin, $act], $_GET["action"]);
 						print($_GET["action"]);
                         break;
+					case "changeText":
+            			$html = $plugin->changeText($html);
+						break;
                     default:
                         call_user_func([$plugin, $act], $html);
                 }
